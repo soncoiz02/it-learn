@@ -39,9 +39,28 @@ textarea {
 
 .container {
   display: flex;
-  max-width: 1200px;
+  max-width: 1440px;
   padding: 0 30px;
   margin: 0 auto;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.main__page {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -69,6 +88,7 @@ textarea {
   top: 0;
   left: 0;
   z-index: 100;
+  background: white;
 }
 
 .header .container {
@@ -257,6 +277,11 @@ textarea {
   height: 70px;
   border-radius: 15px;
   color: #3487e9;
+  background: whitesmoke;
+  transition: 0.3s;
+}
+
+.main__side-bar .nav-link a:hover {
   background: #3488e93a;
 }
 
@@ -272,5 +297,146 @@ textarea {
 .main__side-bar .nav-link.active > a {
   background: linear-gradient(315deg, #00ffe0, #5ac3ff);
   color: white;
+}
+
+@media (max-width: 767px) {
+  .main__side-bar {
+    position: fixed;
+    left: -100%;
+    transition: 0.5s;
+  }
+  .main__side-bar.active {
+    left: 0;
+  }
+}
+
+.home {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home__banner {
+  width: 100%;
+}
+
+.home__banner .container {
+  padding: 30px;
+  width: 100%;
+}
+
+.home__banner-img {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  background: linear-gradient(315deg, #00ffe0, #5ac3ff);
+}
+
+.home__course, .home__blog {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home__course .container, .home__blog .container {
+  flex-direction: column;
+  width: 100%;
+  padding: 50px 50px 0 50px;
+  gap: 30px 0;
+}
+
+.home__course .container .swiper.swiper-item, .home__blog .container .swiper.swiper-item {
+  height: 300px;
+}
+
+.home__course .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item, .home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item {
+  width: 300px !important;
+  align-items: flex-start;
+}
+
+.home__course .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .img, .home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .img {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  position: relative;
+  background: #41b9ed;
+  overflow: hidden;
+}
+
+.home__course .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .course-name, .home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .course-name, .home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .blog-name {
+  width: 100%;
+  margin: 10px 0 5px 0;
+  color: #4d4d4d;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.home__course .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .user-count, .home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .user-count {
+  display: flex;
+  color: gray;
+  gap: 0 5px;
+}
+
+.home__course .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .user-count i, .home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .user-count i {
+  font-size: 18px;
+}
+
+.home__course .container .swiper.swiper-item .swiper-scrollbar, .home__blog .container .swiper.swiper-item .swiper-scrollbar {
+  left: 0;
+  width: 100%;
+}
+
+.home__course .container .swiper.swiper-item .swiper-scrollbar-drag, .home__blog .container .swiper.swiper-item .swiper-scrollbar-drag {
+  width: 300px !important;
+}
+
+.home__course .container .btn-see-all, .home__blog .container .btn-see-all {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home__course .container .btn-see-all a, .home__blog .container .btn-see-all a {
+  font-size: 18px;
+  font-weight: 600;
+  color: red;
+}
+
+.home__blog .container .swiper.swiper-item {
+  height: 350px !important;
+}
+
+.home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .bottom {
+  display: flex;
+  gap: 0 20px;
+  align-items: center;
+}
+
+.home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .bottom .user {
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+}
+
+.home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .bottom .user .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background: #41b9ed;
+}
+
+.home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .bottom .user .fullname {
+  font-size: 16px;
+  font-weight: 600;
+  color: gray;
+}
+
+.home__blog .container .swiper.swiper-item .swiper-wrapper .swiper-slide.item .bottom .day-left {
+  font-size: 12px;
+  color: gray;
 }
 /*# sourceMappingURL=style.css.map */

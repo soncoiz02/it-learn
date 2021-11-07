@@ -23,7 +23,11 @@
         height: 70px;
         border-radius: 15px;
         color: #3487e9;
-        background: #3488e93a;
+        background: whitesmoke;
+        transition: 0.3s;
+        &:hover {
+          background: #3488e93a;
+        }
         i {
           font-size: 25px;
         }
@@ -36,6 +40,17 @@
         background: $light-blue;
         color: white;
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .main__side-bar {
+    position: fixed;
+    left: -100%;
+    transition: 0.5s;
+    &.active {
+      left: 0;
     }
   }
 }

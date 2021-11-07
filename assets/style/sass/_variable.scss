@@ -1,6 +1,7 @@
 $orange: linear-gradient(315deg, #ff4d00, #f9ab14);
 $light-blue: linear-gradient(315deg, #00ffe0, #5ac3ff);
 $blue: #41b9ed;
+$black: #4d4d4d;
 
 @mixin title-font($size) {
   font: {
