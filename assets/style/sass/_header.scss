@@ -1,0 +1,173 @@
+.header {
+  width: 100%;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  .container {
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    max-width: 100%;
+    padding: 0 50px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+
+    &-img {
+      width: 50px;
+      height: 50px;
+      background: $orange;
+      border-radius: 10px;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font: {
+          size: 20px;
+          weight: bold;
+        }
+        @include text-color();
+      }
+      span {
+        font: {
+          size: 16px;
+        }
+        color: gray;
+      }
+    }
+  }
+
+  &__search {
+    &-form {
+      width: 500px;
+      height: 50px;
+      position: relative;
+      border-radius: 50px;
+      background: whitesmoke;
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      input {
+        width: 450px;
+        height: 100%;
+        padding: 10px 20px 10px 0;
+        font-size: 18px;
+        color: gray;
+        border: none;
+        background: none;
+      }
+      i {
+        width: 50px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: gray;
+      }
+    }
+    .btn-close {
+      display: none;
+      i {
+        font-size: 20px;
+        color: gray;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    &-btn-bar {
+      display: none;
+      i {
+        font-size: 25px;
+        color: gray;
+      }
+    }
+    &-btn-login {
+      a {
+        @include flex-center();
+        width: 120px;
+        height: 40px;
+        background: $orange;
+        color: white;
+        border-radius: 5px;
+        font: {
+          size: 18px;
+          weight: 600;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    .container {
+      padding: 0 30px;
+      height: 50px;
+    }
+
+    &__logo {
+      &-img {
+        width: 35px;
+        height: 35px;
+      }
+      &-text {
+        p {
+          font-size: 16px;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__search {
+      @include flex-between-center();
+      position: absolute;
+      padding: 0 30px;
+      background: white;
+      width: 100%;
+      height: 100%;
+      top: -100%;
+      left: 0;
+      transition: 0.5s;
+
+      &.active {
+        top: 0;
+      }
+      &-form {
+        width: 90%;
+        height: 35px;
+      }
+      .btn-close {
+        display: flex;
+      }
+    }
+
+    &__right {
+      &-btn-bar {
+        display: flex;
+      }
+      &-btn-login {
+        a {
+          font-size: 14px;
+          width: 80px;
+          height: 35px;
+        }
+      }
+    }
+  }
+}
