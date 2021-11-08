@@ -61,10 +61,25 @@ textarea {
 
 .title {
   @include title-font(26px);
+  position: relative;
+  width: auto;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    border-radius: 50px;
+    background: $orange;
+    bottom: -10px;
+    left: 0;
+  }
 }
 
 @media (max-width: 767px) {
   .title {
     @include title-font(20px);
+    &::after {
+      height: 4px;
+    }
   }
 }

@@ -5,7 +5,7 @@
     */
     $ROOT_URL = "/itlearn";
     $STYLE_URL = "$ROOT_URL/assets/style/style.css";
-    $CONTENT_URL = "$ROOT_URL/content";
+    $ASSETS_URL = "$ROOT_URL/assets";
     $ADMIN_URL = "$ROOT_URL/admin";
     $SITE_URL = "$ROOT_URL/site";
 

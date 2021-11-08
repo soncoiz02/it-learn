@@ -49,8 +49,29 @@
     position: fixed;
     left: -100%;
     transition: 0.5s;
+    top: 50px;
+    height: calc(100vh - 50px);
+    padding: 30px 10px;
+    width: 80px;
     &.active {
       left: 0;
+    }
+    .nav {
+      gap: 10px 0;
+      &-link {
+        a {
+          width: 60px;
+          height: 60px;
+          border-radius: 10px;
+
+          i {
+            font-size: 20px;
+          }
+          span {
+            font-size: 12px;
+          }
+        }
+      }
     }
   }
 }

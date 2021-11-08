@@ -30,12 +30,13 @@
       padding: 50px 50px 0 50px;
       gap: 30px 0;
 
-      .swiper.swiper-item {
+      .swiper.swiper-course {
         height: 300px;
         .swiper-wrapper {
-          .swiper-slide.item {
-            width: 300px !important;
+          .swiper-slide.course {
+            width: auto !important;
             align-items: flex-start;
+            justify-content: flex-start;
             .img {
               width: 300px;
               height: 200px;
@@ -95,18 +96,50 @@
   }
 
   &__blog {
-    @extend .home__course;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     .container {
-      .swiper.swiper-item {
+      flex-direction: column;
+      width: 100%;
+      padding: 50px 50px 0 50px;
+      gap: 30px 0;
+      .swiper.swiper-blog {
         height: 350px !important;
         .swiper-wrapper {
           .swiper-slide.item {
+            width: auto !important;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            .img {
+              width: 300px;
+              height: 200px;
+              border-radius: 20px;
+              position: relative;
+              background: $blue;
+              overflow: hidden;
+              //   img {
+              //     width: 100%;
+              //     height: 100%;
+              //     position: absolute;
+              //     object-fit: cover;
+              //   }
+            }
             .blog-name {
-              @extend .course-name;
+              width: 100%;
+              margin: 10px 0 5px 0;
+              color: $black;
+              font: {
+                size: 20px;
+                weight: 600;
+              }
             }
             .bottom {
               display: flex;
               gap: 0 20px;
+              width: 100%;
               align-items: center;
               .user {
                 display: flex;
@@ -136,6 +169,263 @@
             }
           }
         }
+        .swiper-scrollbar {
+          left: 0;
+          width: 100%;
+        }
+        .swiper-scrollbar-drag {
+          width: 300px !important;
+        }
+      }
+
+      .btn-see-all {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        a {
+          font: {
+            size: 18px;
+            weight: 600;
+          }
+          color: red;
+        }
+      }
+    }
+  }
+
+  &__study {
+    position: relative;
+    width: 100%;
+    .container {
+      width: 100%;
+      flex-direction: column;
+      gap: 50px 0;
+      padding: 50px;
+      .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &-roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
+      width: 45%;
+      overflow-y: hidden;
+      .case {
+        display: flex;
+        gap: 0 20px;
+        opacity: 0;
+        transform: translateY(300px);
+        transition: 1s linear;
+        transition-delay: calc((1 / 3) * var(--i));
+
+        &-left {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 10px 0;
+          pointer-events: none;
+          .number {
+            @include flex-center;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            color: white;
+            font-size: 26px;
+            font-weight: 600;
+            background: $orange;
+          }
+          .vector {
+            @include flex-center-col;
+            gap: 5px 0;
+            .dot {
+              width: 15px;
+              height: 15px;
+              border-radius: 50%;
+              background: $orange;
+            }
+            .line {
+              width: 6px;
+              height: 70px;
+              border-radius: 50px;
+              background: $orange;
+            }
+          }
+        }
+
+        &-right {
+          display: flex;
+          flex-direction: column;
+          gap: 10px 0;
+
+          .case-title {
+            font: {
+              size: 20px;
+              weight: 600;
+            }
+            color: $black;
+          }
+
+          .detail {
+            font-size: 16px;
+            color: gray;
+          }
+        }
+      }
+    }
+
+    &-img {
+      width: 50%;
+      height: 400px;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &.showing {
+      .home__study-roadmap {
+        .case {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    margin-top: 50px;
+  }
+  .home {
+    &__banner {
+      &-img {
+        height: 200px;
+      }
+    }
+    .container {
+      padding: 30px 30px 0 30px;
+    }
+
+    &__course {
+      .container {
+        .swiper.swiper-course {
+          height: 220px;
+          .swiper-wrapper {
+            .swiper-slide.course {
+              .img {
+                width: 250px;
+                height: 150px;
+              }
+              .course-name {
+                font-size: 16px;
+              }
+              .user-count {
+                i {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+          .swiper-scrollbar-drag {
+            width: 100px !important;
+          }
+        }
+
+        .btn-see-all {
+          margin: -20px 0;
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    &__blog {
+      .container {
+        .swiper.swiper-blog {
+          height: 230px !important;
+          .swiper-wrapper {
+            .swiper-slide.item {
+              .img {
+                width: 250px;
+                height: 150px;
+              }
+              .blog-name {
+                font-size: 16px;
+              }
+              .bottom {
+                .user {
+                  .avatar {
+                    width: 20px;
+                    height: 20px;
+                  }
+                  .fullname {
+                    font-size: 14px;
+                  }
+                }
+                .day-left {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+          .swiper-scrollbar-drag {
+            width: 100px !important;
+          }
+        }
+        .btn-see-all {
+          margin: -20px 0;
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    &__study {
+      .container {
+        padding: 30px;
+      }
+      &-roadmap {
+        width: 100%;
+        .case {
+          transform: translateY(200px);
+          &-left {
+            .number {
+              width: 50px;
+              height: 50px;
+            }
+            .vector {
+              .dot {
+                width: 8px;
+                height: 8px;
+              }
+              .line {
+                width: 3px;
+                height: 40px;
+              }
+            }
+          }
+
+          &-right {
+            .case-title {
+              font-size: 16px;
+            }
+            .detail {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+      &-img {
+        display: none;
       }
     }
   }
