@@ -103,8 +103,18 @@ const activeSideBar = () => {
     })
 }
 
+const markBtn = document.querySelector('.mark-btn')
+const activeMark = () => {
+    if (markBtn) {
+        markBtn.addEventListener('click', () => {
+            markBtn.classList.toggle('active')
+        })
+    }
+}
+
 activeLink()
 activeSideBar()
+activeMark()
 if (homePage) {
     handleSwiper()
     showOnScroll()

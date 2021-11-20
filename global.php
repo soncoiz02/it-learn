@@ -16,7 +16,7 @@
     $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "$ROOT_URL/content/img";
     $VIEW_NAME = "";
     $MESSAGE = "";
-    $class_style = "";
+    $type = "";
 
     /**
     * Lưu file upload vào thư mục

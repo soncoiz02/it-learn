@@ -81,7 +81,7 @@
                 <li class="nav-link">
                     <a href="<?=$SITE_URL?>/blog">
                         <i class="far fa-newspaper"></i>
-                        <span>Diễn đàn</span>
+                        <span>Bài viết</span>
                     </a>
                 </li>
             </ul>
@@ -92,6 +92,15 @@
             ?>
         </section>
     </main>
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__top-logo">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </footer> -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../../js/site.js"></script>
 </body>

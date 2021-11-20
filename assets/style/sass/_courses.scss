@@ -3,7 +3,6 @@
   flex-direction: column;
   width: 100%;
   position: relative;
-  margin-bottom: 50px;
   .container {
     flex-direction: column;
     gap: 50px 0;
@@ -65,6 +64,341 @@
   &__back-end {
     position: relative;
     width: 100%;
+  }
+
+  &__detail {
+    position: relative;
+    width: 100%;
+    .container {
+      padding: 50px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &-left {
+      position: relative;
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      h1 {
+        font-size: 36px;
+        color: $black;
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+      .dsc {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+        margin-bottom: 50px;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        h2 {
+          margin-bottom: 20px;
+        }
+        .list {
+          display: flex;
+          position: relative;
+          width: 100%;
+          flex-direction: column;
+          gap: 10px 0;
+          .item {
+            width: 100%;
+            padding: 15px;
+            font: {
+              size: 18px;
+              weight: 600;
+            }
+            color: $black;
+            border-radius: 5px;
+            background: whitesmoke;
+            transition: 0.5s;
+            &:hover {
+              background: rgb(153, 216, 253);
+            }
+          }
+        }
+      }
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px 0;
+      align-items: center;
+      .img {
+        width: 350px;
+        height: 200px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        background: $blue;
+        // img{
+        //   position: absolute;
+        //   object-fit: cover;
+        //   width: 100%;
+        //   height: 100%;
+        // }
+      }
+      .btn-sign {
+        padding: 15px 20px;
+        border-radius: 5px;
+        background: $orange;
+        color: white;
+        font: {
+          size: 18px;
+          weight: 600;
+        }
+      }
+      .detail {
+        display: flex;
+        flex-direction: column;
+        gap: 5px 0;
+        align-items: center;
+        li {
+          font: {
+            size: 16px;
+            weight: 600;
+          }
+          color: $black;
+        }
+      }
+    }
+  }
+
+  &__lesson {
+    position: relative;
+    width: 100%;
+    .container {
+      flex-direction: row;
+      padding: 0;
+    }
+    &-left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 30px 0;
+      width: 75%;
+
+      .frame {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .video {
+          width: 100%;
+          height: 600px;
+          iframe {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .comment {
+        display: flex;
+        flex-direction: column;
+        padding: 0 30px;
+        h2 {
+          font: {
+            size: 26px;
+            weight: 700;
+          }
+          color: $black;
+          margin-bottom: 20px;
+        }
+        &-form {
+          display: flex;
+          align-items: flex-start;
+          gap: 0 10px;
+          margin-bottom: 30px;
+          .user {
+            display: flex;
+            gap: 0 10px;
+            align-items: center;
+            .avt {
+              width: 50px;
+              height: 50px;
+              position: relative;
+              border-radius: 50%;
+              overflow: hidden;
+              background: $orange;
+              // img {
+              //   position: absolute;
+              //   width: 100%;
+              //   height: 100%;
+              //   object-fit: cover;
+              // }
+            }
+          }
+          .form {
+            width: 70%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px 0;
+
+            textarea {
+              width: 100%;
+              height: 100px;
+              border: none;
+              background: white;
+              color: $black;
+              border-radius: 5px;
+              padding: 15px;
+              font-size: 15px;
+              border: 1px solid coral;
+            }
+            input {
+              border: none;
+              cursor: pointer;
+              padding: 10px 20px;
+              font: {
+                size: 18px;
+                weight: 600;
+              }
+              color: white;
+              background: $orange;
+              border-radius: 5px;
+              align-self: flex-end;
+            }
+          }
+        }
+        &-list {
+          display: flex;
+          flex-direction: column;
+          gap: 25px 0;
+          width: 100%;
+          padding: 20px 0 50px 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          .item {
+            width: 100%;
+            display: flex;
+            gap: 0 10px;
+            .avt {
+              position: relative;
+              width: 40px;
+              height: 40px;
+              overflow: hidden;
+              border-radius: 50%;
+              background: $orange;
+              // img {
+              //   position: absolute;
+              //   width: 100%;
+              //   height: 100%;
+              //   object-fit: cover;
+              // }
+            }
+            .detail {
+              display: flex;
+              flex-direction: column;
+              gap: 5px 0;
+              width: calc(100% - 50px);
+              .fullname {
+                font: {
+                  size: 16px;
+                  weight: 600;
+                }
+                color: $black;
+              }
+              .content {
+                font-size: 16px;
+                color: gray;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-right {
+      width: 25%;
+      height: 100vh;
+      position: sticky;
+      top: 70px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+      background: whitesmoke;
+      h2 {
+        padding: 15px;
+        font-size: 26px;
+        color: $black;
+      }
+      .list-lesson {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        .lesson {
+          position: relative;
+          width: 100%;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          &.active {
+            &::after {
+              content: "";
+              position: absolute;
+              width: 3px;
+              height: 100%;
+              background: coral;
+              top: 0;
+              left: 0;
+            }
+          }
+          &.unlock {
+            border: none;
+            a {
+              background: white;
+              &:hover {
+                background: rgba(252, 208, 193, 0.5);
+              }
+            }
+            span {
+              .fa-lock {
+                display: none;
+              }
+              .fa-play-circle {
+                display: block;
+              }
+            }
+            .disable-bg {
+              display: none;
+            }
+          }
+          a {
+            padding: 15px;
+            font: {
+              size: 16px;
+              weight: 600;
+            }
+            color: gray;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span {
+              .fa-play-circle {
+                font-size: 20px;
+                color: coral;
+                display: none;
+              }
+              .fa-lock {
+                font-size: 20px;
+                color: gray;
+              }
+            }
+          }
+        }
+        .disable-bg {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
   }
 }
 

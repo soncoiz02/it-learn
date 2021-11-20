@@ -1,0 +1,113 @@
+.admin__blog {
+  position: relative;
+  width: 100%;
+  .container {
+    display: flex;
+    padding: 50px 30px;
+    flex-direction: column;
+    h2 {
+      font-size: 30px;
+      color: #0c549c;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 5px;
+        border-radius: 50px;
+        left: 0;
+        bottom: -10px;
+        background: $linner-blue;
+      }
+    }
+  }
+
+  &-list {
+    display: flex;
+    width: 100%;
+    position: relative;
+    gap: 50px 0;
+    flex-direction: column;
+    .table {
+      position: relative;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: none;
+
+      thead {
+        background: $linner-blue;
+      }
+      th {
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        text-align: center;
+      }
+      td {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        text-align: center;
+        height: 100px;
+        vertical-align: top;
+        font: {
+          size: 18px;
+          weight: 600;
+        }
+        color: $black;
+        .img {
+          width: 100%;
+          height: 100%;
+          background: $blue;
+        }
+        &.delete > a {
+          font-size: 25px;
+          color: red;
+        }
+        &.detail > a {
+          font-size: 25px;
+          color: royalblue;
+        }
+      }
+    }
+    .pagination {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .list-btn {
+        display: flex;
+        gap: 0 10px;
+        align-items: center;
+        .btn-prev,
+        .btn-next {
+          padding: 5px 20px;
+          border-radius: 5px;
+          background: white;
+          font-size: 16px;
+          color: gray;
+          box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+          transition: 0.5s;
+          &:hover {
+            background: $linner-blue;
+            color: white;
+            border: none;
+          }
+        }
+        button {
+          border-radius: 5px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          padding: 5px 10px;
+          font-size: 16px;
+          font-weight: 600;
+          color: royalblue;
+          background: white;
+        }
+      }
+    }
+  }
+}

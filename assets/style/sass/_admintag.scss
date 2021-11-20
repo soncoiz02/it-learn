@@ -1,0 +1,141 @@
+.admin__tag {
+  position: relative;
+  width: 100%;
+  .container {
+    display: flex;
+    padding: 50px 30px;
+    flex-direction: column;
+    h2 {
+      font-size: 30px;
+      color: #0c549c;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 5px;
+        border-radius: 50px;
+        left: 0;
+        bottom: -10px;
+        background: $linner-blue;
+      }
+    }
+  }
+  .message {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 250px;
+    height: 80px;
+    background: white;
+    @include flex-center;
+    &.success {
+      border-left: 2px solid #3acc20;
+      p {
+        color: #3acc20;
+      }
+    }
+    &.fail {
+      border-left: 2px solid red;
+      p {
+        color: red;
+      }
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+  &-add {
+    display: flex;
+    flex-direction: column;
+    gap: 50px 0;
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px 0;
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+        p {
+          font: {
+            size: 20px;
+            weight: 600;
+          }
+          color: $black;
+        }
+        input {
+          width: 300px;
+          padding: 15px;
+          font-size: 18px;
+          color: gray;
+          background: white;
+          border-radius: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+      }
+      input[type="submit"] {
+        width: 150px;
+        padding: 15px;
+        background: $linner-blue;
+        color: white;
+        font: {
+          size: 18px;
+          weight: 600;
+        }
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px 0;
+    .table {
+      position: relative;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      border-collapse: collapse;
+      overflow: hidden;
+
+      thead {
+        tr {
+          background: linear-gradient(to right, #4d89c7, #27d0c8);
+        }
+        th {
+          color: white;
+          font-size: 18px;
+          padding: 10px;
+          border: none;
+          text-align: center;
+        }
+      }
+      tbody {
+        td {
+          font-size: 16px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          text-align: center;
+          padding: 10px;
+        }
+        .name {
+          font: {
+            size: 16px;
+            weight: 600;
+          }
+          color: $black;
+        }
+        .update > a {
+          font-size: 25px;
+          color: seagreen;
+        }
+        .delete > a {
+          font-size: 25px;
+          color: red;
+        }
+      }
+    }
+  }
+}
