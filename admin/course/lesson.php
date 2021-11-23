@@ -8,42 +8,21 @@
                     <div class="head-name">Tên khóa học</div>
                 </div>
                 <div class="list">
-                    <div class="item">
-                        <div class="detail">
-                            <div class="id">1000</div>
-                            <div class="name">Lập trình javascript cơ bản</div>
+                    <?php
+                        foreach($list_course as $key => $value){
+                    ?>
+                        <div class="item">
+                            <div class="detail">
+                                <div class="id"><?=$value['course_id']?></div>
+                                <div class="name"><?=$value['course_name']?></div>
+                            </div>
+                            <a href="<?=$ADMIN_URL?>/course/?btn-add-lesson&course_id=<?=$value['course_id']?>" class="btn-add">
+                                <i class="fas fa-plus"></i>
+                            </a>
                         </div>
-                        <a href="<?=$ADMIN_URL?>/course/?btn-add-lesson" class="btn-add">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <div class="detail">
-                            <div class="id">1000</div>
-                            <div class="name">Lập trình javascript cơ bản</div>
-                        </div>
-                        <a href="" class="btn-add">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <div class="detail">
-                            <div class="id">1000</div>
-                            <div class="name">Lập trình javascript cơ bản</div>
-                        </div>
-                        <a href="" class="btn-add">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <div class="detail">
-                            <div class="id">1000</div>
-                            <div class="name">Lập trình javascript cơ bản</div>
-                        </div>
-                        <a href="" class="btn-add">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>

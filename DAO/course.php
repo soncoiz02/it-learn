@@ -24,4 +24,9 @@
         $sql = 'UPDATE course set course_name=?, cate_id=?, image=?, description=? where course_id=?';
         pdo_execute($sql, $course_name, $cate_id, $img, $dsc, $course_id);
     }
+
+    function video_select_all(){
+        $sql = 'SELECT * from video';
+        return pdo_query($sql);
+    }
 ?>

@@ -3,14 +3,22 @@
         <div class="container">
             <h2 class="title">Khóa học đã đăng ký</h2>
             <div class="list-courses">
-                <div class="course-item">
-                    <div class="img">
-                        <img src="" alt="">
+                <?php
+                    foreach($courses_front as $key => $value){
+                        if($value['cate_id'] == 1 || $value['cate_id'] == 2){
+                ?>
+                    <div class="course-item">
+                        <div class="img">
+                            <img src="" alt="">
+                        </div>
+                        <a href="" class="name">
+                            <?=$value['course_name']?>
+                        </a>
                     </div>
-                    <a href="" class="name">
-                        Tên khóa học
-                    </a>
-                </div>
+                <?php
+                    }
+                }
+                ?>
                 <div class="course-item">
                     <div class="img">
                         <img src="" alt="">

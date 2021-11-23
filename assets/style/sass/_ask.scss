@@ -246,4 +246,325 @@
       }
     }
   }
+
+  &__detail {
+    position: relative;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px 0;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      height: 100%;
+      top: 0;
+      right: -20px;
+    }
+    .prev-btn {
+      display: none;
+    }
+    .top {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      .user {
+        display: flex;
+        gap: 0 10px;
+        margin-bottom: 10px;
+        .avt {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          background: $orange;
+          // img{
+          //   width: 100%;
+          //   height: 100%;
+          //   position: absolute;
+          //   object-fit: cover;
+          // }
+        }
+        .detail {
+          display: flex;
+          flex-direction: column;
+          .fullname {
+            font: {
+              size: 18px;
+              weight: 600;
+            }
+            color: $black;
+          }
+          .username {
+            font-size: 14px;
+            color: gray;
+          }
+        }
+      }
+      .question {
+        width: 100%;
+        margin-bottom: 20px;
+        font: {
+          size: 25px;
+          weight: 600;
+        }
+      }
+      .list-tag {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 10px;
+        margin-bottom: 20px;
+        .tag {
+          padding: 5px 20px;
+          font-size: 14px;
+          color: gray;
+          background: whitesmoke;
+          border-radius: 50px;
+        }
+      }
+    }
+    .comment {
+      display: flex;
+      flex-direction: column;
+      gap: 20px 0;
+      h2 {
+        font-size: 24px;
+        color: $black;
+      }
+      &-form {
+        display: flex;
+        gap: 0 10px;
+        position: relative;
+        width: 100%;
+        .avt {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          background: $orange;
+          // img{
+          //   width: 100%;
+          //   height: 100%;
+          //   position: absolute;
+          //   object-fit: cover;
+          // }
+        }
+        .form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px 0;
+          width: calc(100% - 50px);
+          textarea {
+            width: 100%;
+            padding: 15px;
+            height: 70px;
+            border-radius: 5px;
+            background: whitesmoke;
+            color: gray;
+            font-size: 16px;
+            border: none;
+          }
+          input {
+            padding: 8px 20px;
+            font: {
+              size: 18px;
+              weight: 600;
+            }
+            color: white;
+            background: $orange;
+            border-radius: 5px;
+            align-self: flex-end;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
+      &-list {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 20px 0;
+        .item {
+          display: flex;
+          gap: 0 10px;
+          width: 100%;
+          .avt {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: $orange;
+            // img{
+            //   width: 100%;
+            //   height: 100%;
+            //   position: absolute;
+            //   object-fit: cover;
+            // }
+          }
+          .detail {
+            display: flex;
+            flex-direction: column;
+            gap: 5px 0;
+            width: calc(100% - 40px);
+            .fullname {
+              font: {
+                size: 16px;
+                weight: 600;
+              }
+              color: $black;
+            }
+            .cmt {
+              font-size: 14px;
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+    .active-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: $orange;
+      cursor: pointer;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      z-index: 50;
+      display: none;
+      i {
+        font-size: 18px;
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .ask {
+    .container {
+      padding: 15px;
+      overflow: hidden;
+    }
+    &__add {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      right: -100%;
+      padding: 15px;
+      gap: 20px 0;
+      background: white;
+      height: 100%;
+      transition: 0.5s;
+      &.active {
+        right: 0;
+      }
+      &-title {
+        font-size: 20px;
+      }
+      &-form {
+        gap: 15px 0;
+        textarea {
+          padding: 10px;
+          font-size: 16px;
+          height: 80px;
+        }
+        .list-tag {
+          .tag {
+            label {
+              padding: 8px 20px;
+              font-size: 12px;
+            }
+          }
+        }
+        .send-btn {
+          padding: 5px 15px;
+          font-size: 16px;
+        }
+      }
+    }
+    &__detail {
+      width: 100%;
+      gap: 20px 0;
+      .active-btn {
+        @include flex-center;
+      }
+      .prev-btn {
+        display: flex;
+      }
+      .top {
+        .user {
+          .avt {
+            width: 40px;
+            height: 40px;
+          }
+          .detail {
+            .fullname {
+              font-size: 14px;
+            }
+            .username {
+              font-size: 10px;
+            }
+          }
+        }
+        .question {
+          font-size: 20px;
+        }
+        .list-tag {
+          .tag {
+            padding: 3px 15px;
+            font-size: 10px;
+          }
+        }
+      }
+      .comment {
+        gap: 10px 0;
+        h2 {
+          font-size: 20px;
+        }
+        &-form {
+          .avt {
+            width: 40px;
+            height: 40px;
+          }
+          .form {
+            width: calc(100% - 35px);
+            textarea {
+              padding: 10px;
+              height: 50px;
+              font-size: 12px;
+            }
+            input {
+              padding: 5px 10px;
+              font-size: 14px;
+            }
+          }
+        }
+        &-list {
+          gap: 10px 0;
+          .item {
+            gap: 0 5px;
+            .avt {
+              width: 30px;
+              height: 30px;
+            }
+            .detail {
+              gap: 0;
+              .fullname {
+                font-size: 14px;
+              }
+              .cmt {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

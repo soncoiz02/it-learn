@@ -429,4 +429,126 @@
       }
     }
   }
+
+  &__add {
+    position: relative;
+    width: 100%;
+    .container {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      gap: 30px 0;
+
+      h2 {
+        font: {
+          size: 26px;
+          weight: 600;
+        }
+        color: coral;
+      }
+
+      .form {
+        display: flex;
+        width: 100%;
+        position: relative;
+        &-left {
+          display: flex;
+          flex-direction: column;
+          gap: 30px 0;
+          width: 65%;
+          padding-right: 50px;
+          input {
+            position: relative;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 20px;
+            color: gray;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid gray;
+          }
+          p {
+            font-size: 20px;
+            font-family: 600;
+            color: $black;
+          }
+        }
+        &-right {
+          display: flex;
+          flex-direction: column;
+          gap: 20px 0;
+          h2 {
+            font-size: 20px;
+          }
+          .avt-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 10px 0;
+            label {
+              width: 300px;
+              height: 200px;
+              background: #ffd4ab;
+              border-radius: 10px;
+              @include flex-center;
+              cursor: pointer;
+              i {
+                width: 100px;
+                height: 100px;
+                background: #ffaa5c;
+                color: white;
+                border-radius: 50px;
+                @include flex-center;
+                font-size: 30px;
+              }
+            }
+            input {
+              display: none;
+            }
+          }
+          .list-tag {
+            display: flex;
+            flex-direction: column;
+            gap: 10px 0;
+            .list {
+              display: flex;
+              flex-wrap: wrap;
+              width: 100%;
+              gap: 0 10px;
+              input {
+                display: none;
+              }
+              label {
+                padding: 5px 20px;
+                border-radius: 50px;
+                background: whitesmoke;
+                font-size: 14px;
+                color: gray;
+                cursor: pointer;
+              }
+              input:checked + label {
+                background: coral;
+                color: white;
+              }
+            }
+          }
+
+          input[type="submit"] {
+            padding: 15px 25px;
+            font: {
+              size: 18px;
+              weight: 600;
+            }
+            color: white;
+            background: $orange;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,7 +1,7 @@
 <div class="admin__course">
     <div class="container">
         <div class="admin__course-addlesson">
-            <h2>Tên khóa học</h2>
+            <h2><?=$course_name?></h2>
             <form action="" class="form">
                 <div class="form-left">
                     <label>
@@ -65,30 +65,16 @@
             <script>
                 const listDoc = document.querySelector('.list.doc')
                 const data = [
-                    {
-                        id: 'a1',
-                        name: 'sadjahskdhas'
-                    },
-                    {
-                        id: 'a2',
-                        name: 'izuxicuyzix'
-                    },
-                    {
-                        id: 'a3',
-                        name: 'nvkajgakskas'
-                    },
-                    {
-                        id: 'a4',
-                        name: 'bhhuajaw'
-                    },
-                    {
-                        id: 'a5',
-                        name: 'bbubuua'
-                    },
-                    {
-                        id: 'a6',
-                        name: 'yetywtwyte'
-                    }
+                    // <?php
+                    //     foreach($list_video as $key => $value){
+                    // ?>
+                    // {
+                    //     id: <?=$value['vid_id']?>,
+                    //     name: <?=$value['vid_name']?>
+                    // },
+                    // <?php
+                    //     }
+                    // ?>
                 ]
 
                 let opt = data.map(e => {

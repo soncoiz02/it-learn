@@ -98,9 +98,9 @@
                         <i class="fas fa-caret-right"></i>
                     </div>
                     <div class="link-list">
-                        <a href="">Khóa học</a>
-                        <a href="">Bài viết</a>
-                        <a href="">Câu hỏi</a>
+                        <a href="<?=$ADMIN_URL?>/comment?course-list">Khóa học</a>
+                        <a href="<?=$ADMIN_URL?>/comment?blog-list">Bài viết</a>
+                        <a href="<?=$ADMIN_URL?>/comment?ask-list">Câu hỏi</a>
                     </div>
                 </div>
             </div>

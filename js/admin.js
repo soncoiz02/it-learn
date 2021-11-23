@@ -8,23 +8,26 @@ const activeLink = () => {
         }
     })
     const path = document.location.pathname
-    if (path == '/itlearn/admin/dashboard/') {
+    if (path.includes('/itlearn/admin/dashboard/') == true) {
         listLink[0].classList.add('active')
     }
-    else if (path == '/itlearn/admin/tag/') {
+    else if (path.includes('/itlearn/admin/tag/') == true) {
         listLink[1].classList.add('active')
     }
-    else if (path == '/itlearn/admin/course/') {
+    else if (path.includes('/itlearn/admin/course/') == true) {
         listLink[2].classList.add('active')
     }
-    else if (path == '/itlearn/admin/blog/') {
+    else if (path.includes('/itlearn/admin/blog/') == true) {
         listLink[3].classList.add('active')
     }
-    else if (path == '/itlearn/admin/question/') {
+    else if (path.includes('/itlearn/admin/question/') == true) {
         listLink[4].classList.add('active')
     }
-    else if (path == '/itlearn/admin/user/') {
+    else if (path.includes('/itlearn/admin/user/') == true) {
         listLink[5].classList.add('active')
+    }
+    else if (path.includes('/itlearn/admin/comment/') == true) {
+        listLink[6].classList.add('active')
     }
 }
 

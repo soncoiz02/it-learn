@@ -46,7 +46,7 @@
                     else{
                 ?>
                     <div class="header__right-btn-login">
-                        <a href="">Đăng nhập</a>
+                        <a href="<?=$SITE_URL?>/login">Đăng nhập</a>
                     </div>
                 <?php
                     }
@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="<?=$SITE_URL?>/course">
+                    <a href="<?=$SITE_URL?>/course?btn-list">
                         <i class="fas fa-book-open"></i>
                         <span>Học</span>
                     </a>
