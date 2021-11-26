@@ -15,16 +15,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        foreach($list_user as $key => $value){
+                    ?>
                     <tr>
-                        <td>soncoiz02</td>
-                        <td>Trần Bảo Sơn</td>
-                        <td>sontbph17733@gmail.com</td>
+                        <td><?=$value['username']?></td>
+                        <td><?=$value['fullname']?></td>
+                        <td><?=$value['email']?></td>
                         <td>
                             <div class="img">
-                                <img src="" alt="">
+                                <img src="<?=$IMG_URL?>/user/<?=$value['avatar']?>" alt="">
                             </div>
                         </td>
-                        <td>Quản trị</td>
+                        <td><?=$value['position'] = 1 ? 'Quản trị' : 'Học viên'?></td>
                         <td class="update">
                             <a href="">
                                 <i class="fas fa-tools"></i>
@@ -36,6 +39,9 @@
                             </a>
                         </td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

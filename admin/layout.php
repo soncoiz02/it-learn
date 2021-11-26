@@ -86,7 +86,7 @@
                         <i class="fas fa-caret-right"></i>
                     </div>
                     <div class="link-list">
-                        <a href="<?=$ADMIN_URL?>/user">Danh sách</a>
+                        <a href="<?=$ADMIN_URL?>/user?list-user">Danh sách</a>
                     </div>
                 </div>
                 <div class="link">
@@ -138,11 +138,7 @@
             ?>
         </section>
     </div>
-    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <script src="../../js/admin.js"></script>
-    
-<script>
-    CKEDITOR.replace( 'course-dsc' );
-</script>
+
 </body>
 </html>

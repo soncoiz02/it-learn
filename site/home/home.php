@@ -3,21 +3,21 @@
         <div class="container">
             <div class="swiper swiper-banner">
                 <div class="swiper-wrapper">
+                    <!-- <div class="swiper-slide banner">
+                        <div class="home__banner-img">
+                            <img src="<?=$IMG_URL?>/else/bg1.png" alt="">
+                        </div>
+                    </div> -->
                     <div class="swiper-slide banner">
+                        <div class="home__banner-img">
+                            <img src="<?=$IMG_URL?>/else/bg2.jpg" alt="">
+                        </div>
+                    </div>
+                    <!-- <div class="swiper-slide banner">
                         <div class="home__banner-img">
                             <img src="" alt="">
                         </div>
-                    </div>
-                    <div class="swiper-slide banner">
-                        <div class="home__banner-img">
-                            <img src="" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-slide banner">
-                        <div class="home__banner-img">
-                            <img src="" alt="">
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -29,61 +29,27 @@
             </h2>
             <div class="swiper swiper-course">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide course">
-                        <div class="img">
-                            <img src="" alt="">
+                    <?php
+                        foreach($top10_courses as $key => $value){
+                    ?>
+                        <div class="swiper-slide course">
+                            <div class="img">
+                                <img src="<?=$IMG_URL?>/course/<?=$value['course_img']?>" alt="">
+                            </div>
+                            <a href="#" class="course-name"><?=$value['course_name']?></a>
+                            <div class="user-count">
+                                <i class="fas fa-users"></i>
+                                <span><?=number_format(course_count_user($value['course_id']))?></span>
+                            </div>
                         </div>
-                        <a href="#" class="course-name">Tên khóa học</a>
-                        <div class="user-count">
-                            <i class="fas fa-users"></i>
-                            <span>12,000</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide course">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="course-name">Tên khóa học</a>
-                        <div class="user-count">
-                            <i class="fas fa-users"></i>
-                            <span>12,000</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide course">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="course-name">Tên khóa học</a>
-                        <div class="user-count">
-                            <i class="fas fa-users"></i>
-                            <span>12,000</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide course">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="course-name">Tên khóa học</a>
-                        <div class="user-count">
-                            <i class="fas fa-users"></i>
-                            <span>12,000</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide course">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="course-name">Tên khóa học</a>
-                        <div class="user-count">
-                            <i class="fas fa-users"></i>
-                            <span>12,000</span>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <div class="swiper-scrollbar"></div>
             </div>
             <div class="btn-see-all">
-                <a href="#">Xem tất cả ></a>
+                <a href="<?=$SITE_URL?>/course?btn-list">Xem tất cả ></a>
             </div>
         </div>
     </section>
@@ -201,7 +167,7 @@
                 <div class="swiper-scrollbar"></div>
             </div>
             <div class="btn-see-all">
-                <a href="#">Xem tất cả ></a>
+                <a href="<?=$SITE_URL?>/blog?list-blog">Xem tất cả ></a>
             </div>
         </div>
     </section>

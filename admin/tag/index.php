@@ -41,5 +41,24 @@
         }
         $VIEW_NAME = "tag/list.php";
     }
+    else if(exist_param("update-tag")){
+        $detail_tag = cate_select_by_id($cate_id);
+        extract($detail_tag);
+        $VIEW_NAME = 'tag/update.php';
+    }
+    else if(exist_param("btn-update")){
+        try {
+            cate_update($cate_id,$cate_name);
+            unset($cate_name);
+            $detail_tag = cate_select_by_id($cate_id);
+            extract($detail_tag);
+            $MESSAGE = "Cập nhật  thành công";
+            $type = 'success';
+        } catch (\Throwable $th) {
+            $MESSAGE = "Cập nhật thất bại";
+            $type = 'fail';
+        }
+        $VIEW_NAME = 'tag/update.php';
+    }
     require '../layout.php';
 ?>

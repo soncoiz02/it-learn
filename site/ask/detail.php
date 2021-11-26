@@ -19,15 +19,21 @@
             </div>
             <div class="comment">
                 <h2>120 câu trả lời</h2>
-                <div class="comment-form">
-                    <div class="avt">
-                        <img src="" alt="">
+                <?php
+                    if(isset($_SESSION['user'])){
+                ?>
+                    <div  div class="comment-form">
+                        <div class="avt">
+                            <img src="" alt="">
+                        </div>
+                        <form action="" class="form">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Viết câu trả lời của bạn"></textarea>
+                            <input type="submit" value="Gửi" name="">
+                        </form>
                     </div>
-                    <form action="" class="form">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Viết câu trả lời của bạn"></textarea>
-                        <input type="submit" value="Gửi" name="">
-                    </form>
-                </div>
+                <?php
+                    }
+                ?>
                 <div class="comment-list">
                     <div class="item">
                         <div class="avt">
@@ -71,30 +77,36 @@
                 <i class="fas fa-plus"></i>
             </div>
         </div>
-        <div class="ask__add">
-            <div class="prev-btn">
-                <i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i>
-            </div>
-            <h2 class="ask__add-title">Đặt câu hỏi</h2>
-            <form action="index.php" class="ask__add-form" method="POST">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Viết câu hỏi của bạn"></textarea>
-                <div class="list-tag">
-                    <div class="tag">
-                        <input type="checkbox" name="tag" id="tag1">
-                        <label for="tag1">Tag</label>
-                    </div>
-                    <div class="tag">
-                        <input type="checkbox" name="tag" id="tag2">
-                        <label for="tag2">Tag</label>
-                    </div>
-                    <div class="tag">
-                        <input type="checkbox" name="tag" id="tag3">
-                        <label for="tag3">Tag</label>
-                    </div>
+        <?php
+            if(isset($_SESSION['user'])){
+        ?>
+            <div class="ask__add">
+                <div class="prev-btn">
+                    <i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i>
                 </div>
-                <input type="submit" class="send-btn" value="Gửi">
-            </form>
-        </div>
+                <h2 class="ask__add-title">Đặt câu hỏi</h2>
+                <form action="index.php" class="ask__add-form" method="POST">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Viết câu hỏi của bạn"></textarea>
+                    <div class="list-tag">
+                        <div class="tag">
+                            <input type="checkbox" name="tag" id="tag1">
+                            <label for="tag1">Tag</label>
+                        </div>
+                        <div class="tag">
+                            <input type="checkbox" name="tag" id="tag2">
+                            <label for="tag2">Tag</label>
+                        </div>
+                        <div class="tag">
+                            <input type="checkbox" name="tag" id="tag3">
+                            <label for="tag3">Tag</label>
+                        </div>
+                    </div>
+                    <input type="submit" class="send-btn" value="Gửi">
+                </form>
+            </div>
+        <?php
+            }
+        ?>
     </div>
 </div>
 <script>

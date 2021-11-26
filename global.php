@@ -14,7 +14,7 @@
     * Định nghĩa đường dẫn chứa ảnh sử dụng trong upload
     */
 
-    $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "$ROOT_URL/content/img";
+    $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "$ROOT_URL/assets/img";
     $VIEW_NAME = "";
     $MESSAGE = "";
     $type = "";

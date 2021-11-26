@@ -21,6 +21,32 @@
       }
     }
   }
+
+  .message {
+    position: fixed;
+    top: 90px;
+    right: 0;
+    width: 250px;
+    height: 80px;
+    background: white;
+    @include flex-center;
+    &.success {
+      border-left: 2px solid #3acc20;
+      p {
+        color: #3acc20;
+      }
+    }
+    &.fail {
+      border-left: 2px solid red;
+      p {
+        color: red;
+      }
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+
   &-list {
     display: flex;
     width: 100%;
@@ -160,7 +186,7 @@
       width: 100%;
       gap: 0 50px;
       display: flex;
-      label {
+      .label {
         display: flex;
         flex-direction: column;
         gap: 10px 0;
@@ -180,6 +206,21 @@
           background: white;
           border-radius: 10px;
           border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .current-img {
+          width: 300px;
+          height: 150px;
+          border-radius: 5px;
+          background: $blue;
+          position: relative;
+          overflow: hidden;
+          // img {
+          //   position: absolute;
+          //   width: 100%;
+          //   height: 100%;
+          //   object-fit: cover;
+          // }
         }
 
         .course-img {
@@ -214,7 +255,7 @@
         .list-tag {
           display: flex;
           align-items: center;
-          gap: 0 15px;
+          gap: 10px 15px;
           flex-wrap: wrap;
           input {
             display: none;
@@ -379,6 +420,19 @@
             font-size: 16px;
           }
         }
+        input[type="submit"] {
+          padding: 15px 55px;
+          background: $linner-blue;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font: {
+            size: 18px;
+            weight: 600;
+          }
+          align-self: flex-start;
+        }
       }
       &-right {
         display: flex;
@@ -463,7 +517,8 @@
               .list {
                 display: flex;
                 flex-direction: column;
-                width: 100%;
+                max-height: 200px;
+                overflow-y: scroll;
               }
               .opt {
                 position: relative;
@@ -489,6 +544,113 @@
               input[type="radio"] {
                 display: none;
               }
+            }
+          }
+        }
+      }
+    }
+  }
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 50px 0;
+    position: relative;
+    &-main {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      .cover {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+        p {
+          font: {
+            size: 20px;
+            weight: 600;
+          }
+          color: $black;
+        }
+        .img {
+          width: 400px;
+          height: 200px;
+          position: relative;
+          overflow: hidden;
+          background: $blue;
+          // img{
+          //   width: 100%;
+          //   height: 100%;
+          //   position: absolute;
+          //   object-fit: cover;
+          // }
+        }
+        .cate {
+          padding: 10px 30px;
+          border-radius: 50px;
+          background: $linner-blue;
+          align-self: flex-start;
+          font: {
+            size: 18px;
+            weight: 600;
+          }
+          color: white;
+        }
+        .dsc {
+          width: 100%;
+          font-size: 16px;
+          color: gray;
+        }
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 30px 0;
+        width: 50%;
+        padding-right: 10px;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+        align-items: center;
+        width: 50%;
+        padding-left: 10px;
+        p {
+          font: {
+            size: 20px;
+            weight: 600;
+          }
+          color: $black;
+        }
+        .list-lesson {
+          display: flex;
+          flex-direction: column;
+          gap: 10px 0;
+          width: 100%;
+          li {
+            position: relative;
+            padding: 10px;
+            width: 100%;
+            background: white;
+            color: $black;
+            border-radius: 5px;
+            cursor: pointer;
+            font: {
+              size: 18px;
+              weight: 600;
+            }
+            &:hover > a {
+              opacity: 1;
+              visibility: visible;
+            }
+            a {
+              position: absolute;
+              color: red;
+              transition: 0.5s;
+              opacity: 0;
+              visibility: visible;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
             }
           }
         }

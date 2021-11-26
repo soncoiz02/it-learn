@@ -1,7 +1,7 @@
 <?php
     require_once 'pdo.php';
-    function comment_course_select_all(){
-        $sql = 'SELECT * from binh_luan';
+    function comment_lesson_select_all(){
+        $sql = 'SELECT * from course_comment';
         return pdo_query($sql);
     }
     function comment_blog_select_all(){

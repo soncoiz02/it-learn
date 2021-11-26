@@ -26,12 +26,12 @@
         border-radius: 15px;
         overflow: hidden;
         background: $blue;
-        // img{
-        //     width: 100%;
-        //     height: 100%;
-        //     position: absolute;
-        //     object-fit: cover;
-        // }
+        img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          object-fit: cover;
+        }
       }
 
       .name {
@@ -49,6 +49,7 @@
         i {
           font-size: 18px;
           color: gray;
+          margin-right: 5px;
         }
         span {
           font-size: 16px;
@@ -64,6 +65,11 @@
   &__back-end {
     position: relative;
     width: 100%;
+  }
+  &__back-end {
+    .container {
+      padding: 50px;
+    }
   }
 
   &__detail {
@@ -212,7 +218,8 @@
           display: flex;
           align-items: flex-start;
           gap: 0 10px;
-          margin-bottom: 30px;
+          padding: 30px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           .user {
             display: flex;
             gap: 0 10px;
@@ -223,45 +230,46 @@
               position: relative;
               border-radius: 50%;
               overflow: hidden;
-              background: $orange;
-              // img {
-              //   position: absolute;
-              //   width: 100%;
-              //   height: 100%;
-              //   object-fit: cover;
-              // }
+              img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
           }
           .form {
-            width: 70%;
+            width: 100%;
             position: relative;
             display: flex;
-            flex-direction: column;
-            gap: 10px 0;
+            align-items: center;
+            gap: 0 10px;
 
             textarea {
               width: 100%;
-              height: 100px;
+              height: 50px;
               border: none;
               background: white;
               color: $black;
-              border-radius: 5px;
+              border-radius: 50px;
               padding: 15px;
               font-size: 15px;
-              border: 1px solid coral;
+              border: 1px solid rgba(0, 0, 0, 0.2);
+              &::-webkit-scrollbar {
+                display: none;
+              }
             }
             input {
               border: none;
               cursor: pointer;
-              padding: 10px 20px;
+              padding: 10px 50px;
               font: {
                 size: 18px;
                 weight: 600;
               }
               color: white;
               background: $orange;
-              border-radius: 5px;
-              align-self: flex-end;
+              border-radius: 50px;
             }
           }
         }
@@ -283,12 +291,12 @@
               overflow: hidden;
               border-radius: 50%;
               background: $orange;
-              // img {
-              //   position: absolute;
-              //   width: 100%;
-              //   height: 100%;
-              //   object-fit: cover;
-              // }
+              img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
             .detail {
               display: flex;
@@ -309,6 +317,36 @@
             }
           }
         }
+        &-none {
+          position: relative;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px 0;
+          justify-content: center;
+          align-items: center;
+          padding: 30px 0;
+          .img {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+            img {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              object-fit: cover;
+            }
+          }
+          p {
+            font: {
+              size: 18px;
+              weight: 600;
+            }
+            color: $black;
+          }
+        }
       }
     }
 
@@ -321,6 +359,10 @@
       flex-direction: column;
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
       background: whitesmoke;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       h2 {
         padding: 15px;
         font-size: 26px;
@@ -331,19 +373,24 @@
         flex-direction: column;
         width: 100%;
         position: relative;
+        gap: 5px 0;
+        padding-bottom: 50px;
         .lesson {
           position: relative;
           width: 100%;
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           &.active {
-            &::after {
-              content: "";
-              position: absolute;
-              width: 3px;
-              height: 100%;
-              background: coral;
-              top: 0;
-              left: 0;
+            .lesson-title {
+              color: $black;
+              &::after {
+                content: "";
+                position: absolute;
+                width: 3px;
+                height: 100%;
+                background: coral;
+                top: 0;
+                left: 0;
+              }
             }
           }
           &.unlock {
@@ -365,8 +412,17 @@
             .disable-bg {
               display: none;
             }
+            .quiz {
+              a {
+                background: white;
+                &:hover {
+                  background: rgba(252, 208, 193, 0.5);
+                }
+              }
+            }
           }
-          a {
+          .lesson-title {
+            position: relative;
             padding: 15px;
             font: {
               size: 16px;
@@ -385,6 +441,27 @@
               .fa-lock {
                 font-size: 20px;
                 color: gray;
+              }
+            }
+          }
+          .quiz {
+            width: 100%;
+            display: flex;
+            gap: 0 15px;
+            padding: 10px 15px;
+            .num-quiz {
+              width: 25px;
+              height: 25px;
+              border-radius: 50%;
+              @include flex_center;
+              color: $black;
+              background: #d6d6d6;
+              &.done {
+                background: #1cb760;
+                color: white;
+                &:hover {
+                  background: seagreen;
+                }
               }
             }
           }

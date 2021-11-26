@@ -202,6 +202,93 @@ textarea {
   color: gray;
 }
 
+.header__right-user {
+  display: flex;
+  gap: 0 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.header__right-user:hover > .dropdown {
+  opacity: 1;
+  top: 50px;
+  visibility: visible;
+}
+
+.header__right-user .avt {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.header__right-user .avt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+.header__right-user .detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__right-user .detail .fullname {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.header__right-user .detail .username {
+  font-size: 16px;
+  color: gray;
+}
+
+.header__right-user .dropdown {
+  position: absolute;
+  width: 120%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  top: 80px;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.header__right-user .dropdown .detail {
+  display: none;
+  padding: 5px;
+}
+
+.header__right-user .dropdown .detail .fullname {
+  font-size: 14px;
+}
+
+.header__right-user .dropdown .detail .username {
+  font-size: 12px;
+}
+
+.header__right-user .dropdown a {
+  padding: 5px;
+  font-size: 16px;
+  color: gray;
+}
+
+.header__right-user .dropdown a:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.header__right-user .dropdown a i {
+  margin-right: 5px;
+}
+
 .header__right-btn-login a {
   display: flex;
   justify-content: center;
@@ -260,6 +347,28 @@ textarea {
     font-size: 14px;
     width: 80px;
     height: 35px;
+  }
+  .header__right-user:hover > .dropdown {
+    top: 35px;
+  }
+  .header__right-user .avt {
+    width: 30px;
+    height: 30px;
+  }
+  .header__right-user .detail {
+    display: none;
+  }
+  .header__right-user .dropdown {
+    top: 60px;
+    width: 130px;
+    left: -60px;
+  }
+  .header__right-user .dropdown .detail {
+    display: flex;
+    flex-direction: column;
+  }
+  .header__right-user .dropdown a {
+    font-size: 12px;
   }
 }
 
@@ -362,10 +471,18 @@ textarea {
 }
 
 .home__banner-img {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  height: 250px;
+  height: 350px;
   border-radius: 10px;
   background: linear-gradient(315deg, #00ffe0, #5ac3ff);
+}
+
+.home__banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .home__course {
@@ -399,6 +516,13 @@ textarea {
   position: relative;
   background: #41b9ed;
   overflow: hidden;
+}
+
+.home__course .container .swiper.swiper-course .swiper-wrapper .swiper-slide.course .img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 
 .home__course .container .swiper.swiper-course .swiper-wrapper .swiper-slide.course .course-name {
@@ -778,6 +902,13 @@ textarea {
   background: #41b9ed;
 }
 
+.courses .list-courses .course-item .img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
 .courses .list-courses .course-item .name {
   font-size: 20px;
   font-weight: 600;
@@ -793,6 +924,7 @@ textarea {
 .courses .list-courses .course-item .user-count i {
   font-size: 18px;
   color: gray;
+  margin-right: 5px;
 }
 
 .courses .list-courses .course-item .user-count span {
@@ -803,6 +935,10 @@ textarea {
 .courses__signed, .courses__basic, .courses__front-end, .courses__back-end {
   position: relative;
   width: 100%;
+}
+
+.courses__back-end .container {
+  padding: 50px;
 }
 
 .courses__detail {
@@ -962,7 +1098,8 @@ textarea {
   display: flex;
   align-items: flex-start;
   gap: 0 10px;
-  margin-bottom: 30px;
+  padding: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .courses__lesson-left .comment-form .user {
@@ -977,39 +1114,48 @@ textarea {
   position: relative;
   border-radius: 50%;
   overflow: hidden;
-  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+}
+
+.courses__lesson-left .comment-form .user .avt img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .courses__lesson-left .comment-form .form {
-  width: 70%;
+  width: 100%;
   position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 10px 0;
+  align-items: center;
+  gap: 0 10px;
 }
 
 .courses__lesson-left .comment-form .form textarea {
   width: 100%;
-  height: 100px;
+  height: 50px;
   border: none;
   background: white;
   color: #4d4d4d;
-  border-radius: 5px;
+  border-radius: 50px;
   padding: 15px;
   font-size: 15px;
-  border: 1px solid coral;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.courses__lesson-left .comment-form .form textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .courses__lesson-left .comment-form .form input {
   border: none;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px 50px;
   font-size: 18px;
   font-weight: 600;
   color: white;
   background: linear-gradient(315deg, #ff4d00, #f9ab14);
-  border-radius: 5px;
-  align-self: flex-end;
+  border-radius: 50px;
 }
 
 .courses__lesson-left .comment-list {
@@ -1036,6 +1182,13 @@ textarea {
   background: linear-gradient(315deg, #ff4d00, #f9ab14);
 }
 
+.courses__lesson-left .comment-list .item .avt img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .courses__lesson-left .comment-list .item .detail {
   display: flex;
   flex-direction: column;
@@ -1054,6 +1207,38 @@ textarea {
   color: gray;
 }
 
+.courses__lesson-left .comment-none {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.courses__lesson-left .comment-none .img {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.courses__lesson-left .comment-none .img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.courses__lesson-left .comment-none p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
 .courses__lesson-right {
   width: 25%;
   height: 100vh;
@@ -1063,6 +1248,11 @@ textarea {
   flex-direction: column;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
   background: whitesmoke;
+  overflow-y: auto;
+}
+
+.courses__lesson-right::-webkit-scrollbar {
+  display: none;
 }
 
 .courses__lesson-right h2 {
@@ -1076,6 +1266,8 @@ textarea {
   flex-direction: column;
   width: 100%;
   position: relative;
+  gap: 5px 0;
+  padding-bottom: 50px;
 }
 
 .courses__lesson-right .list-lesson .lesson {
@@ -1084,7 +1276,11 @@ textarea {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.courses__lesson-right .list-lesson .lesson.active::after {
+.courses__lesson-right .list-lesson .lesson.active .lesson-title {
+  color: #4d4d4d;
+}
+
+.courses__lesson-right .list-lesson .lesson.active .lesson-title::after {
   content: "";
   position: absolute;
   width: 3px;
@@ -1118,7 +1314,16 @@ textarea {
   display: none;
 }
 
-.courses__lesson-right .list-lesson .lesson a {
+.courses__lesson-right .list-lesson .lesson.unlock .quiz a {
+  background: white;
+}
+
+.courses__lesson-right .list-lesson .lesson.unlock .quiz a:hover {
+  background: rgba(252, 208, 193, 0.5);
+}
+
+.courses__lesson-right .list-lesson .lesson .lesson-title {
+  position: relative;
   padding: 15px;
   font-size: 16px;
   font-weight: 600;
@@ -1128,15 +1333,42 @@ textarea {
   align-items: center;
 }
 
-.courses__lesson-right .list-lesson .lesson a span .fa-play-circle {
+.courses__lesson-right .list-lesson .lesson .lesson-title span .fa-play-circle {
   font-size: 20px;
   color: coral;
   display: none;
 }
 
-.courses__lesson-right .list-lesson .lesson a span .fa-lock {
+.courses__lesson-right .list-lesson .lesson .lesson-title span .fa-lock {
   font-size: 20px;
   color: gray;
+}
+
+.courses__lesson-right .list-lesson .lesson .quiz {
+  width: 100%;
+  display: flex;
+  gap: 0 15px;
+  padding: 10px 15px;
+}
+
+.courses__lesson-right .list-lesson .lesson .quiz .num-quiz {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4d4d4d;
+  background: #d6d6d6;
+}
+
+.courses__lesson-right .list-lesson .lesson .quiz .num-quiz.done {
+  background: #1cb760;
+  color: white;
+}
+
+.courses__lesson-right .list-lesson .lesson .quiz .num-quiz.done:hover {
+  background: seagreen;
 }
 
 .courses__lesson-right .list-lesson .disable-bg {
@@ -1244,7 +1476,7 @@ textarea {
   width: 100%;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -1269,6 +1501,13 @@ textarea {
   position: relative;
   overflow: hidden;
   background: #41b9ed;
+}
+
+.blogs__list-all-item .top .user .avt img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 
 .blogs__list-all-item .top .user .detail {
@@ -1335,6 +1574,8 @@ textarea {
 
 .blogs__list-all-item .main-content .blog-content .blog-title {
   width: 100%;
+  word-break: break-all;
+  color: black;
   font-size: 20px;
   font-weight: 600;
 }
@@ -1342,16 +1583,26 @@ textarea {
 .blogs__list-all-item .main-content .blog-content .blog-resume {
   width: 100%;
   font-size: 14px;
+  word-break: break-all;
   color: gray;
 }
 
 .blogs__list-all-item .main-content .blog-img {
   width: 180px;
-  height: 100px;
+  height: 120px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background: #41b9ed;
+  background: linear-gradient(315deg, #00ffe0, #5ac3ff);
+}
+
+.blogs__list-all-item .main-content .blog-img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
 }
 
 .blogs__list-all-item .bottom {
@@ -1390,6 +1641,38 @@ textarea {
   100% {
     transform: translateY(-10px);
   }
+}
+
+.blogs__list-error {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.blogs__list-error .img {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.blogs__list-error .img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.blogs__list-error p {
+  font-size: 26px;
+  font-weight: 600;
+  color: #4d4d4d;
 }
 
 .blogs__detail {
@@ -1906,6 +2189,7 @@ textarea {
 .ask__list-list-item .main-content .content {
   font-size: 20px;
   font-weight: 500;
+  color: black;
 }
 
 .ask__list-list-item .list-tag {
@@ -1936,6 +2220,38 @@ textarea {
   color: gray;
 }
 
+.ask__list-error {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.ask__list-error .img {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.ask__list-error .img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.ask__list-error p {
+  font-size: 26px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
 .ask__add {
   position: sticky;
   width: 45%;
@@ -1953,6 +2269,10 @@ textarea {
   background: -webkit-linear-gradient(315deg, #ff4d00, #f9ab14);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.ask__add .prev-btn {
+  display: none;
 }
 
 .ask__add-form {
@@ -2027,10 +2347,6 @@ textarea {
   height: 100%;
   top: 0;
   right: -20px;
-}
-
-.ask__detail .prev-btn {
-  display: none;
 }
 
 .ask__detail .top {
@@ -2384,7 +2700,7 @@ textarea {
 
 .admin__sidebar-nav .link.active .link-title {
   position: relative;
-  background: linear-gradient(to right, #5d0ba7, #61308d);
+  background: linear-gradient(to right, #6b4cc9, #7e51a6);
   color: white;
 }
 
@@ -2483,7 +2799,7 @@ textarea {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: linear-gradient(to right, #5d0ba7, #61308d);
+  background: linear-gradient(to right, #6b4cc9, #7e51a6);
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 15px 15px;
   z-index: 10;
@@ -2693,6 +3009,38 @@ textarea {
   background: linear-gradient(to right, #4d89c7, #27d0c8);
 }
 
+.admin__course .message {
+  position: fixed;
+  top: 90px;
+  right: 0;
+  width: 250px;
+  height: 80px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin__course .message.success {
+  border-left: 2px solid #3acc20;
+}
+
+.admin__course .message.success p {
+  color: #3acc20;
+}
+
+.admin__course .message.fail {
+  border-left: 2px solid red;
+}
+
+.admin__course .message.fail p {
+  color: red;
+}
+
+.admin__course .message p {
+  font-size: 20px;
+}
+
 .admin__course-list {
   display: flex;
   width: 100%;
@@ -2856,19 +3204,19 @@ textarea {
   display: flex;
 }
 
-.admin__course-add .form label {
+.admin__course-add .form .label {
   display: flex;
   flex-direction: column;
   gap: 10px 0;
 }
 
-.admin__course-add .form label p {
+.admin__course-add .form .label p {
   color: #4d4d4d;
   font-size: 20px;
   font-weight: 600;
 }
 
-.admin__course-add .form label input[type="text"] {
+.admin__course-add .form .label input[type="text"] {
   width: 300px;
   padding: 15px;
   font-size: 16px;
@@ -2878,7 +3226,16 @@ textarea {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.admin__course-add .form label .course-img {
+.admin__course-add .form .label .current-img {
+  width: 300px;
+  height: 150px;
+  border-radius: 5px;
+  background: #41b9ed;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin__course-add .form .label .course-img {
   width: 200px;
   padding: 15px;
   font-size: 18px;
@@ -2891,16 +3248,16 @@ textarea {
   cursor: pointer;
 }
 
-.admin__course-add .form label .course-img i {
+.admin__course-add .form .label .course-img i {
   font-size: 20px;
   margin-right: 10px;
 }
 
-.admin__course-add .form label input[type="file"] {
+.admin__course-add .form .label input[type="file"] {
   display: none;
 }
 
-.admin__course-add .form label textarea {
+.admin__course-add .form .label textarea {
   width: 600px;
   height: 200px;
   border-radius: 10px;
@@ -2910,18 +3267,18 @@ textarea {
   color: gray;
 }
 
-.admin__course-add .form label .list-tag {
+.admin__course-add .form .label .list-tag {
   display: flex;
   align-items: center;
-  gap: 0 15px;
+  gap: 10px 15px;
   flex-wrap: wrap;
 }
 
-.admin__course-add .form label .list-tag input {
+.admin__course-add .form .label .list-tag input {
   display: none;
 }
 
-.admin__course-add .form label .list-tag label {
+.admin__course-add .form .label .list-tag label {
   padding: 10px 25px;
   border-radius: 50px;
   background: white;
@@ -2930,7 +3287,7 @@ textarea {
   cursor: pointer;
 }
 
-.admin__course-add .form label .list-tag input:checked + label {
+.admin__course-add .form .label .list-tag input:checked + label {
   background: linear-gradient(to right, #4d89c7, #27d0c8);
   color: white;
   border: none;
@@ -3098,6 +3455,18 @@ textarea {
   font-size: 16px;
 }
 
+.admin__course-addlesson .form-left input[type="submit"] {
+  padding: 15px 55px;
+  background: linear-gradient(to right, #4d89c7, #27d0c8);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
 .admin__course-addlesson .form-right {
   display: flex;
   position: relative;
@@ -3195,7 +3564,8 @@ textarea {
 .admin__course-addlesson .form-right label .select .list-opt .list {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 .admin__course-addlesson .form-right label .select .list-opt .opt {
@@ -3224,6 +3594,113 @@ textarea {
 
 .admin__course-addlesson .form-right label .select .list-opt input[type="radio"] {
   display: none;
+}
+
+.admin__course-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 50px 0;
+  position: relative;
+}
+
+.admin__course-detail-main {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.admin__course-detail-main .cover {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+.admin__course-detail-main .cover p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.admin__course-detail-main .cover .img {
+  width: 400px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: #41b9ed;
+}
+
+.admin__course-detail-main .cover .cate {
+  padding: 10px 30px;
+  border-radius: 50px;
+  background: linear-gradient(to right, #4d89c7, #27d0c8);
+  align-self: flex-start;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+.admin__course-detail-main .cover .dsc {
+  width: 100%;
+  font-size: 16px;
+  color: gray;
+}
+
+.admin__course-detail-main .left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+  width: 50%;
+  padding-right: 10px;
+}
+
+.admin__course-detail-main .right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  align-items: center;
+  width: 50%;
+  padding-left: 10px;
+}
+
+.admin__course-detail-main .right p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.admin__course-detail-main .right .list-lesson {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  width: 100%;
+}
+
+.admin__course-detail-main .right .list-lesson li {
+  position: relative;
+  padding: 10px;
+  width: 100%;
+  background: white;
+  color: #4d4d4d;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.admin__course-detail-main .right .list-lesson li:hover > a {
+  opacity: 1;
+  visibility: visible;
+}
+
+.admin__course-detail-main .right .list-lesson li a {
+  position: absolute;
+  color: red;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: visible;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .admin__tag {
@@ -3577,11 +4054,25 @@ textarea {
   color: #4d4d4d;
 }
 
+.admin__user-list .table td:nth-child(2) {
+  width: 200px;
+}
+
 .admin__user-list .table td .img {
   width: 50px;
   height: 50px;
-  background: #41b9ed;
   margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.admin__user-list .table td .img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
 }
 
 .admin__user-list .table td.delete > a {

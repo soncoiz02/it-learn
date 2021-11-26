@@ -19,7 +19,7 @@
                             <td class="id"><?=$value['cate_id']?></td>
                             <td class="name"><?=$value['cate_name']?></td>
                             <td class="update">
-                                <a href="">
+                                <a href="index.php?update-tag&cate_id=<?=$value['cate_id']?>">
                                     <i class="fas fa-tools"></i>
                                 </a>
                             </td>

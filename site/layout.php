@@ -18,9 +18,9 @@
     <header class="header">
         <div class="container">
             <div class="header__logo">
-                <div class="header__logo-img">
+                <a href="<?=$ROOT_URL?>" class="header__logo-img">
                     <img src="" alt="">
-                </div>
+                </a>
                 <div class="header__logo-text">
                     <p>ITLearn</p>
                     <span>Learn to Code</span>
@@ -40,7 +40,42 @@
                     if(isset($_SESSION['user'])){
                         $user = $_SESSION['user'];
                 ?>
-
+                    <div class="header__right-user">
+                        <div class="avt">
+                            <img src="<?=$IMG_URL?>/user/<?=$user['avatar']?>" alt="">
+                        </div>
+                        <div class="detail">
+                            <p class="fullname"><?=$user['fullname']?></p>
+                            <p class="username">@<?=$user['username']?></p>
+                        </div>
+                        <div class="dropdown">
+                            <div class="detail">
+                                <p class="fullname"><?=$user['fullname']?></p>
+                                <p class="username">@<?=$user['username']?></p>
+                            </div>
+                            <?php
+                                if($user['position'] == 1){
+                                    echo "<a href='$ADMIN_URL'>
+                                            <i class='fas fa-user-sheild'></i>
+                                            Quản trị
+                                        </a>
+                                        ";
+                                }
+                            ?>
+                            <a href="" class="user-setting">
+                                <i class="fas fa-user-cog"></i>
+                                Cài đặt thông tin
+                            </a>
+                            <a href="" class="user-setting">
+                                <i class="fas fa-key"></i>
+                                Đổi mật khẩu
+                            </a>
+                            <a href="<?=$SITE_URL?>/login/?btn-logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất
+                            </a>
+                        </div>
+                    </div>
                 <?php
                     }
                     else{
@@ -73,13 +108,13 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="<?=$SITE_URL?>/ask">
+                    <a href="<?=$SITE_URL?>/ask?list-ques">
                         <i class="fas fa-question-circle"></i>
                         <span>Hỏi</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="<?=$SITE_URL?>/blog">
+                    <a href="<?=$SITE_URL?>/blog?list-blog">
                         <i class="far fa-newspaper"></i>
                         <span>Bài viết</span>
                     </a>

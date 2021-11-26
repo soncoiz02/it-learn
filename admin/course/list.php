@@ -28,19 +28,19 @@
                                     <img src="" alt="">
                                 </div>
                             </td>
-                            <td class="number">50</td>
+                            <td class="number"><?=lesson_count($value['course_id'])?></td>
                             <td class="detail">
-                                <a href="">
+                                <a href="index.php?detail-course&course_id=<?=$value['course_id']?>">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>
                             <td class="update">
-                                <a href="">
+                                <a href="index.php?update-course&course_id=<?=$value['course_id']?>">
                                     <i class="fas fa-tools"></i>
                                 </a>
                             </td>
                             <td class="delete">
-                                <a href="">
+                                <a href="index.php?btn-delete&course_id=<?=$value['course_id']?>" onclick="return confirm('Bạn chắc chắn muốn xóa bài học này?')">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>

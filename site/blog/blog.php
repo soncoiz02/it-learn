@@ -7,166 +7,104 @@
                         if(isset($_SESSION['user'])){
                         $user = $_SESSION['user'];
                     ?>
-                    <li class="blogs__list-nav-link"><a href="">Bài viết của bạn</a></li>
-                    <li class="blogs__list-nav-link"><a href="">Bài viết đã lưu</a></li>
+                        <li class="blogs__list-nav-link"><a href="">Bài viết của bạn</a></li>
+                        <li class="blogs__list-nav-link"><a href="">Bài viết đã lưu</a></li>
                     <?php
                         }
                     ?>
                 </ul>
             </ul>
-            <div class="blogs__list-all">
-                <div class="blogs__list-all-list">
-                    <div class="blogs__list-all-item">
-                        <div class="top">
-                            <div class="user">
-                                <div class="avt">
-                                    <img src="" alt="">
+            <?php
+                if(count($list_blog) > 0){
+            ?>
+                <div class="blogs__list-all">
+                    <div class="blogs__list-all-list">
+                        <?php
+                            $today = date('Y-m-d');
+                            foreach($list_blog as $key => $value){
+                                $author = user_select_by_id($value['username']);
+                                extract($author);
+                        ?>
+                            <div class="blogs__list-all-item">
+                                <div class="top">
+                                    <div class="user">
+                                        <div class="avt">
+                                            <img src="<?=$IMG_URL?>/user/<?=$avatar?>" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="fullname"><?=$fullname?></div>
+                                            <div class="username">@<?=$username?></div>
+                                        </div>
+                                    </div>
+                                    <div class="mark-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                        <i class="far fa-bookmark"></i>
+                                    </div>
                                 </div>
-                                <div class="detail">
-                                    <div class="fullname">Fullname</div>
-                                    <div class="username">@username</div>
+                                <div class="main-content">
+                                    <div class="blog-content">
+                                        <a href="index.php?detail-blog" class="blog-title"><?=$value['title']?></a>
+                                        <div class="blog-resume"><?=substr($value['content'], 0, 200)?></div>
+                                    </div>
+                                    <?php
+                                        if($value['avatar'] != ''){
+                                    ?>
+                                        <div class="blog-img">
+                                            <img src="<?=$IMG_URL?>/blog/<?=$value['avatar']?>" alt="">
+                                        </div>
+                                    <?php
+                                        }
+                                        else{
+                                    ?>
+                                        <div class="blog-img">
+                                            <img src="<?=$IMG_URL?>/else/cat-eat.jpg">
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
                                 </div>
-                            </div>
-                            <div class="mark-btn">
-                                <i class="fas fa-bookmark"></i>
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                        </div>
-                        <div class="main-content">
-                            <div class="blog-content">
-                                <div class="blog-title">Tiêu đề bài viết</div>
-                                <div class="blog-resume">Nội dung tóm tắt</div>
-                            </div>
-                            <div class="blog-img">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom">
-                            <p class="day-left">5 ngày trước</p>
-                        </div>
-                    </div>
-                    <div class="blogs__list-all-item">
-                        <div class="top">
-                            <div class="user">
-                                <div class="avt">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="detail">
-                                    <div class="fullname">Fullname</div>
-                                    <div class="username">@username</div>
-                                </div>
-                            </div>
-                            <div class="mark-btn">
-                                <i class="fas fa-bookmark"></i>
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                        </div>
-                        <div class="main-content">
-                            <div class="blog-content">
-                                <div class="blog-title">Tiêu đề bài viết</div>
-                                <div class="blog-resume">Nội dung tóm tắt</div>
-                            </div>
-                            <div class="blog-img">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom">
-                            <p class="day-left">5 ngày trước</p>
-                        </div>
-                    </div>
-                    <div class="blogs__list-all-item">
-                        <div class="top">
-                            <div class="user">
-                                <div class="avt">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="detail">
-                                    <div class="fullname">Fullname</div>
-                                    <div class="username">@username</div>
+                                <div class="bottom">
+                                    <p class="day-left"><?php
+                                    $date = handle_date($today, $value['date']);
+                                    $month = floor($date / 30);
+                                    if($month > 0){
+                                        echo "$month tháng trước";
+                                    }
+                                    else{
+                                        echo "$date ngày trước";
+                                    }
+                                ?></p>
                                 </div>
                             </div>
-                            <div class="mark-btn">
-                                <i class="fas fa-bookmark"></i>
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                        </div>
-                        <div class="main-content">
-                            <div class="blog-content">
-                                <div class="blog-title">Tiêu đề bài viết</div>
-                                <div class="blog-resume">Nội dung tóm tắt</div>
-                            </div>
-                            <div class="blog-img">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom">
-                            <p class="day-left">5 ngày trước</p>
-                        </div>
-                    </div>
-                    <div class="blogs__list-all-item">
-                        <div class="top">
-                            <div class="user">
-                                <div class="avt">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="detail">
-                                    <div class="fullname">Fullname</div>
-                                    <div class="username">@username</div>
-                                </div>
-                            </div>
-                            <div class="mark-btn">
-                                <i class="fas fa-bookmark"></i>
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                        </div>
-                        <div class="main-content">
-                            <div class="blog-content">
-                                <div class="blog-title">Tiêu đề bài viết</div>
-                                <div class="blog-resume">Nội dung tóm tắt</div>
-                            </div>
-                            <div class="blog-img">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom">
-                            <p class="day-left">5 ngày trước</p>
-                        </div>
-                    </div>
-                    <div class="blogs__list-all-item">
-                        <div class="top">
-                            <div class="user">
-                                <div class="avt">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="detail">
-                                    <div class="fullname">Fullname</div>
-                                    <div class="username">@username</div>
-                                </div>
-                            </div>
-                            <div class="mark-btn">
-                                <i class="fas fa-bookmark"></i>
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                        </div>
-                        <div class="main-content">
-                            <div class="blog-content">
-                                <div class="blog-title">Tiêu đề bài viết</div>
-                                <div class="blog-resume">Nội dung tóm tắt</div>
-                            </div>
-                            <div class="blog-img">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom">
-                            <p class="day-left">5 ngày trước</p>
-                        </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
-                <div class="btn-add">
-                    <a href="">
-                        <i class="far fa-edit"></i>
-                    </a>
+            <?php
+                }
+                else{
+            ?>
+                <div class="blogs__list-error">
+                    <div class="img">
+                        <img src="<?=$IMG_URL?>/else/cat-sleep.jpg" alt="">
+                    </div>
+                    <p>Chưa có bài viết nào được đăng.</p>
                 </div>
+            <?php
+                }
+            ?>
+                <?php
+                    if(isset($_SESSION['user'])){
+                ?>
+                    <div class="btn-add">
+                        <a href="index.php?add-blog">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
     </div>

@@ -22,10 +22,10 @@ function quiz_insert($ma_bai_hoc, $cau_hoi, $dap_an_1, $dap_an_2, $dap_an_3, $da
     pdo_execute($sql, $ma_bai_hoc, $cau_hoi, $dap_an_1, $dap_an_2, $dap_an_3, $dap_an_dung);
 }
 // sx theo bài học 
-function quiz_select_by_bai_hoc($ma_bai_hoc)
+function quiz_select_by_lesson($lesson_id)
 {
-    $sql = "SELECT * FROM quiz WHERE ma_bai_hoc = ?";
-    return  pdo_query($sql, $ma_bai_hoc);
+    $sql = "SELECT * FROM quiz WHERE lesson_id = ?";
+    return  pdo_query($sql, $lesson_id);
 }
 // // hiển thị top 10;
 // function quiz_top10()

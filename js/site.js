@@ -3,16 +3,16 @@ const homePage = document.querySelector('.home')
 const activeLink = () => {
     const listLink = document.querySelectorAll('.nav-link')
     const path = document.location.pathname
-    if (path == '/itlearn/site/home/') {
+    if (path.includes('/itlearn/site/home/')) {
         listLink[0].classList.add('active')
     }
-    else if (path == '/itlearn/site/course/') {
+    else if (path.includes('/itlearn/site/course/')) {
         listLink[1].classList.add('active')
     }
-    else if (path == '/itlearn/site/ask/') {
+    else if (path.includes('/itlearn/site/ask/')) {
         listLink[2].classList.add('active')
     }
-    else if (path == '/itlearn/site/blog/') {
+    else if (path.includes('/itlearn/site/blog/')) {
         listLink[3].classList.add('active')
     }
 }

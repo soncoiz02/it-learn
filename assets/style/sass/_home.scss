@@ -11,10 +11,17 @@
       width: 100%;
     }
     &-img {
+      position: relative;
+      overflow: hidden;
       width: 100%;
-      height: 250px;
+      height: 350px;
       border-radius: 10px;
       background: $light-blue;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
@@ -44,12 +51,12 @@
               position: relative;
               background: $blue;
               overflow: hidden;
-              //   img {
-              //     width: 100%;
-              //     height: 100%;
-              //     position: absolute;
-              //     object-fit: cover;
-              //   }
+              img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                object-fit: cover;
+              }
             }
 
             .course-name {

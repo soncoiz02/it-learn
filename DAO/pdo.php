@@ -5,8 +5,8 @@ function pdo_get_connection()
     $servername = "localhost";
     // $username = "root";
     // $password = "";
-    $username = "NstBB";
-    $password = "nstbb123";
+    $username = "root";
+    $password = "";
     $conn = '';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=itlearn", $username, $password);

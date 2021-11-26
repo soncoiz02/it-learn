@@ -1,50 +1,32 @@
 <?php
     require_once 'pdo.php';
     function question_select_all(){
-        $sql = 'SELECT * from hang_hoa';
+        $sql = 'SELECT * from question order by ques_id desc';
         return pdo_query($sql);
     }
 
     function question_select_by_id($id){
-        $sql = 'SELECT * from hang_hoa where ma_hh=?';
+        $sql = 'SELECT * from question where ques_id=?';
         return pdo_query_one($sql, $id);
     }
 
     function question_delete($id){
         $sql = 'DELETE from hang_hoa where ma_hh=?';
-        $sql1 = 'DELETE from binh_luan where ma_hh=?';
-        pdo_execute($sql1, $id);
         pdo_execute($sql, $id);
     }
 
-    function question_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $ngay_nhap, $so_luot_xem, $mo_ta, $han_sd) {
-        $sql = "INSERT into hang_hoa(ten_hh, don_gia, giam_gia, hinh, ngay_nhap, dac_biet, so_luot_xem, mo_ta, ma_loai, han_sd) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $dac_biet, $so_luot_xem, $mo_ta, $ma_loai, $han_sd);
+    function question_insert($username, $tag, $content, $date) {
+        $sql = "INSERT into question(username, tag, content, date_ask) value(?, ?, ?, ?)";
+        pdo_execute($sql, $username, $tag, $content, $date);
     } 
 
-    function question_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $ngay_nhap, $luot_xem, $mo_ta) {
-        $sql = 'UPDATE hang_hoa set ten_hh=?, don_gia=?, giam_gia=?, hinh=?, ngay_nhap=?, dac_biet=?, so_luot_xem=?, mo_ta=?, ma_loai=? where ma_hh=?';
-        pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $dac_biet, $luot_xem, $mo_ta, $ma_loai, $ma_hh);
+    function question_select_by_user($username){
+        $sql = "SELECT * from question where username=?";
+        return pdo_query($sql, $username);
     }
 
-    function hang_select_top10() {
-        $sql = 'SELECT top 10 * from hang_hoa';
-        return pdo_query($sql);    
-    }
-
-    function hang_select_page($page_num, $limit) {
-        $start = $page_num * $limit;
-        $sql = "SELECT * from hang_hoa limit $start, 5";
-        return pdo_query($sql);
-    }
-
-    function hang_count() {
-        $sql = 'SELECT count(*) from hang_hoa';
-        return pdo_query_value($sql);
-    }
-
-    function hang_select_by_loai($id) {
-        $sql = 'SELECT * from hang_hoa where ma_loai=?';
-        return pdo_query($sql, $id);
+    function question_count_by_comment($ques_id){
+        $sql = "SELECT count(*) from question_comment where ques_id=?";
+        return pdo_query_value($sql, $ques_id);
     }
 ?>

@@ -1,5 +1,6 @@
 <?php
-    require '../../global.php';
+    require_once '../../global.php';
+    require '../../DAO/user.php';
     extract($_REQUEST);
     if(exist_param('btn-register')){
         $VIEW_NAME = 'register.php';
@@ -7,7 +8,34 @@
     else{
         $VIEW_NAME = 'login.php';
     }
+
+    if(exist_param('btn-insert')){
+        $file_name = save_file("avatar", "$IMAGE_DIR/user/");
+        $avt = $file_name ? $file_name : "user.png";
+        try {
+            user_insert($username, $password, $fullname,$avt, $email, '');
+            unset($username, $password, $email, $fullname, $avt, $position);
+            header("Location: $SITE_URL/login");
+        } catch (Exception $exc) {
+        }
+    }
+    if(exist_param('btn-login')){
+        $user = user_select_by_id($username);
+        if($user){
+            if($user['password'] == $password){
+                $_SESSION["user"] = $user;
+                header("Location: $ROOT_URL");
+            }
+        }
+    }
+    else if(exist_param("btn-logout")){
+            session_unset();
+            header("Location: $ROOT_URL");
+    }
+    
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
