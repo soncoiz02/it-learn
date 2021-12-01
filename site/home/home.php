@@ -36,7 +36,32 @@
                             <div class="img">
                                 <img src="<?=$IMG_URL?>/course/<?=$value['course_img']?>" alt="">
                             </div>
-                            <a href="#" class="course-name"><?=$value['course_name']?></a>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $exist_user = course_exist_user_signed($value['course_id'], $_SESSION['user']['username']);
+                                    if($exist_user > 0){
+                            ?>
+                                <a href="<?=$SITE_URL?>/course/?first-lesson&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                    }
+                                    else{
+                            ?>
+                                <a href="<?=$SITE_URL?>/course/?detail-course&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                    }
+                                }
+                                else{
+                            ?>
+                                <a href="<?=$SITE_URL?>/course/?detail-course&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                }
+                            ?>
                             <div class="user-count">
                                 <i class="fas fa-users"></i>
                                 <span><?=number_format(course_count_user($value['course_id']))?></span>
@@ -54,6 +79,9 @@
         </div>
     </section>
 
+    <?php
+        if(count($list_blog) > 0){
+    ?>
     <section class="home__blog">
         <div class="container">
             <h2 class="title">
@@ -171,6 +199,9 @@
             </div>
         </div>
     </section>
+    <?php
+        }
+    ?>
 
     <section class="home__study">
         <div class="container">

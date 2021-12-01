@@ -9,6 +9,7 @@
                         <th>Tiêu đề</th>
                         <th>Tác giả</th>
                         <th>Danh mục</th>
+                        <th>Ngày đăng</th>
                         <th>Ảnh đại diện</th>
                         <th>Like</th>
                         <th>Chi tiết</th>
@@ -16,138 +17,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1000</td>
-                        <td>Xử lý bất đồng bộ ASYNC/AWAIT</td>
-                        <td>soncoiz02</td>
-                        <td>Front-end</td>
-                        <td>
-                            <div class="img">
-                                <img src="" alt="">
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>Xử lý bất đồng bộ ASYNC/AWAIT</td>
-                        <td>soncoiz02</td>
-                        <td>Front-end</td>
-                        <td>
-                            <div class="img">
-                                <img src="" alt="">
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>Xử lý bất đồng bộ ASYNC/AWAIT</td>
-                        <td>soncoiz02</td>
-                        <td>Front-end</td>
-                        <td>
-                            <div class="img">
-                                <img src="" alt="">
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>Xử lý bất đồng bộ ASYNC/AWAIT</td>
-                        <td>soncoiz02</td>
-                        <td>Front-end</td>
-                        <td>
-                            <div class="img">
-                                <img src="" alt="">
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>Xử lý bất đồng bộ ASYNC/AWAIT</td>
-                        <td>soncoiz02</td>
-                        <td>Front-end</td>
-                        <td>
-                            <div class="img">
-                                <img src="" alt="">
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>Xử lý bất đồng bộ ASYNC/AWAIT</td>
-                        <td>soncoiz02</td>
-                        <td>Front-end</td>
-                        <td>
-                            <div class="img">
-                                <img src="" alt="">
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                        foreach($list_blog as $key => $value){
+                            $user = user_select_by_id($value['username']);
+                            extract($user);
+                    ?>
+                        <tr>
+                            <td><?=$value['blog_id']?></td>
+                            <td><?=$value['title']?></td>
+                            <td class="author"><?=$username?><span>(<?=$fullname?>)</span></td>
+                            <td><?=$value['cate_id']?></td>
+                            <td><?=$value['date']?></td>
+                            <td>
+                                <div class="img">
+                                    <?php
+                                        if($value['avatar'] != ''){
+                                    ?>
+                                        <img src="<?=$IMG_URL?>/blog/<?=$value['avatar']?>" alt="">
+                                    <?php
+                                        }
+                                        else{
+                                    ?>
+                                        <img src="<?=$IMG_URL?>/else/cat-study.jpg" alt="">
+                                    <?php
+                                        }
+                                    ?>
+                                </div>
+                            </td>
+                            <td><?=$value['like_num']?></td>
+                            <td class="detail">
+                                <a href="index.php?detail-blog&blog_id=<?=$value['blog_id']?>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                            <td class="delete">
+                                <a href="index.php?delete-blog&blog_id=<?=$value['blog_id']?>" onclick="return confirm('Bạn chắc chắn muốn xóa bài viết này?')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

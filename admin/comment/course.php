@@ -12,16 +12,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Javascript cơ bản</td>
-                        <td>Biến và kiểu dữ liệu</td>
-                        <td>120</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                        foreach($list_comment_lesson as $key => $value){
+                    ?>
+                        <tr>
+                            <td><?=$value['course_name']?></td>
+                            <td><?=$value['title']?></td>
+                            <td><?=$value['total']?></td>
+                            <td class="detail">
+                                <a href="">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

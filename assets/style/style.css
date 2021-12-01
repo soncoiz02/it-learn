@@ -525,7 +525,7 @@ textarea {
   object-fit: cover;
 }
 
-.home__course .container .swiper.swiper-course .swiper-wrapper .swiper-slide.course .course-name {
+.home__course .container .swiper.swiper-course .swiper-wrapper .swiper-slide.course a {
   width: 100%;
   margin: 10px 0 5px 0;
   color: #4d4d4d;
@@ -1024,11 +1024,19 @@ textarea {
   background: #41b9ed;
 }
 
+.courses__detail-right .img img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 .courses__detail-right .btn-sign {
   padding: 15px 20px;
   border-radius: 5px;
   background: linear-gradient(315deg, #ff4d00, #f9ab14);
   color: white;
+  cursor: pointer;
   font-size: 18px;
   font-weight: 600;
 }
@@ -1044,6 +1052,79 @@ textarea {
   font-size: 16px;
   font-weight: 600;
   color: #4d4d4d;
+}
+
+.courses__detail .alert-login {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+.courses__detail .alert-login.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.courses__detail .alert-login .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px 0;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.courses__detail .alert-login .box .img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.courses__detail .alert-login .box .img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.courses__detail .alert-login .box .btn-close-alert {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: gray;
+  cursor: pointer;
+}
+
+.courses__detail .alert-login .box p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #34348a;
+}
+
+.courses__detail .alert-login .box a {
+  padding: 10px 25px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+  border-radius: 5px;
 }
 
 .courses__lesson {
@@ -1102,13 +1183,13 @@ textarea {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.courses__lesson-left .comment-form .user {
+.courses__lesson-left .comment-form .user-avt {
   display: flex;
   gap: 0 10px;
   align-items: center;
 }
 
-.courses__lesson-left .comment-form .user .avt {
+.courses__lesson-left .comment-form .user-avt .avt {
   width: 50px;
   height: 50px;
   position: relative;
@@ -1116,7 +1197,7 @@ textarea {
   overflow: hidden;
 }
 
-.courses__lesson-left .comment-form .user .avt img {
+.courses__lesson-left .comment-form .user-avt .avt img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1380,6 +1461,165 @@ textarea {
   background: rgba(0, 0, 0, 0.05);
 }
 
+.courses__quiz {
+  position: relative;
+  width: 100%;
+  background: whitesmoke;
+  height: calc(100vh - 70px);
+}
+
+.courses__quiz .container {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px 0;
+}
+
+.courses__quiz .container .question {
+  font-size: 26px;
+  font-weight: 600;
+  color: #4d4d4d;
+  line-height: 26px;
+}
+
+.courses__quiz .container .list-answer {
+  width: 100%;
+  position: relative;
+}
+
+.courses__quiz .container .list-answer form {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+}
+
+.courses__quiz .container .list-answer form .list {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 0;
+}
+
+.courses__quiz .container .list-answer form .list label {
+  width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  color: #4d4d4d;
+  transition: 0.5s;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.courses__quiz .container .list-answer form .list label:hover {
+  background: rgba(247, 164, 134, 0.507);
+}
+
+.courses__quiz .container .list-answer form .list input {
+  display: none;
+}
+
+.courses__quiz .container .list-answer form .list input:checked + label {
+  background: coral;
+  color: white;
+}
+
+.courses__quiz .container .list-answer form .btn-send {
+  padding: 15px 35px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  align-self: flex-start;
+}
+
+.courses__quiz .alert-mess {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.courses__quiz .alert-mess .box {
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+}
+
+.courses__quiz .alert-mess .box .alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px 0;
+}
+
+.courses__quiz .alert-mess .box .alert .circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.courses__quiz .alert-mess .box .alert .circle.correct {
+  border: 2px solid #1cb760;
+  box-shadow: 0 0 20px 1px #1cb75f73;
+}
+
+.courses__quiz .alert-mess .box .alert .circle.correct i {
+  font-size: 70px;
+  color: #1cb760;
+}
+
+.courses__quiz .alert-mess .box .alert .circle.wrong {
+  border: 2px solid red;
+  box-shadow: 0 0 20px 1px rgba(255, 0, 0, 0.459);
+}
+
+.courses__quiz .alert-mess .box .alert .circle.wrong i {
+  font-size: 70px;
+  color: red;
+}
+
+.courses__quiz .alert-mess .box .alert p {
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #34348a;
+}
+
+.courses__quiz .alert-mess .box .alert p img {
+  width: 30px;
+  height: 30px;
+}
+
+.courses__quiz .alert-mess .box .alert a {
+  padding: 10px 25px;
+  color: white;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 @media (max-width: 767px) {
   .courses .container {
     padding: 30px 30px 0 30px;
@@ -1418,6 +1658,59 @@ textarea {
   width: 100%;
   padding: 50px;
   gap: 30px 0;
+}
+
+.blogs__list .message {
+  position: absolute;
+  padding: 10px 15px;
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.blogs__list .message .icon i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blogs__list .message.fail {
+  color: red;
+}
+
+.blogs__list .message.fail .icon .fa-times {
+  display: flex;
+  color: white;
+  background: red;
+}
+
+.blogs__list .message.fail .icon .fa-check {
+  display: none;
+}
+
+.blogs__list .message.success {
+  color: green;
+}
+
+.blogs__list .message.success .icon .fa-check {
+  display: flex;
+  color: white;
+  background: green;
+}
+
+.blogs__list .message.success .icon .fa-times {
+  display: none;
 }
 
 .blogs__list-nav {
@@ -1461,7 +1754,6 @@ textarea {
   width: 60%;
   display: flex;
   height: auto;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .blogs__list-all-list {
@@ -1557,6 +1849,10 @@ textarea {
   opacity: 0;
 }
 
+.blogs__list-all-item .top .delete-btn {
+  color: red;
+}
+
 .blogs__list-all-item .main-content {
   display: flex;
   justify-content: space-between;
@@ -1613,15 +1909,25 @@ textarea {
   font-size: 14px;
 }
 
-.blogs__list-all .btn-add {
-  position: sticky;
-  bottom: 10px;
+@keyframes pop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.blogs__list .btn-add {
+  position: fixed;
+  bottom: 50px;
+  right: 100px;
   height: 45px;
   margin: 0 5px;
   align-self: flex-end;
 }
 
-.blogs__list-all .btn-add a {
+.blogs__list .btn-add a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1632,15 +1938,6 @@ textarea {
   border-radius: 50%;
   font-size: 20px;
   animation: pop 1s infinite linear alternate;
-}
-
-@keyframes pop {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-10px);
-  }
 }
 
 .blogs__list-error {
@@ -1741,6 +2038,13 @@ textarea {
   background: #41b9ed;
 }
 
+.blogs__detail-right .top .user .avt img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .blogs__detail-right .top .user .detail {
   display: flex;
   flex-direction: column;
@@ -1835,25 +2139,31 @@ textarea {
   background: #41b9ed;
 }
 
+.blogs__detail-right .comment-form .avt-user img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .blogs__detail-right .comment-form .form {
   width: calc(100% - 50px);
   display: flex;
-  flex-direction: column;
-  gap: 10px 0;
+  align-self: center;
+  gap: 0 10px;
 }
 
-.blogs__detail-right .comment-form .form textarea {
+.blogs__detail-right .comment-form .form input[type="text"] {
   width: 100%;
   border: none;
   background: whitesmoke;
   color: gray;
-  font-size: 16px;
-  border-radius: 10px;
-  height: 100px;
-  padding: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px 15px;
 }
 
-.blogs__detail-right .comment-form .form input {
+.blogs__detail-right .comment-form .form input[type="submit"] {
   align-self: flex-end;
   padding: 10px 20px;
   color: white;
@@ -1887,6 +2197,13 @@ textarea {
   background: #41b9ed;
 }
 
+.blogs__detail-right .comment-list .item .avt img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .blogs__detail-right .comment-list .item .detail {
   width: calc(100% - 40px);
 }
@@ -1914,6 +2231,59 @@ textarea {
   position: relative;
   width: 100%;
   gap: 30px 0;
+}
+
+.blogs__add .container .message {
+  position: absolute;
+  padding: 10px 15px;
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.blogs__add .container .message .icon i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blogs__add .container .message.fail {
+  color: red;
+}
+
+.blogs__add .container .message.fail .icon .fa-times {
+  display: flex;
+  color: white;
+  background: red;
+}
+
+.blogs__add .container .message.fail .icon .fa-check {
+  display: none;
+}
+
+.blogs__add .container .message.success {
+  color: green;
+}
+
+.blogs__add .container .message.success .icon .fa-check {
+  display: flex;
+  color: white;
+  background: green;
+}
+
+.blogs__add .container .message.success .icon .fa-times {
+  display: none;
 }
 
 .blogs__add .container h2 {
@@ -1950,7 +2320,7 @@ textarea {
 
 .blogs__add .container .form-left p {
   font-size: 20px;
-  font-family: 600;
+  font-weight: 600;
   color: #4d4d4d;
 }
 
@@ -2007,7 +2377,12 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 0 10px;
+  gap: 10px;
+}
+
+.blogs__add .container .form-right .list-tag .list .tag {
+  display: flex;
+  align-items: center;
 }
 
 .blogs__add .container .form-right .list-tag .list input {
@@ -2015,7 +2390,7 @@ textarea {
 }
 
 .blogs__add .container .form-right .list-tag .list label {
-  padding: 5px 20px;
+  padding: 10px 25px;
   border-radius: 50px;
   background: whitesmoke;
   font-size: 14px;
@@ -2057,6 +2432,59 @@ textarea {
   width: 55%;
   padding-right: 30px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ask__list .message {
+  position: absolute;
+  padding: 10px 15px;
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: -10px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.ask__list .message .icon i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ask__list .message.fail {
+  color: red;
+}
+
+.ask__list .message.fail .icon .fa-times {
+  display: flex;
+  color: white;
+  background: red;
+}
+
+.ask__list .message.fail .icon .fa-check {
+  display: none;
+}
+
+.ask__list .message.success {
+  color: green;
+}
+
+.ask__list .message.success .icon .fa-check {
+  display: flex;
+  color: white;
+  background: green;
+}
+
+.ask__list .message.success .icon .fa-times {
+  display: none;
 }
 
 .ask__list-nav {
@@ -2133,6 +2561,13 @@ textarea {
   overflow: hidden;
 }
 
+.ask__list-list-item .top .user .avt img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
 .ask__list-list-item .top .user .detail {
   display: flex;
   flex-direction: column;
@@ -2178,6 +2613,10 @@ textarea {
 
 .ask__list-list-item .top .mark-btn.active .far {
   opacity: 0;
+}
+
+.ask__list-list-item .top .delete-btn {
+  color: red;
 }
 
 .ask__list-list-item .main-content {
@@ -2301,6 +2740,11 @@ textarea {
   gap: 10px;
 }
 
+.ask__add-form .list-tag .tag {
+  display: flex;
+  align-items: center;
+}
+
 .ask__add-form .list-tag .tag input {
   display: none;
 }
@@ -2370,6 +2814,13 @@ textarea {
   background: linear-gradient(315deg, #ff4d00, #f9ab14);
 }
 
+.ask__detail .top .user .avt img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
 .ask__detail .top .user .detail {
   display: flex;
   flex-direction: column;
@@ -2432,7 +2883,15 @@ textarea {
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+}
+
+.ask__detail .comment-form .avt img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
 }
 
 .ask__detail .comment-form .form {
@@ -2486,6 +2945,13 @@ textarea {
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(315deg, #ff4d00, #f9ab14);
+}
+
+.ask__detail .comment-list .item .avt img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 
 .ask__detail .comment-list .item .detail {
@@ -3113,10 +3579,19 @@ textarea {
 }
 
 .admin__course-list .table tbody td .img {
+  position: relative;
   width: 250px;
   height: 100px;
   background: #41b9ed;
   margin: 0 auto;
+  overflow: hidden;
+}
+
+.admin__course-list .table tbody td .img img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .admin__course-list .table tbody .number,
@@ -3233,6 +3708,13 @@ textarea {
   background: #41b9ed;
   position: relative;
   overflow: hidden;
+}
+
+.admin__course-add .form .label .current-img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .admin__course-add .form .label .course-img {
@@ -3434,19 +3916,19 @@ textarea {
   gap: 20px 0;
 }
 
-.admin__course-addlesson .form-left label {
+.admin__course-addlesson .form-left .label {
   display: flex;
   flex-direction: column;
   gap: 10px 0;
 }
 
-.admin__course-addlesson .form-left label p {
+.admin__course-addlesson .form-left .label p {
   font-size: 20px;
   font-weight: 600;
   color: #4d4d4d;
 }
 
-.admin__course-addlesson .form-left label input {
+.admin__course-addlesson .form-left .label input {
   width: 100%;
   border-radius: 5px;
   padding: 15px;
@@ -3475,125 +3957,44 @@ textarea {
   gap: 20px 0;
 }
 
-.admin__course-addlesson .form-right label {
+.admin__course-addlesson .form-right .label {
   display: flex;
   flex-direction: column;
   gap: 10px 0;
 }
 
-.admin__course-addlesson .form-right label p {
+.admin__course-addlesson .form-right .label input[type="file"] {
+  display: none;
+}
+
+.admin__course-addlesson .form-right .label label {
+  padding: 15px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #4d89c7, #27d0c8);
+  color: white;
+  cursor: pointer;
+  align-self: flex-start;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.admin__course-addlesson .form-right .label label i {
+  margin-right: 10px;
+}
+
+.admin__course-addlesson .form-right .label p {
   font-size: 20px;
   font-weight: 600;
   color: #4d4d4d;
 }
 
-.admin__course-addlesson .form-right label .select {
-  position: relative;
-  width: 400px;
-}
-
-.admin__course-addlesson .form-right label .select .selected {
+.admin__course-addlesson .form-right .label input[type="text"] {
   width: 100%;
+  border-radius: 5px;
   padding: 15px;
-  background: white;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 16px;
-  color: #4d4d4d;
-}
-
-.admin__course-addlesson .form-right label .select .selected i {
-  color: gray;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  z-index: 2;
-  background: white;
-  border-radius: 5px;
-  height: auto;
-  overflow-y: auto;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: 0.5s;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt::-webkit-scrollbar {
-  display: none;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .search {
-  width: 100%;
-  position: sticky;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 10px 15px;
-  border-radius: 5px;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .search i {
   color: gray;
   font-size: 16px;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .search input {
-  width: 100%;
-  border: none;
-  padding: 0 10px;
-  font-size: 14px;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .list {
-  display: flex;
-  flex-direction: column;
-  max-height: 200px;
-  overflow-y: scroll;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .opt {
-  position: relative;
-  width: 100%;
-  padding: 10px 15px;
-  font-size: 14px;
-  color: #4d4d4d;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .opt:hover {
-  background: #8ec3f8;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt .opt::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.1);
-  bottom: -1px;
-  left: 0;
-}
-
-.admin__course-addlesson .form-right label .select .list-opt input[type="radio"] {
-  display: none;
 }
 
 .admin__course-detail {
@@ -3627,6 +4028,13 @@ textarea {
   position: relative;
   overflow: hidden;
   background: #41b9ed;
+}
+
+.admin__course-detail-main .cover .img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 
 .admin__course-detail-main .cover .cate {
@@ -3929,9 +4337,20 @@ textarea {
 }
 
 .admin__blog-list .table td .img {
+  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background: #41b9ed;
+}
+
+.admin__blog-list .table td .img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .admin__blog-list .table td.delete > a {
@@ -3942,6 +4361,11 @@ textarea {
 .admin__blog-list .table td.detail > a {
   font-size: 25px;
   color: royalblue;
+}
+
+.admin__blog-list .table td.author {
+  display: flex;
+  flex-direction: column;
 }
 
 .admin__blog-list .pagination {
@@ -3984,6 +4408,34 @@ textarea {
   font-weight: 600;
   color: royalblue;
   background: white;
+}
+
+.admin__blog-detail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 50px 0;
+}
+
+.admin__blog-detail .main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  background: white;
+  padding: 30px;
+  gap: 20px 0;
+}
+
+.admin__blog-detail .main-content .blog-title {
+  font-size: 36px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.admin__blog-detail .main-content .content {
+  font-size: 20px;
 }
 
 .admin__user {
@@ -4211,6 +4663,22 @@ textarea {
   color: royalblue;
 }
 
+.admin__question-list .table td:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin__question-list .table td:nth-child(3) {
+  width: 400px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.admin__question-list .table td:nth-child(4) {
+  width: 250px;
+  font-size: 18px;
+}
+
 .admin__question-list .pagination {
   width: 100%;
   position: relative;
@@ -4290,6 +4758,12 @@ textarea {
   -webkit-text-fill-color: transparent;
 }
 
+.login__form-sign-in .message {
+  font-size: 18px;
+  font-weight: 500;
+  color: red;
+}
+
 .login__form-sign-in form {
   display: flex;
   flex-direction: column;
@@ -4301,22 +4775,8 @@ textarea {
 .login__form-sign-in form .password {
   display: flex;
   flex-direction: column;
+  gap: 5px 0;
   gap: 3px 0;
-}
-
-.login__form-sign-in form .username.err .input i,
-.login__form-sign-in form .password.err .input i {
-  color: red;
-}
-
-.login__form-sign-in form .username.err .input::after,
-.login__form-sign-in form .password.err .input::after {
-  background: red;
-}
-
-.login__form-sign-in form .username.err .err-mess,
-.login__form-sign-in form .password.err .err-mess {
-  display: block;
 }
 
 .login__form-sign-in form .username .input,
@@ -4359,9 +4819,9 @@ textarea {
   left: 0;
 }
 
-.login__form-sign-in form .username .err-mess,
-.login__form-sign-in form .password .err-mess {
-  display: none;
+.login__form-sign-in form .username .err,
+.login__form-sign-in form .password .err {
+  display: block;
   font-size: 14px;
   color: red;
 }
@@ -4420,10 +4880,16 @@ textarea {
   -webkit-text-fill-color: transparent;
 }
 
+.login__form-sign-up .message {
+  color: red;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .login__form-sign-up form {
   display: flex;
   flex-direction: column;
-  gap: 20px 0;
+  gap: 10px 0;
   width: 100%;
 }
 
@@ -4513,12 +4979,12 @@ textarea {
   left: 0;
 }
 
-.login__form-sign-up form .username .err-mess,
-.login__form-sign-up form .fullname .err-mess,
-.login__form-sign-up form .email .err-mess,
-.login__form-sign-up form .password .err-mess,
-.login__form-sign-up form .password2 .err-mess {
-  display: none;
+.login__form-sign-up form .username .err,
+.login__form-sign-up form .fullname .err,
+.login__form-sign-up form .email .err,
+.login__form-sign-up form .password .err,
+.login__form-sign-up form .password2 .err {
+  display: block;
   font-size: 14px;
   color: red;
 }
@@ -4691,53 +5157,6 @@ textarea {
   background: linear-gradient(to right, #4d89c7, #27d0c8);
 }
 
-.admin__comment .container .table {
-  position: relative;
-  width: 100%;
-  background: white;
-  border-radius: 15px;
-  border-collapse: collapse;
-  overflow: hidden;
-  border: none;
-}
-
-.admin__comment .container .table thead {
-  background: linear-gradient(to right, #4d89c7, #27d0c8);
-}
-
-.admin__comment .container .table th {
-  color: white;
-  font-size: 20px;
-  padding: 10px;
-  border: none;
-  text-align: center;
-}
-
-.admin__comment .container .table td {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-  color: #4d4d4d;
-}
-
-.admin__comment .container .table td .img {
-  width: 100%;
-  height: 100%;
-  background: #41b9ed;
-}
-
-.admin__comment .container .table td.delete > a {
-  font-size: 25px;
-  color: red;
-}
-
-.admin__comment .container .table td.detail > a {
-  font-size: 25px;
-  color: royalblue;
-}
-
 .admin__comment .container .pagination {
   width: 100%;
   position: relative;
@@ -4784,5 +5203,512 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 50px 0;
+}
+
+.admin__comment-ask .table {
+  position: relative;
+  width: 100%;
+  background: white;
+  border-radius: 15px;
+  border-collapse: collapse;
+  overflow: hidden;
+  border: none;
+}
+
+.admin__comment-ask .table thead {
+  background: linear-gradient(to right, #4d89c7, #27d0c8);
+}
+
+.admin__comment-ask .table th {
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  text-align: center;
+}
+
+.admin__comment-ask .table td {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.admin__comment-ask .table td .img {
+  width: 100%;
+  height: 100%;
+  background: #41b9ed;
+}
+
+.admin__comment-ask .table td.delete > a {
+  font-size: 25px;
+  color: red;
+}
+
+.admin__comment-ask .table td.detail > a {
+  font-size: 25px;
+  color: royalblue;
+}
+
+.admin__comment-ask .table td:nth-child(1) {
+  width: 350px;
+}
+
+.admin__comment-ask .table td:nth-child(3) {
+  width: 150px;
+}
+
+.user {
+  position: relative;
+  width: 100%;
+}
+
+.user .container {
+  padding: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.user__setting {
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+}
+
+.user__setting .message {
+  position: absolute;
+  padding: 10px 15px;
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.user__setting .message .icon i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user__setting .message.fail {
+  color: red;
+}
+
+.user__setting .message.fail .icon .fa-times {
+  display: flex;
+  color: white;
+  background: red;
+}
+
+.user__setting .message.fail .icon .fa-check {
+  display: none;
+}
+
+.user__setting .message.success {
+  color: green;
+}
+
+.user__setting .message.success .icon .fa-check {
+  display: flex;
+  color: white;
+  background: green;
+}
+
+.user__setting .message.success .icon .fa-times {
+  display: none;
+}
+
+.user__setting h2 {
+  position: relative;
+  font-size: 26px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(315deg, #ff4d00, #f9ab14);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.user__setting h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 150px;
+  height: 3px;
+  border-radius: 50px;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+}
+
+.user__setting form {
+  display: flex;
+  gap: 0 200px;
+  position: relative;
+  width: 100%;
+}
+
+.user__setting form .label {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+}
+
+.user__setting form .label p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.user__setting form .label .input {
+  display: flex;
+  align-items: flex-end;
+  gap: 0 10px;
+}
+
+.user__setting form .label .input input {
+  width: 300px;
+  padding: 10px 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid coral;
+  font-size: 18px;
+  color: gray;
+  transition: 0.3s;
+}
+
+.user__setting form .label .input input:focus {
+  border: 2px solid coral;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.user__setting form .label .input .err {
+  font-size: 18px;
+  font-weight: normal;
+  color: red;
+}
+
+.user__setting form .left {
+  display: flex;
+  flex-direction: column;
+}
+
+.user__setting form .left .label .avatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.user__setting form .left .label .avatar img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.user__setting form .left .label input {
+  display: none;
+}
+
+.user__setting form .left .label label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  border-radius: 5px;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.user__setting form .left .label label i {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.user__setting form .right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+}
+
+.user__setting form .right input[type="submit"] {
+  padding: 15px 35px;
+  border-radius: 5px;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  align-self: flex-start;
+}
+
+.user__history-study {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+  width: 100%;
+}
+
+.user__history-study h2 {
+  position: relative;
+  font-size: 26px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(315deg, #ff4d00, #f9ab14);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.user__history-study h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 150px;
+  height: 3px;
+  border-radius: 50px;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+}
+
+.user__history-study .list-course {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  width: 100%;
+  position: relative;
+}
+
+.user__history-study .list-course .item {
+  width: 60%;
+  position: relative;
+  display: flex;
+  gap: 0 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.user__history-study .list-course .item .img {
+  position: relative;
+  width: 250px;
+  height: 130px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.user__history-study .list-course .item .img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user__history-study .list-course .item .detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px 0;
+}
+
+.user__history-study .list-course .item .detail .name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.user__history-study .list-course .item .detail .status {
+  font-size: 18px;
+  color: #4d4d4d;
+}
+
+.user__history-study .list-course .item .detail .status span {
+  font-weight: 500;
+  color: #ffb150;
+}
+
+.user__history-study .list-course .item .progress {
+  margin-left: auto;
+}
+
+.user__history-study .message {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user__history-study .message .img {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.user__history-study .message .img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user__history-study .message p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f1f79;
+}
+
+.user__history-study .message p a {
+  color: coral;
+}
+
+.user__change-password {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px 0;
+}
+
+.user__change-password .message {
+  position: absolute;
+  padding: 10px 15px;
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 0px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.user__change-password .message .icon i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user__change-password .message.fail .icon .fa-times {
+  display: flex;
+  color: white;
+  background: red;
+}
+
+.user__change-password .message.fail .icon .fa-check {
+  display: none;
+}
+
+.user__change-password .message.success .icon .fa-check {
+  display: flex;
+  color: white;
+  background: green;
+}
+
+.user__change-password .message.success .icon .fa-times {
+  display: none;
+}
+
+.user__change-password h2 {
+  position: relative;
+  font-size: 26px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(315deg, #ff4d00, #f9ab14);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.user__change-password h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 150px;
+  height: 3px;
+  border-radius: 50px;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+}
+
+.user__change-password form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px 0;
+}
+
+.user__change-password form .label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+.user__change-password form .label p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.user__change-password form .label .input {
+  display: flex;
+  align-items: flex-end;
+  gap: 0 15px;
+}
+
+.user__change-password form .label .input input {
+  width: 350px;
+  padding: 15px 5px;
+  font-size: 18px;
+  color: gray;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid coral;
+  transition: 0.3s;
+}
+
+.user__change-password form .label .input input:focus {
+  border: 2px solid coral;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.user__change-password form .label .input p {
+  font-size: 16px;
+  color: red;
+  font-weight: normal;
+}
+
+.user__change-password form input[type="submit"] {
+  padding: 15px 35px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(315deg, #ff4d00, #f9ab14);
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  align-self: flex-start;
 }
 /*# sourceMappingURL=style.css.map */

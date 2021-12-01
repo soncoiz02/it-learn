@@ -13,17 +13,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Cách để giàu</td>
-                        <td>soncoiz02</td>
-                        <td>120</td>
-                        <td>31-07-2002</td>
-                        <td class="detail">
-                            <a href="?ask-detail-list">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                        foreach($list_comment_question as $key => $value){
+                            $user = user_select_by_id($value['username']);
+                            extract($user);
+                    ?>
+                        <tr>
+                            <td><?=$value['content']?></td>
+                            <td><?=$username?><span> (<?=$fullname?>)</span> </td>
+                            <td><?=question_count_by_comment($value['ques_id'])?></td>
+                            <td><?=$value['date_ask']?></td>
+                            <td class="detail">
+                                <a href="index.php?detail-ask&ques_id=<?=$value['ques_id']?>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

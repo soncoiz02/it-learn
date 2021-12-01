@@ -11,8 +11,10 @@
     }
 
     function question_delete($id){
-        $sql = 'DELETE from hang_hoa where ma_hh=?';
-        pdo_execute($sql, $id);
+        $sql1 = 'DELETE from question_comment where ques_id=?';
+        $sql2 = 'DELETE from question where ques_id=?';
+        pdo_execute($sql1, $id);
+        pdo_execute($sql2, $id);
     }
 
     function question_insert($username, $tag, $content, $date) {

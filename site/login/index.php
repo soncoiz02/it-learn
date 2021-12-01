@@ -5,6 +5,12 @@
     if(exist_param('btn-register')){
         $VIEW_NAME = 'register.php';
     }
+    else if(exist_param("btn-forget")){
+        $VIEW_NAME = 'findpass.php';
+    }
+    else if(exist_param("login")){
+        $VIEW_NAME = 'login.php';
+    }
     else{
         $VIEW_NAME = 'login.php';
     }
@@ -12,19 +18,41 @@
     if(exist_param('btn-insert')){
         $file_name = save_file("avatar", "$IMAGE_DIR/user/");
         $avt = $file_name ? $file_name : "user.png";
-        try {
-            user_insert($username, $password, $fullname,$avt, $email, '');
-            unset($username, $password, $email, $fullname, $avt, $position);
-            header("Location: $SITE_URL/login");
-        } catch (Exception $exc) {
+        if($username != '' && $fullname != '' && $password1 != '' && $password2 != '' && $email != ''){
+            if(user_exist($username) > 0){
+                $MESSAGE = 'Tên đăng nhập đã tồn tại';
+            }
+            else if(exist_email($email) > 0){
+                $MESSAGE = 'Email đã được đăng ký';
+            }
+            else{
+                try {
+                    user_insert($username, md5($password1), $fullname,$avt, $email, '');
+                    unset($username, $password1, $email, $fullname, $avt, $position);
+                    header("Location: $SITE_URL/login");
+                } catch (Exception $exc) {
+                }
+            }
         }
+        else {
+            $MESSAGE = 'Chưa nhập đủ dữ liệu';
+        }
+        $VIEW_NAME = 'register.php';
     }
     if(exist_param('btn-login')){
-        $user = user_select_by_id($username);
-        if($user){
-            if($user['password'] == $password){
-                $_SESSION["user"] = $user;
-                header("Location: $ROOT_URL");
+        if(user_exist($username) == false){
+            $MESSAGE = 'Sai tên đăng nhập !';
+        }
+        else{
+            $user = user_select_by_id($username);
+            if($user){
+                if(md5($password) == $user['password']){
+                    $_SESSION["user"] = $user;
+                    header("Location: $ROOT_URL");
+                }
+                else{
+                    $MESSAGE = 'Sai mật khẩu !';
+                }
             }
         }
     }
@@ -32,7 +60,6 @@
             session_unset();
             header("Location: $ROOT_URL");
     }
-    
 ?>
 
 

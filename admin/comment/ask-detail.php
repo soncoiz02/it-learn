@@ -1,27 +1,32 @@
 <div class="admin__comment">
     <div class="container">
         <div class="admin__comment-ask">
-            <h2>Chi tiết: Làm sao để giàu?</h2>
+            <h2>Chi tiết: <?=$detail_ques['content']?></h2>
             <table class="table" border="1">
                 <thead>
                     <tr>
                         <th>Tác giả</th>
                         <th>Nội dung</th>
-                        <th>Ngày đăng</th>
                         <th>Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>soncoiz02</td>
-                        <td>sdhakjdhskahdsadsa</td>
-                        <td>31-07-2002</td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                        foreach($list_comment as $key => $value){
+                    ?>
+                        <tr>
+                            <td><?=$value['username']?></td>
+                            <td><?=$value['content']?></td>
+                            <td class="delete">
+                                <a href="">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

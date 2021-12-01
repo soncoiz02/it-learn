@@ -34,7 +34,7 @@
                             </a>
                         </td>
                         <td class="delete">
-                            <a href="">
+                            <a href="index.php?delete-user&user_id=<?=$value['username']?>">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>

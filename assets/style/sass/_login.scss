@@ -26,6 +26,13 @@
         font-size: 26px;
         @include text-color;
       }
+      .message {
+        font: {
+          size: 18px;
+          weight: 500;
+        }
+        color: red;
+      }
       form {
         display: flex;
         flex-direction: column;
@@ -35,20 +42,8 @@
         .password {
           display: flex;
           flex-direction: column;
+          gap: 5px 0;
           gap: 3px 0;
-          &.err {
-            .input {
-              i {
-                color: red;
-              }
-              &::after {
-                background: red;
-              }
-            }
-            .err-mess {
-              display: block;
-            }
-          }
           .input {
             display: flex;
             align-items: center;
@@ -79,8 +74,8 @@
               left: 0;
             }
           }
-          .err-mess {
-            display: none;
+          .err {
+            display: block;
             font-size: 14px;
             color: red;
           }
@@ -134,10 +129,17 @@
         font-size: 26px;
         @include text-color;
       }
+      .message {
+        color: red;
+        font: {
+          size: 16px;
+          weight: 500;
+        }
+      }
       form {
         display: flex;
         flex-direction: column;
-        gap: 20px 0;
+        gap: 10px 0;
         width: 100%;
         .username,
         .fullname,
@@ -190,8 +192,8 @@
               left: 0;
             }
           }
-          .err-mess {
-            display: none;
+          .err {
+            display: block;
             font-size: 14px;
             color: red;
           }

@@ -22,7 +22,7 @@ function lesson_count($id){
 }
 
 function video_count($id){
-    $sql = 'SELECT count(vid_id) from lesson where course_id=?';
+    $sql = 'SELECT count(lesson.link_video) from course join lesson on course.course_id = lesson.course_id where course.course_id=?';
     return pdo_query_value($sql, $id);
 }
 
@@ -38,7 +38,7 @@ function lesson_delete($id){
 
 function lesson_select_by_id($id){
     $sql = "SELECT * from lesson where lesson_id=?";
-    return pdo_query($sql, $id);
+    return pdo_query_one($sql, $id);
 }
 
 function lesson_select_first($course_id){

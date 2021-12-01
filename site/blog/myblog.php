@@ -2,18 +2,31 @@
     <div class="blogs__list">
         <div class="container">
             <ul class="blogs__list-nav">
-                    <li class="blogs__list-nav-link active"><a href="">Tất cả bài viết</a></li>
+                    <li class="blogs__list-nav-link"><a href="index.php?list-blog">Tất cả bài viết</a></li>
                     <?php
                         if(isset($_SESSION['user'])){
                         $user = $_SESSION['user'];
                     ?>
-                        <li class="blogs__list-nav-link"><a href="index.php?my-blog">Bài viết của bạn</a></li>
+                        <li class="blogs__list-nav-link active"><a href="">Bài viết của bạn</a></li>
                         <li class="blogs__list-nav-link"><a href="">Bài viết đã lưu</a></li>
                     <?php
                         }
                     ?>
                 </ul>
             </ul>
+            <?php
+                if(strlen($MESSAGE) > 0){
+            ?>
+                <div class="message <?=$type?>">
+                    <div class="icon">
+                        <i class="fas fa-check"></i>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <p><?=$MESSAGE?></p>
+                </div>
+            <?php
+                }
+            ?>
             <?php
                 if(count($list_blog) > 0){
             ?>
@@ -36,10 +49,9 @@
                                             <div class="username">@<?=$username?></div>
                                         </div>
                                     </div>
-                                    <div class="mark-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                        <i class="far fa-bookmark"></i>
-                                    </div>
+                                    <a href="index.php?delete-blog&blog_id=<?=$value['blog_id']?>" class="delete-btn" onclick="return confirm('Bạn thực sự muốn xóa bài viết này?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
                                 </div>
                                 <div class="main-content">
                                     <div class="blog-content">

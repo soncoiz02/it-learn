@@ -43,9 +43,32 @@
                             <div class="img">
                                 <img src="<?=$IMG_URL?>/course/<?=$value['course_img']?>" alt="">
                             </div>
-                            <a href="index.php?detail-course&id=<?=$value['course_id']?>" class="name">
-                                <?=$value['course_name']?>
-                            </a>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $exist_user = course_exist_user_signed($value['course_id'], $_SESSION['user']['username']);
+                                    if($exist_user > 0){
+                            ?>
+                                <a href="index.php?first-lesson&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                    }
+                                    else{
+                            ?>
+                                <a href="index.php?detail-course&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                    }
+                                }
+                                else{
+                            ?>
+                                <a href="index.php?detail-course&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                }
+                            ?>
                             <div class="user-count">
                                 <i class="fas fa-users"></i>
                                 <span><?=number_format(course_count_user($value['course_id']))?></span>
@@ -74,9 +97,32 @@
                         <div class="img">
                             <img src="<?=$IMG_URL?>/course/<?=$value['course_img']?>" alt="">
                         </div>
-                        <a href="index.php?detail-course&id=<?=$value['course_id']?>" class="name">
-                            <?=$value['course_name']?>
-                        </a>
+                        <?php
+                                if(isset($_SESSION['user'])){
+                                    $exist_user = course_exist_user_signed($value['course_id'], $_SESSION['user']['username']);
+                                    if($exist_user > 0){
+                            ?>
+                                <a href="index.php?first-lesson&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                    }
+                                    else{
+                            ?>
+                                <a href="index.php?detail-course&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                    }
+                                }
+                                else{
+                            ?>
+                                <a href="index.php?detail-course&id=<?=$value['course_id']?>" class="name">
+                                    <?=$value['course_name']?>
+                                </a>
+                            <?php
+                                }
+                            ?>
                         <div class="user-count">
                             <i class="fas fa-users"></i>
                             <span><?=number_format(course_count_user($value['course_id']))?></span>

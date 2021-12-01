@@ -62,7 +62,7 @@
                         <i class="fas fa-caret-right"></i>
                     </div>
                     <div class="link-list">
-                        <a href="<?=$ADMIN_URL?>/blog">Danh sách</a>
+                        <a href="<?=$ADMIN_URL?>/blog?list-blog">Danh sách</a>
                     </div>
                 </div>
                 <div class="link">
@@ -74,7 +74,7 @@
                         <i class="fas fa-caret-right"></i>
                     </div>
                     <div class="link-list">
-                        <a href="<?=$ADMIN_URL?>/question">Danh sách</a>
+                        <a href="<?=$ADMIN_URL?>/question?list-ques">Danh sách</a>
                     </div>
                 </div>
                 <div class="link">

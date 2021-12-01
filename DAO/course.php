@@ -67,4 +67,14 @@
         $sql = 'SELECT * from document where doc_id=?';
         return pdo_query_one($sql, $id);
     }
+
+    function course_exist_user_signed($course_id, $username){
+        $sql = "SELECT COUNT(*) FROM `course_signed` WHERE username = ? AND course_id = ?";
+        return pdo_query_value($sql, $username, $course_id);
+    }
+
+    function course_sign($username, $course_id, $date){
+        $sql = 'INSERT into course_signed(username, course_id, date_signed) values(?, ?, ?)';
+        pdo_execute($sql, $username, $course_id, $date);
+    }
 ?>

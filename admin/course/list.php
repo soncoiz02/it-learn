@@ -25,7 +25,7 @@
                             <td class="tag"><?php $cate = cate_select_by_id($value['cate_id']); echo $cate['cate_name'];?></td>
                             <td>
                                 <div class="img">
-                                    <img src="" alt="">
+                                    <img src="<?=$IMG_URL?>/course/<?=$value['course_img']?>" alt="">
                                 </div>
                             </td>
                             <td class="number"><?=lesson_count($value['course_id'])?></td>

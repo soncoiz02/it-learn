@@ -9,97 +9,33 @@
                         <th>Tác giả</th>
                         <th>Nội dung</th>
                         <th>Danh mục</th>
+                        <th>Ngày đăng</th>
                         <th>Trả lời</th>
-                        <th>Chi tiết</th>
                         <th>Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1000</td>
-                        <td>soncoiz02</td>
-                        <td>Cách tự học hiệu quả</td>
-                        <td>Front-end</td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>soncoiz02</td>
-                        <td>Cách tự học hiệu quả</td>
-                        <td>Front-end</td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>soncoiz02</td>
-                        <td>Cách tự học hiệu quả</td>
-                        <td>Front-end</td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>soncoiz02</td>
-                        <td>Cách tự học hiệu quả</td>
-                        <td>Front-end</td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1000</td>
-                        <td>soncoiz02</td>
-                        <td>Cách tự học hiệu quả</td>
-                        <td>Front-end</td>
-                        <td>10</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="delete">
-                            <a href="">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                        foreach($list_ques as $key => $value){
+                            $user = user_select_by_id($value['username']);
+                            extract($user);
+                    ?>
+                        <tr>
+                            <td><?=$value['ques_id']?></td>
+                            <td><?=$username?> <span>(<?=$fullname?>)</span></td>
+                            <td><?=$value['content']?></td>
+                            <td><?=$value['tag']?></td>
+                            <td><?=$value['date_ask']?></td>
+                            <td><?=question_count_by_comment($value['ques_id'])?></td>
+                            <td class="delete">
+                                <a href="index.php?delete-ques&ques_id=<?=$value['ques_id']?>">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

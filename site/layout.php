@@ -62,11 +62,15 @@
                                         ";
                                 }
                             ?>
-                            <a href="" class="user-setting">
+                            <a href="<?=$SITE_URL?>/user?study-history" class="user-setting">
+                                <i class="fas fa-history"></i>
+                                Lịch sử học
+                            </a>
+                            <a href="<?=$SITE_URL?>/user?setting" class="user-setting">
                                 <i class="fas fa-user-cog"></i>
                                 Cài đặt thông tin
                             </a>
-                            <a href="" class="user-setting">
+                            <a href="<?=$SITE_URL?>/user?change-password" class="user-setting">
                                 <i class="fas fa-key"></i>
                                 Đổi mật khẩu
                             </a>

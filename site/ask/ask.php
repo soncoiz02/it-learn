@@ -25,7 +25,7 @@
                     <div class="top">
                         <div class="user">
                             <div class="avt">
-                                <img src="" alt="">
+                                <img src="<?=$IMG_URL?>/user/<?=$avatar?>" alt="">
                             </div>
                             <div class="detail">
                                 <div class="fullname"><?=$fullname?></div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="main-content">
-                        <a href="index.php?detail-ques&ques_id=<?=$value['ques_id']?>" class="content">Thời gian tự học và học ở ngoài như thế nào?</a>
+                        <a href="index.php?detail-ques&ques_id=<?=$value['ques_id']?>" class="content"><?=$value['content']?></a>
                     </div>
                     <div class="list-tag">
                         <?php
@@ -56,6 +56,9 @@
                                     $month = floor($date / 30);
                                     if($month > 0){
                                         echo "$month tháng trước";
+                                    }
+                                    else if($date == 0){
+                                        echo "Hôm nay";
                                     }
                                     else{
                                         echo "$date ngày trước";
@@ -90,18 +93,17 @@
                 <form action="index.php" class="ask__add-form" method="POST">
                     <textarea cols="30" rows="10" placeholder="Viết câu hỏi của bạn" name="content"></textarea>
                     <div class="list-tag">
-                        <div class="tag">
-                            <input type="checkbox" name="tag[]" id="tag1" value="1">
-                            <label for="tag1">Tag</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" name="tag[]" id="tag2" value="2">
-                            <label for="tag2">Tag</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" name="tag[]" id="tag3" value="3">
-                            <label for="tag3">Tag</label>
-                        </div>
+                        <?php
+                            $list_tag = cate_select_all();
+                            foreach($list_tag as $key => $value){
+                        ?>
+                            <div class="tag">
+                                <input type="checkbox" name="tag[]" id="tag<?=$value['cate_id']?>" value="<?=$value['cate_name']?>">
+                                <label for="tag<?=$value['cate_id']?>"><?=$value['cate_name']?></label>
+                            </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <input type="submit" class="send-btn" value="Gửi" name="btn-insert">
                 </form>

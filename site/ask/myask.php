@@ -5,6 +5,22 @@
                 <li class="ask__list-nav-link"><a href="index.php?list-ques">Tất cả câu hỏi</a></li>
                 <li class="ask__list-nav-link active"><a href="index.php?my-ask">Câu hỏi của bạn</a></li>
             </ul>
+            <?php
+                if(strlen($MESSAGE) > 0){
+            ?>
+                <div class="message <?=$type?>">
+                    <div class="icon">
+                        <i class="fas fa-check"></i>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <p><?=$MESSAGE?></p>
+                </div>
+            <?php
+                }
+            ?>
+            <?php
+                if(count($list_question) > 0){
+            ?>
             <div class="ask__list-list">
                 <?php 
                     $today = date("Y-m-d");
@@ -14,28 +30,29 @@
                         <div class="top">
                             <div class="user">
                                 <div class="avt">
-                                    <img src="" alt="">
+                                    <img src="<?=$IMG_URL?>/user/<?=$avatar?>" alt="">
                                 </div>
                                 <div class="detail">
                                     <div class="fullname"><?=$fullname?></div>
                                     <div class="username">@<?=$username?></div>
                                 </div>
                             </div>
-                            <div class="mark-btn">
-                                <i class="far fa-bookmark"></i>
-                                <i class="fas fa-bookmark"></i>
-                            </div>
+                            <a href="index.php?btn-delete&ques_id=<?=$value['ques_id']?>" class="delete-btn">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </div>
                         <div class="main-content">
-                            <a href="index.php?detail-ques" class="content">Thời gian tự học và học ở ngoài như thế nào?</a>
+                            <a href="index.php?detail-ques&ques_id=<?=$value['ques_id']?>" class="content"><?=$value['content']?></a>
                         </div>
                         <div class="list-tag">
                             <?php
                                 $list_tag = explode(', ', $value['tag']);
                                 foreach($list_tag as $tag_value){
+                                    if($tag_value != ''){
                             ?>
                                 <p class="tag"><?=$tag_value?></p>
                             <?php
+                                    }
                                 }
                             ?>
                         </div>
@@ -46,6 +63,9 @@
                                     $month = floor($date / 30);
                                     if($month > 0){
                                         echo "$month tháng trước";
+                                    }
+                                    else if($date == 0){
+                                        echo "Hôm nay";
                                     }
                                     else{
                                         echo "$date ngày trước";
@@ -58,6 +78,31 @@
                     }
                 ?>
             </div>
+        <?php 
+            }
+            else{
+        ?>
+        <div class="blogs__list-error">
+            <div class="img">
+                <img src="<?=$IMG_URL?>/else/cat-sleep2.jpg" alt="">
+            </div>
+            <p>Chưa có câu hỏi nào được đăng.</p>
+        </div>
+        <?php
+            }
+        ?>
+
+        <script>
+            <?php 
+                    if(strlen($MESSAGE) > 0){
+                ?>
+                    setTimeout(() => {
+                        document.querySelector('.message').style.display = 'none'
+                    }, 3000)
+                <?php
+                    }
+                ?>
+        </script>
         </div>
         <?php
             if(isset($_SESSION['user'])){
@@ -67,18 +112,17 @@
                 <form action="index.php" class="ask__add-form" method="POST">
                     <textarea cols="30" rows="10" placeholder="Viết câu hỏi của bạn" name="content"></textarea>
                     <div class="list-tag">
-                        <div class="tag">
-                            <input type="checkbox" name="tag[]" id="tag1" value="1">
-                            <label for="tag1">Tag</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" name="tag[]" id="tag2" value="2">
-                            <label for="tag2">Tag</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" name="tag[]" id="tag3" value="3">
-                            <label for="tag3">Tag</label>
-                        </div>
+                        <?php
+                            $list_tag = cate_select_all();
+                            foreach($list_tag as $key => $value){
+                        ?>
+                            <div class="tag">
+                                <input type="checkbox" name="tag[]" id="tag<?=$value['cate_id']?>" value="<?=$value['cate_name']?>">
+                                <label for="tag<?=$value['cate_id']?>"><?=$value['cate_name']?></label>
+                            </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <input type="submit" class="send-btn" value="Gửi" name="btn-insert">
                 </form>

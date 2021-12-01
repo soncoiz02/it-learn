@@ -11,7 +11,7 @@
                 <div class="top">
                     <div class="user">
                         <div class="avt">
-                            <img src="" alt="">
+                            <img src="<?=$IMG_URL?>/user/<?=$avatar?>" alt="">
                         </div>
                         <div class="detail">
                             <div class="fullname"><?=$fullname?></div>
@@ -45,11 +45,12 @@
                     ?>
                         <div class="comment-form">
                             <div class="avt-user">
-                                <img src="" alt="">
+                                <img src="<?=$IMG_URL?>/user/<?=$_SESSION['user']['avatar']?>" alt="">
                             </div>
-                            <form action="" class="form">
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Suy nghĩ của bạn về bài viết?"></textarea>
-                                <input type="submit" value="Gửi">
+                            <form action="index.php" class="form">
+                                <input type="text" placeholder="Suy nghĩ của bạn về bài viết?" name="content" />
+                                <input type="hidden" name="blog_id" value="<?=$blog_id?>">
+                                <input type="submit" value="Gửi" name="btn-comment">
                             </form>
                         </div>
                     <?php
@@ -58,7 +59,7 @@
                     <h2>Nhận xét về bài viết</h2>
                     <div class="comment-list">
                         <?php
-                            if(count($user_comment) > 0){
+                            if(count($list_comment) > 0){
                             foreach($list_comment as $key => $value){
                                 $user_comment = user_select_by_id($value['username']);
                                 extract($user_comment);

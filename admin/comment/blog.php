@@ -13,17 +13,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>ASYNC/AWAIT Javascript</td>
-                        <td>soncoiz02</td>
-                        <td>120</td>
-                        <td>31-07-2002</td>
-                        <td class="detail">
-                            <a href="">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                        foreach($list_comment_blog as $key => $value){
+                            $user = user_select_by_id($value['username']);
+                            extract($user);
+                    ?>
+                        <tr>
+                            <td><?=$value['title']?></td>
+                            <td><?=$username?> (<?=$fullname?>)</td>
+                            <td><?=blog_count_comment($value['blog_id'])?></td>
+                            <td><?=$value['date']?></td>
+                            <td class="detail">
+                                <a href="">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
             <div class="pagination">

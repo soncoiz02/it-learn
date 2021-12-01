@@ -4,6 +4,7 @@
     require '../../DAO/lesson.php';
     require '../../DAO/quiz.php';
     require '../../DAO/comment.php';
+    require '../../DAO/user.php';
     extract($_REQUEST);
     if(exist_param('btn-list')){
         $courses_front = course_select_by_cate(1);
@@ -23,7 +24,9 @@
     else if(exist_param("lesson")){
         $list_lesson = lesson_select_by_course($id);
         $course_detail = course_select_by_id($id);
+        $user = $_SESSION['user'];
         extract($course_detail);
+        extract($user);
         $VIEW_NAME = 'course/lesson.php';
     }
     else if(exist_param("first-lesson")){
@@ -31,10 +34,44 @@
         $list_lesson = lesson_select_by_course($id);
         $course_detail = course_select_by_id($id);
         $user = $_SESSION['user'];
-        $list_comment = comment_lesson_select_all();
         extract($course_detail);
         extract($first_lesson);
         extract($user);
+        $VIEW_NAME = 'course/lesson.php';
+    }
+    else if(exist_param("lesson-comment")){
+        try {
+            comment_lesson_insert($_SESSION['user']['username'], $lesson_id, $cmt_content);
+            unset($cmt_content);
+            $list_lesson = lesson_select_by_course($id);
+            $course_detail = course_select_by_id($id);
+            $user = $_SESSION['user'];
+            extract($course_detail);
+            extract($user);
+        } catch (PDOException $th) {
+            echo "Lỗi";
+        }
+        $VIEW_NAME = 'course/lesson.php';
+    }
+    else if(exist_param("quizz")){
+        $detail_quizz = quiz_select_by_id($id);
+        extract($detail_quizz);
+        $VIEW_NAME = 'course/quizz.php';
+    }
+    else if(exist_param("course-sign")){
+        $today = date('Y-m-d');
+        $user = $_SESSION['user'];
+        extract($user);
+        try {
+            course_sign($username, $course_id, $today);
+            $first_lesson = lesson_select_first($course_id);
+            $list_lesson = lesson_select_by_course($course_id);
+            $course_detail = course_select_by_id($course_id);
+            extract($course_detail);
+            extract($first_lesson);
+        } catch (PDOException $th) {
+            //throw $th;
+        }
         $VIEW_NAME = 'course/lesson.php';
     }
     require '../layout.php';

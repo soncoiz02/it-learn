@@ -6,16 +6,15 @@
                     <?php
                         $lesson_detail = lesson_select_by_id($lesson_id);
                         extract($lesson_detail);
-                        if($vid_id != ''){
-                            $link = video_select_by_id($vid_id);
+                        if($link_video != ''){
                     ?>
                         <div class="video">
-                            <iframe src="<?=str_replace('watch', 'embed', $link['vid_link'])?>" frameborder="0" >
+                            <iframe src="<?=str_replace('watch?v=', 'embed/', $link_video)?>" frameborder="0" >
                             </iframe>
                         </div>
                     <?php
                         }
-                        if($doc_id != ''){
+                        if($document != ''){
                     ?>
                         <div class="document"></div>
                     <?php
@@ -25,23 +24,26 @@
                 <div class="comment">
                     <h2>Thảo luận</h2>
                     <div class="comment-form">
-                        <div class="user">
+                        <div class="user-avt">
                             <div class="avt">
                                 <img src="<?=$IMG_URL?>/user/<?=$avatar?>" alt="">
                             </div>
                         </div>
-                        <form action="" class="form">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Bạn có thắc mắc gì trong bài học này ?"></textarea>
-                            <input type="submit" value="Gửi">
+                        <form action="index.php" class="form" method="POST">
+                            <textarea name="cmt_content" id="" cols="30" rows="10" placeholder="Bạn có thắc mắc gì trong bài học này ?"></textarea>
+                            <input type="hidden" value="<?=$course_id?>" name="id">
+                            <input type="hidden" value="<?=$lesson_id?>" name="lesson_id">
+                            <input type="submit" value="Gửi" name="lesson-comment">
                         </form>
                     </div>
                     <?php
+                            $list_comment = comment_lesson_select_by_lesson($lesson_id);
                         if(count($list_comment) > 0){
                     ?>
                         <div class="comment-list">
                             <?php
-                                foreach($list_comment as $key => $value){
-                                    $cmt_user = user_select_by_id($value['username']);
+                                foreach($list_comment as $cmt_key => $cmt_value){
+                                    $cmt_user = user_select_by_id($cmt_value['username']);
                             ?>
                                 <div class="item">
                                     <div class="avt">
@@ -49,7 +51,7 @@
                                     </div>
                                     <div class="detail">
                                         <div class="fullname"><?=$cmt_user['fullname']?></div>
-                                        <p class="content"><?=$value['content']?></p>
+                                        <p class="content"><?=$cmt_value['content']?></p>
                                     </div>
                                 </div>
                             <?php
@@ -79,19 +81,19 @@
                             if($key == 0){
                     ?>
                         <div class="lesson unlock <?php 
-                            if(isset($les_id)){
-                                if($les_id == $value['lesson_id']){
+                            if(isset($lesson_id)){
+                                if($lesson_id == $value['lesson_id']){
                                     echo 'active';
                                 }
                                 else{
                                     echo '';
                                 }
                             }
-                            elseif(isset($first_lesson)){
+                            else if(isset($first_lesson)){
                                 echo 'active';
                             }
                         ?>">
-                            <a href="index.php?lesson&les_id=<?=$value['lesson_id']?>&id=<?=$course_id?>" class="lesson-title">
+                            <a href="index.php?lesson&lesson_id=<?=$value['lesson_id']?>&id=<?=$course_id?>" class="lesson-title">
                                 <?=($key + 1).'. '.$value['title']?>
                                 <span>
                                     <i class="fas fa-play-circle"></i>
@@ -106,7 +108,16 @@
                                     <?php
                                         foreach($quiz as $key => $value){
                                     ?> 
-                                        <a href="index.php?quizz&quiz_id=<?=$value['quiz_id']?>" class="num-quiz"><?=$key?></a>
+                                        <a href="index.php?quizz&id=<?=$value['quiz_id']?>&les_id=<?=$value['lesson_id']?>&course_id=<?=$course_id?>" class="num-quiz 
+                                        <?php 
+                                            $user_poin = select_user_poin($username, $value['quiz_id']);
+                                            if($user_poin['poin'] == 10){
+                                                echo 'done';
+                                            }
+                                            else{
+                                                echo '';
+                                            }
+                                        ?>"><?=$key + 1?></a>
                                     <?php
                                         }
                                     ?>
@@ -116,20 +127,33 @@
                         </div>
                     <?php
                         }
-                        else{
+                        else if($key > 0){
                     ?>
                         <div class="lesson <?php 
-                            if(isset($les_id)){
-                                if($les_id == $value['lesson_id']){
-                                    echo 'active';
+                            if(isset($lesson_id)){
+                                if($lesson_id == $value['lesson_id']){
+                                    echo 'active ';
                                 }
                                 else{
                                     echo '';
                                 }
+                                $prev_lesson_id = $list_lesson[($key - 1)]['lesson_id'];
+                                $list_qizz = quiz_select_by_lesson($prev_lesson_id);
+                                $total = [];
+                                foreach($list_qizz as $quiz_key => $quiz_value){
+                                    $user_poin = select_user_poin($username, $quiz_value['quiz_id']);
+                                    if($user_poin){
+                                        array_push($total, $user_poin['poin']);
+                                    }
+                                }
+                                $sum = array_sum($total);
+                                if($sum / 10 == count($list_qizz)){
+                                    echo 'unlock ';
+                                }
                             }
                         ?>">
-                            <a href="index.php?lesson&les_id=<?=$value['lesson_id']?>&id=<?=$course_id?>" class="lesson-title">
-                                <?=($key + 1).'. '.$value['title']?>
+                            <a href="index.php?lesson&lesson_id=<?=$value['lesson_id']?>&id=<?=$course_id?>" class="lesson-title">
+                                <?=($key + 1). '. '. $value['title']?>
                                 <span>
                                     <i class="fas fa-play-circle"></i>
                                     <i class="fas fa-lock"></i>
@@ -143,7 +167,7 @@
                                 <?php
                                     foreach($quiz as $key => $value){
                                 ?> 
-                                    <a href="index.php?quizz&quiz_id=<?=$value['quiz_id']?>" class="num-quiz"><?=$key?></a>
+                                    <a href="index.php?quizz&id=<?=$value['quiz_id']?>" class="num-quiz"><?=$key + 1?></a>
                                 <?php
                                     }
                                 ?>
