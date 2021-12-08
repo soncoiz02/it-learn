@@ -5,6 +5,7 @@
     require '../../DAO/lesson.php';
 
     extract($_REQUEST);
+    check_login();
     if(exist_param("btn-list")){
         $list_course = course_select_all();
         $VIEW_NAME = "course/list.php";
@@ -83,8 +84,10 @@
         $VIEW_NAME = 'course/detail.php';
     }
     else if(exist_param("btn-insert-lesson")){
+        $file_name = save_file("doc_file", "$DOCUMENT_DIR/");
+        $file = strlen(strval($file_name)) > 0 ? $file_name : '';
         try {
-            lesson_insert($lesson_id, $course_id, $title, isset($doc_id) ? $doc_id : null, isset($vid_id) ? $vid_id : null);
+            lesson_insert($lesson_id, $course_id, $title, $file, $vid_link);
             $MESSAGE = "Thêm bài học thành công";
             $type = 'success';
         } catch (PDOException $e) {
@@ -98,19 +101,42 @@
         
         $VIEW_NAME = "course/addlesson.php";
     }
+    else if(exist_param("update-lesson")){
+        $detail_lesson = lesson_select_by_id($lesson_id);
+        extract($detail_lesson);
+        $course_detail = course_select_by_id($course_id);
+        extract($course_detail);
+        $VIEW_NAME = 'updatelesson.php';
+    }
+    else if(exist_param('btn-update-lesson')){
+        $file_name = save_file("doc_file", "$DOCUMENT_DIR/");
+        $file = strlen(strval($file_name)) > 0 ? $file_name : $current_file;
+        try {
+            lesson_update($lesson_id, $course_id, $title, $vid_link, $file);
+            unset($title, $vid_link, $doc_file);
+            $detail_lesson = lesson_select_by_id($lesson_id);
+            extract($detail_lesson);
+            $course_detail = course_select_by_id($course_id);
+            extract($course_detail);
+            $MESSAGE = 'Cập nhật thành công';
+            $type = 'success';
+        } catch (PDOException $th) {
+            $MESSAGE = 'Cập nhật thất bại';
+            $type = 'fail';
+        }
+        $VIEW_NAME = 'updatelesson.php';
+    }
     else if(exist_param('delete-lesson')){
         try {
             lesson_delete($less_id);
             $MESSAGE = "Xóa bài học thành công";
             $type = 'success';
-            $detail_course = course_select_by_id($course_id);
-            $list_lesson = lesson_select_by_course($course_id);
-            extract($detail_course);
+            $list_course = course_select_all();
         } catch (PDOException $e) {
             $MESSAGE = "Xóa bài học thất bại";
             $type = 'fail';
         }
-        $VIEW_NAME = 'course/detail.php';
+        $VIEW_NAME = 'course/lesson.php';
     }
     require '../layout.php';
 ?>

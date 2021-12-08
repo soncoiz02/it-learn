@@ -7,8 +7,8 @@
                         if(isset($_SESSION['user'])){
                         $user = $_SESSION['user'];
                     ?>
-                        <li class="blogs__list-nav-link active"><a href="">Bài viết của bạn</a></li>
-                        <li class="blogs__list-nav-link"><a href="index.php?blog-saved">Bài viết đã lưu</a></li>
+                        <li class="blogs__list-nav-link"><a href="index.php?my-blog">Bài viết của bạn</a></li>
+                        <li class="blogs__list-nav-link active"><a href="">Bài viết đã lưu</a></li>
                     <?php
                         }
                     ?>
@@ -49,9 +49,6 @@
                                             <div class="username">@<?=$username?></div>
                                         </div>
                                     </div>
-                                    <a href="index.php?delete-blog&blog_id=<?=$value['blog_id']?>" class="delete-btn" onclick="return confirm('Bạn thực sự muốn xóa bài viết này?')">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
                                 </div>
                                 <div class="main-content">
                                     <div class="blog-content">
@@ -104,7 +101,7 @@
                     <div class="img">
                         <img src="<?=$IMG_URL?>/else/cat-sleep.jpg" alt="">
                     </div>
-                    <p>Chưa có bài viết nào được đăng.</p>
+                    <p>Chưa có bài viết nào được lưu.</p>
                 </div>
             <?php
                 }

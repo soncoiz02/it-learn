@@ -1,10 +1,13 @@
 .admin__tag {
   position: relative;
   width: 100%;
+  padding: 30px;
   .container {
     display: flex;
     padding: 50px 30px;
     flex-direction: column;
+    border-radius: 10px;
+    background: white;
     h2 {
       font-size: 30px;
       color: #0c549c;
@@ -97,13 +100,14 @@
       position: relative;
       width: 100%;
       background: white;
-      border-radius: 15px;
       border-collapse: collapse;
+      border: none;
+      border-radius: 5px;
       overflow: hidden;
 
       thead {
         tr {
-          background: linear-gradient(to right, #4d89c7, #27d0c8);
+          background: $linner-blue;
         }
         th {
           color: white;
@@ -114,9 +118,14 @@
         }
       }
       tbody {
+        tr {
+          &:hover {
+            background: #e0f3ff;
+          }
+        }
         td {
+          border: 0.5px solid rgba(0, 0, 0, 0.2);
           font-size: 16px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
           text-align: center;
           padding: 10px;
         }

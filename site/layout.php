@@ -19,7 +19,7 @@
         <div class="container">
             <div class="header__logo">
                 <a href="<?=$ROOT_URL?>" class="header__logo-img">
-                    <img src="" alt="">
+                    <img src="<?=$IMG_URL?>/else/logo.png" alt="">
                 </a>
                 <div class="header__logo-text">
                     <p>ITLearn</p>
@@ -131,15 +131,37 @@
             ?>
         </section>
     </main>
-    <!-- <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer__top">
-                <div class="footer__top-logo">
-                    <img src="" alt="">
+                <div class="col-1">
+                    <div class="footer__top-logo">
+                        <div class="img">
+                            <img src="<?=$IMG_URL?>/else/logo.png" alt="">
+                        </div>
+                        <div class="text">
+                            ITLearn
+                        </div>
+                    </div>
+                    <div class="footer__top-text">
+                        Học lập trình cho người mới bắt đầu
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="footer__top-media">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <div class="footer__bottom">
+                ©Copyright by ITlearn 2021, All Right Reserved
+            </div>
         </div>
-    </footer> -->
+    </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../../js/site.js"></script>
 </body>

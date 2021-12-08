@@ -1,7 +1,7 @@
 <?php
     require_once 'pdo.php';
     function blog_select_all(){
-        $sql = 'SELECT * from blog';
+        $sql = 'SELECT * from blog group by blog_id desc';
         return pdo_query($sql);
     }
 
@@ -37,4 +37,68 @@
         return pdo_query_value($sql, $blog_id);
     }
 
+    function blog_count_like($blog_id){
+        $sql = "SELECT count(username) from blog_liked where blog_id=?";
+        return pdo_query_value($sql, $blog_id);
+    }
+
+    function blog_liked($username, $blog_id){
+        $sql = "INSERT into blog_liked(blog_id, username) values(?,?)";
+        pdo_execute($sql, $blog_id, $username);
+    }
+
+    function blog_liked_delete($username, $blog_id){
+        $sql = 'DELETE from blog_liked where username=? and blog_id=?';
+        pdo_execute($sql, $username, $blog_id);
+    }
+
+    function blog_liked_exist_user($username, $blog_id){
+        $sql = 'SELECT count(*) from blog_liked where username=? and blog_id=?';
+        return pdo_query_value($sql, $username, $blog_id);
+    }
+
+    function blog_saved($username, $blog_id){
+        $sql = 'INSERT into blog_saved(blog_id, username) values(?,?)';
+        pdo_execute($sql, $blog_id, $username);
+    }
+
+    function blog_saved_delete($username, $blog_id){
+        $sql = 'DELETE from blog_saved where username=? and blog_id=?';
+        pdo_execute($sql, $username, $blog_id);
+    }
+
+    function blog_saved_exist_user($username, $blog_id){
+        $sql = 'SELECT count(*) from blog_saved where username=? and blog_id=?';
+        return pdo_query_value($sql, $username, $blog_id);
+    }
+    
+    function blog_saved_select($username){
+        $sql = 'SELECT * from blog join blog_saved on blog.blog_id = blog_saved.blog_id where blog_saved.username = ?';
+        return pdo_query($sql, $username);
+    }
+
+    function blog_select_top10(){
+        $sql = 'SELECT blog.blog_id, blog.title, blog.username, blog.avatar, blog.date FROM `blog` JOIN blog_liked ON blog.blog_id = blog_liked.blog_id GROUP BY blog.blog_id ORDER BY COUNT(blog_liked.username) DESC LIMIT 0, 10';
+        return pdo_query($sql);
+    }
+
+    function blog_count_by_cate($cate_name){
+        $sql = "SELECT count(*) from blog where cate_id like '%$cate_name%' ";
+        return pdo_query_value($sql);
+    }
+
+    function select_lastest_blog($today, $day_ago){
+        $sql = 'SELECT * from blog where date between ? and ?';
+        return pdo_query($sql, $day_ago, $today);
+    }
+
+    function count_blog_today($today){
+        $sql = 'SELECT count(*) from blog where date=?';
+        return pdo_query_value($sql, $today);
+    }
+
+    function count_total_blog(){
+        $sql = "SELECT count(*) from blog";
+        return pdo_query_value($sql);
+    }
 ?>

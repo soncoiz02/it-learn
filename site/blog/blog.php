@@ -8,7 +8,7 @@
                         $user = $_SESSION['user'];
                     ?>
                         <li class="blogs__list-nav-link"><a href="index.php?my-blog">Bài viết của bạn</a></li>
-                        <li class="blogs__list-nav-link"><a href="">Bài viết đã lưu</a></li>
+                        <li class="blogs__list-nav-link"><a href="index.php?blog-saved">Bài viết đã lưu</a></li>
                     <?php
                         }
                     ?>

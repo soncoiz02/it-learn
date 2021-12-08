@@ -4,6 +4,7 @@
     require '../../DAO/question.php';
 
     extract($_REQUEST);
+    check_login();
     if(exist_param("list-ques")){
         $list_ques = question_select_all();
         $VIEW_NAME = 'question/list.php';

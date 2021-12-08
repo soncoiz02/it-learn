@@ -18,6 +18,7 @@
     if(exist_param('btn-insert')){
         $file_name = save_file("avatar", "$IMAGE_DIR/user/");
         $avt = $file_name ? $file_name : "user.png";
+        $today = date('Y-m-d');
         if($username != '' && $fullname != '' && $password1 != '' && $password2 != '' && $email != ''){
             if(user_exist($username) > 0){
                 $MESSAGE = 'Tên đăng nhập đã tồn tại';
@@ -27,7 +28,7 @@
             }
             else{
                 try {
-                    user_insert($username, md5($password1), $fullname,$avt, $email, '');
+                    user_insert($username, md5($password1), $fullname,$avt, $email, '', $today);
                     unset($username, $password1, $email, $fullname, $avt, $position);
                     header("Location: $SITE_URL/login");
                 } catch (Exception $exc) {

@@ -167,7 +167,15 @@
                                 <?php
                                     foreach($quiz as $key => $value){
                                 ?> 
-                                    <a href="index.php?quizz&id=<?=$value['quiz_id']?>" class="num-quiz"><?=$key + 1?></a>
+                                    <a href="index.php?quizz&id=<?=$value['quiz_id']?>&les_id=<?=$value['lesson_id']?>&course_id=<?=$course_id?>" class="num-quiz <?php 
+                                            $user_poin = select_user_poin($username, $value['quiz_id']);
+                                            if($user_poin['poin'] == 10){
+                                                echo 'done';
+                                            }
+                                            else{
+                                                echo '';
+                                            }
+                                        ?>"><?=$key + 1?></a>
                                 <?php
                                     }
                                 ?>

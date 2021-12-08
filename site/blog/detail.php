@@ -20,17 +20,43 @@
                     </div>
                     <div class="list-icon">
                         <div class="icon">
-                            <a href="" class="heart">
-                                <i class="fas fa-heart"></i>
-                                <i class="far fa-heart"></i>
-                            </a>
-                            <?=$like_num?>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                            ?>
+                                <a href="index.php?btn-like&blog_id=<?=$blog_id?>" class="heart <?=blog_liked_exist_user($_SESSION['user']['username'], $blog_id) > 0 ? 'active' : ''?>">
+                                    <i class="fas fa-heart"></i>
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            <?php
+                                }
+                                else{
+                            ?>
+                                <a href="" class="heart">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            <?php
+                                }
+                            ?>
+                            <?=blog_count_like($blog_id)?>
                         </div>
                         <div class="icon">
-                            <a href="" class="bookmark">
+                            <?php
+                                if(isset($_SESSION['user'])){
+                            ?>
+                            <a href="index.php?btn-saved&blog_id=<?=$blog_id?>" class="bookmark <?=blog_saved_exist_user($_SESSION['user']['username'], $blog_id) > 0 ? 'active' : ''?>">
                                 <i class="fas fa-bookmark"></i>
                                 <i class="far fa-bookmark"></i>
                             </a>
+                            <?php
+                                }
+                                else{
+                            ?>
+                            <a href="" class="bookmark">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                            <?php
+                                }
+                            ?>
                         </div>
                         <div class="icon">
                             <a href="" class="share">

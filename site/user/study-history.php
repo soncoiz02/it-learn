@@ -14,8 +14,10 @@
                             <img src="<?=$IMG_URL?>/course/<?=$value['course_img']?>" alt="">
                         </div>
                         <div class="detail">
-                            <p class="name"><?=$value['course_name']?></p>
-                            <p class="status">Trạng thái: <span>Đang học</span></p>
+                        <a href="<?=$SITE_URL?>/course/?first-lesson&id=<?=$value['course_id']?>" class="name">
+                            <?=$value['course_name']?>
+                        </a>
+                        <p class="status">Trạng thái: <span>Đang học</span></p>
                         </div>
                         <div class="progress">
                             Tiến trình: 

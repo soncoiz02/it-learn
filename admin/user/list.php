@@ -10,6 +10,7 @@
                         <th>Email</th>
                         <th>Ảnh đại diện</th>
                         <th>Phân quyền</th>
+                        <th>Chi tiết</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
@@ -27,9 +28,12 @@
                                 <img src="<?=$IMG_URL?>/user/<?=$value['avatar']?>" alt="">
                             </div>
                         </td>
-                        <td><?=$value['position'] = 1 ? 'Quản trị' : 'Học viên'?></td>
+                        <td><?=$value['position'] == 1 ? 'Quản trị' : 'Người dùng'?></td>
+                        <td>
+                            <a href="index.php?detail-user&user_id=<?=$value['username']?>"><i class="fas fa-eye"></i></a>
+                        </td>
                         <td class="update">
-                            <a href="">
+                            <a href="index.php?update-user&user_id=<?=$value['username']?>">
                                 <i class="fas fa-tools"></i>
                             </a>
                         </td>

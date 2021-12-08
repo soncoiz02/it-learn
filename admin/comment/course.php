@@ -20,7 +20,7 @@
                             <td><?=$value['title']?></td>
                             <td><?=$value['total']?></td>
                             <td class="detail">
-                                <a href="">
+                                <a href="index.php?detail-lesson&lesson_id=<?=$value['lesson_id']?>">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>

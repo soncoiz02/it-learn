@@ -2,6 +2,7 @@
     require_once '../../global.php';
     require '../../DAO/cate.php';
     extract($_REQUEST);
+    check_login();
     if(exist_param("btn-list")){
         $list_cate = cate_select_all();
         $VIEW_NAME = "tag/list.php";

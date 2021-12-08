@@ -9,11 +9,16 @@ function lesson_select_by_course($course_id)
 
 // Thêm mới
 
-function lesson_insert($lesson_id, $course_id, $title, $doc_id, $video_id)
+function lesson_insert($lesson_id, $course_id, $title, $doc_file, $vid_link)
 {
-    $sql = "INSERT INTO lesson(lesson_id,course_id,title,doc_id,vid_id) VALUES(?,?,?,?,?)"; 
+    $sql = "INSERT INTO lesson(lesson_id,course_id,title,document,link_video) VALUES(?,?,?,?,?)"; 
     // gọi lại hàm thực thi, tương tác dữ liệu
-    pdo_execute($sql, $lesson_id, $course_id, $title, $doc_id, $video_id);
+    pdo_execute($sql, $lesson_id, $course_id, $title, $doc_file, $vid_link);
+}
+
+function lesson_update($lesson_id, $course_id, $title, $link_vid, $doc_file){
+    $sql = 'UPDATE lesson set course_id=?, title=?, link_video=?, document=? where lesson_id=?';
+    pdo_execute($sql, $course_id, $title, $link_vid, $doc_file, $lesson_id); 
 }
 
 function lesson_count($id){
@@ -44,4 +49,9 @@ function lesson_select_by_id($id){
 function lesson_select_first($course_id){
     $sql = "SELECT * from lesson where course_id=? group by lesson_id limit 0, 1";
     return pdo_query_one($sql, $course_id);
+}
+
+function lesson_select_all(){
+    $sql = 'SELECT * from lesson';
+    return pdo_query($sql);
 }

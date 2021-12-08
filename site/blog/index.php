@@ -15,15 +15,16 @@
     else if(exist_param("detail-blog")){
         $detail_blog = blog_select_by_id($blog_id);
         $list_comment = blog_select_comment($blog_id);
-        $author = user_select_by_id($_SESSION['user']['username']);
         extract($detail_blog);
+        $author = user_select_by_id($username);
         extract($author);
         $VIEW_NAME = 'blog/detail.php';
     }
     else if(exist_param("btn-comment")){
         extract($_SESSION['user']);
+        $today = date('Y-m-d');
         try {
-            comment_blog_insert($username, $blog_id, $content);
+            comment_blog_insert($username, $blog_id, $content, $today);
             $detail_blog = blog_select_by_id($blog_id);
             $list_comment = blog_select_comment($blog_id);
             $author = user_select_by_id($username);
@@ -32,6 +33,60 @@
             extract($author);
         } catch (PDOException $th) {
             echo "Lỗi";
+        }
+        $VIEW_NAME = 'blog/detail.php';
+    }
+    else if(exist_param("btn-like")){
+        if(blog_liked_exist_user($_SESSION['user']['username'], $blog_id) == 0){
+            try {
+                blog_liked($_SESSION['user']['username'], $blog_id);
+                $detail_blog = blog_select_by_id($blog_id);
+                $list_comment = blog_select_comment($blog_id);
+                extract($detail_blog);
+                $author = user_select_by_id($username);
+                extract($author);
+            } catch (PDOException $th) {
+                //throw $th;
+            }
+        }
+        else {
+            try {
+                blog_liked_delete($_SESSION['user']['username'], $blog_id);
+                $detail_blog = blog_select_by_id($blog_id);
+                $list_comment = blog_select_comment($blog_id);
+                extract($detail_blog);
+                $author = user_select_by_id($username);
+                extract($author);
+            } catch (PDOException $th) {
+                //throw $th;
+            }
+        }
+        $VIEW_NAME = 'blog/detail.php';
+    }
+    else if(exist_param("btn-saved")){
+        if(blog_saved_exist_user($_SESSION['user']['username'], $blog_id) == 0){
+            try {
+                blog_saved($_SESSION['user']['username'], $blog_id);
+                $detail_blog = blog_select_by_id($blog_id);
+                $list_comment = blog_select_comment($blog_id);
+                extract($detail_blog);
+                $author = user_select_by_id($username);
+                extract($author);
+            } catch (PDOException $th) {
+                //throw $th;
+            }
+        }
+        else {
+            try {
+                blog_saved_delete($_SESSION['user']['username'], $blog_id);
+                $detail_blog = blog_select_by_id($blog_id);
+                $list_comment = blog_select_comment($blog_id);
+                extract($detail_blog);
+                $author = user_select_by_id($username);
+                extract($author);
+            } catch (PDOException $th) {
+                //throw $th;
+            }
         }
         $VIEW_NAME = 'blog/detail.php';
     }
@@ -75,6 +130,10 @@
            $type = 'fail';
         }
         $VIEW_NAME = 'blog/myblog.php';
+    }
+    else if(exist_param("blog-saved")){
+        $list_blog = blog_saved_select($_SESSION['user']['username']);
+        $VIEW_NAME = 'blog/blogsaved.php';
     }
 
     require '../layout.php';

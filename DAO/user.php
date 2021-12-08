@@ -23,9 +23,9 @@
         pdo_execute($sql5, $id);
     }
 
-    function user_insert($username, $password, $fullname, $avt, $email, $position) {
-        $sql = "INSERT into user(username, password, fullname, avatar, email, position) value(?, ?, ?, ?, ?, ?)";
-        pdo_execute($sql, $username, $password, $fullname, $avt, $email, $position);
+    function user_insert($username, $password, $fullname, $avt, $email, $position, $today) {
+        $sql = "INSERT into user(username, password, fullname, avatar, email, position, date_signed) value(?, ?, ?, ?, ?, ?, ?)";
+        pdo_execute($sql, $username, $password, $fullname, $avt, $email, $position, $today);
     } 
 
     function user_update($username, $fullname, $avt, $email, $position) {
@@ -56,5 +56,15 @@
     function exist_email($email){
         $sql = "SELECT count(*) from user where email=?";
         return pdo_query_value($sql, $email);
+    }
+
+    function count_user_today($today){
+        $sql = 'SELECT count(*) from user where date_signed=?';
+        return pdo_query_value($sql, $today);
+    }
+
+    function count_total_user(){
+        $sql = "SELECT count(*) from user";
+        return pdo_query_value($sql);
     }
 ?>

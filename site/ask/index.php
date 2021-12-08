@@ -45,8 +45,9 @@
     }
     else if(exist_param('btn-send-cmt')){
         extract($_SESSION['user']);
+        $today = date('Y-m-d');
         try {
-            comment_question_insert($username, $ques_id, $comment);
+            comment_question_insert($username, $ques_id, $comment, $today);
             $detail_ques = question_select_by_id($ques_id);
             extract($detail_ques);
             $number_ques = question_count_by_comment($ques_id);

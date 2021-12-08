@@ -89,108 +89,54 @@
             </h2>
             <div class="swiper swiper-blog">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide item">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="blog-name">Tên bài viết</a>
-                        <div class="bottom">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="" alt="">
+                    <?php
+                        foreach($list_blog as $key => $value){
+                            $author = user_select_by_id($value['username']);
+                    ?>
+                        <div class="swiper-slide item">
+                            <div class="img">
+                                <?php
+                                    if($value['avatar'] == ''){
+                                ?>
+                                    <img src="<?=$IMG_URL?>/else/cat-eat.jpg" alt="">
+                                <?php
+                                    }
+                                    else{
+                                ?>
+                                    <img src="<?=$IMG_URL?>/blog/<?=$value['avatar']?>" alt="">
+                                <?php
+                                    }
+                                ?>
+                            </div>
+                            <a href="<?=$SITE_URL?>/blog/?detail-blog&blog_id=<?=$value['blog_id']?>" class="blog-name"><?=$value['title']?></a>
+                            <div class="bottom">
+                                <div class="user">
+                                    <div class="avatar">
+                                        <img src="<?=$IMG_URL?>/user/<?=$author['avatar']?>" alt="">
+                                    </div>
+                                    <div class="fullname"><?=$author['fullname']?></div>
                                 </div>
-                                <div class="fullname">Fullname</div>
-                            </div>
-                            <div class="day-left">
-                                n ngày trước
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide item">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="blog-name">Tên bài viết</a>
-                        <div class="bottom">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="" alt="">
+                                <div class="day-left">
+                                    <?php
+                                        $today = date('Y-m-d');
+                                        $date = handle_date($today, $value['date']);
+                                        $month = floor($date / 30);
+                                        if($month > 0){
+                                            echo "$month tháng trước";
+                                        }
+                                        else if($date == 0){
+                                            echo "Hôm nay";
+                                        }
+                                        else{
+                                            echo "$date ngày trước";
+                                        }
+                                    ?>
                                 </div>
-                                <div class="fullname">Fullname</div>
-                            </div>
-                            <div class="day-left">
-                                n ngày trước
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide item">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="blog-name">Tên bài viết</a>
-                        <div class="bottom">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="fullname">Fullname</div>
-                            </div>
-                            <div class="day-left">
-                                n ngày trước
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide item">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="blog-name">Tên bài viết</a>
-                        <div class="bottom">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="fullname">Fullname</div>
-                            </div>
-                            <div class="day-left">
-                                n ngày trước
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide item">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="blog-name">Tên bài viết</a>
-                        <div class="bottom">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="fullname">Fullname</div>
-                            </div>
-                            <div class="day-left">
-                                n ngày trước
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide item">
-                        <div class="img">
-                            <img src="" alt="">
-                        </div>
-                        <a href="#" class="blog-name">Tên bài viết</a>
-                        <div class="bottom">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="fullname">Fullname</div>
-                            </div>
-                            <div class="day-left">
-                                n ngày trước
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <div class="swiper-scrollbar"></div>
             </div>

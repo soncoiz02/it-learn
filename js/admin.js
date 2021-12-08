@@ -29,6 +29,9 @@ const activeLink = () => {
     else if (path.includes('/itlearn/admin/comment/') == true) {
         listLink[6].classList.add('active')
     }
+    else if (path.includes('/itlearn/admin/quiz/') == true) {
+        listLink[7].classList.add('active')
+    }
 }
 
 const activeSideBar = () => {

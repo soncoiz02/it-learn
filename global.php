@@ -15,6 +15,7 @@
     */
 
     $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "$ROOT_URL/assets/img";
+    $DOCUMENT_DIR = $_SERVER["DOCUMENT_ROOT"] . "$ROOT_URL/assets/doc";
     $VIEW_NAME = "";
     $MESSAGE = "";
     $type = "";
@@ -90,7 +91,7 @@
             }
         }
         $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
-        header("location: $SITE_URL/account/sign-in.php");
+        header("location: $SITE_URL/login");
     }    
 
 ?>

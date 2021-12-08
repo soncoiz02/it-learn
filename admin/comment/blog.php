@@ -24,7 +24,7 @@
                             <td><?=blog_count_comment($value['blog_id'])?></td>
                             <td><?=$value['date']?></td>
                             <td class="detail">
-                                <a href="">
+                                <a href="index.php?detail-blog&blog_id=<?=$value['blog_id']?>">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>

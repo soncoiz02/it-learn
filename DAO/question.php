@@ -31,4 +31,24 @@
         $sql = "SELECT count(*) from question_comment where ques_id=?";
         return pdo_query_value($sql, $ques_id);
     }
+
+    function question_count_by_cate($cate_name){
+        $sql = "SELECT count(*) from question where tag like '%$cate_name%' ";
+        return pdo_query_value($sql);
+    }
+
+    function select_lastest_question($today, $day_ago){
+        $sql = 'SELECT * from question where date_ask between ? and ?';
+        return pdo_query($sql, $day_ago, $today);
+    }
+
+    function count_question_today($today){
+        $sql = 'SELECT count(*) from question where date_ask=?';
+        return pdo_query_value($sql, $today);
+    }
+
+    function count_total_question(){
+        $sql = "SELECT count(*) from question";
+        return pdo_query_value($sql);
+    }
 ?>

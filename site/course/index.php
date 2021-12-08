@@ -40,8 +40,9 @@
         $VIEW_NAME = 'course/lesson.php';
     }
     else if(exist_param("lesson-comment")){
+        $today = date("Y-m-d");
         try {
-            comment_lesson_insert($_SESSION['user']['username'], $lesson_id, $cmt_content);
+            comment_lesson_insert($_SESSION['user']['username'], $lesson_id, $cmt_content, $today);
             unset($cmt_content);
             $list_lesson = lesson_select_by_course($id);
             $course_detail = course_select_by_id($id);

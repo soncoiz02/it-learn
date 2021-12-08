@@ -4,7 +4,7 @@
     require '../../DAO/user.php';
 
     extract($_REQUEST);
-
+    check_login();
     if(exist_param("list-blog")){
         $list_blog = blog_select_all();
         $VIEW_NAME = 'blog/list.php';

@@ -5,7 +5,7 @@
     require '../../DAO/course.php';
     require '../../DAO/quiz.php';
     extract($_REQUEST);
-
+    check_login();
     if(exist_param("study-history")){
         extract($_SESSION['user']);
         $list_course = course_select_by_user($username);

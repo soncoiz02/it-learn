@@ -44,7 +44,7 @@
                                     ?>
                                 </div>
                             </td>
-                            <td><?=$value['like_num']?></td>
+                            <td><?=blog_count_like($value['blog_id'])?></td>
                             <td class="detail">
                                 <a href="index.php?detail-blog&blog_id=<?=$value['blog_id']?>">
                                     <i class="fas fa-eye"></i>
