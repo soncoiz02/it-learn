@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 01, 2021 lúc 03:39 PM
+-- Thời gian đã tạo: Th12 08, 2021 lúc 04:49 PM
 -- Phiên bản máy phục vụ: 10.4.19-MariaDB
 -- Phiên bản PHP: 8.0.7
 
@@ -34,7 +34,6 @@ CREATE TABLE `blog` (
   `content` text NOT NULL,
   `avatar` varchar(255) NOT NULL,
   `cate_id` varchar(255) NOT NULL,
-  `like_num` int(11) NOT NULL DEFAULT 0,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
@@ -42,9 +41,10 @@ CREATE TABLE `blog` (
 -- Đang đổ dữ liệu cho bảng `blog`
 --
 
-INSERT INTO `blog` (`blog_id`, `title`, `username`, `content`, `avatar`, `cate_id`, `like_num`, `date`) VALUES
-(4, 'Không biết nên viết tiêu đề là gì', 'soncoiz02', '<p>Nội dung để mai nghĩ rồi viết sau</p>\r\n', '', 'Web front end', 0, '2021-12-01'),
-(5, 'Bài viết mẫu', 'soncoiz02', '<p>Mai hết lười rồi viết sau</p>\r\n', '', 'Cơ bản, Javascript', 0, '2021-12-01');
+INSERT INTO `blog` (`blog_id`, `title`, `username`, `content`, `avatar`, `cate_id`, `date`) VALUES
+(7, 'Làm mẫu thôi', 'soncoiz02', '<p>Bao giờ hết lười rồi viết nội dung sau</p>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'Web front end, Cơ bản', '2021-12-07'),
+(8, 'Trung cute nhất', 'trungcute123', '<p>Trung cute v&ocirc; địch vũ trụ</p>\r\n', '', 'Cơ bản', '2021-12-07'),
+(9, 'Write somthing here', 'dungtml', '<p>A B C D E F G</p>\r\n', '', 'Cơ bản', '2021-12-07');
 
 -- --------------------------------------------------------
 
@@ -56,15 +56,32 @@ CREATE TABLE `blog_comment` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `blog_id` int(11) NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+-- --------------------------------------------------------
+
 --
--- Đang đổ dữ liệu cho bảng `blog_comment`
+-- Cấu trúc bảng cho bảng `blog_liked`
 --
 
-INSERT INTO `blog_comment` (`id`, `username`, `blog_id`, `content`) VALUES
-(6, 'soncoiz02', 4, 'Dậy viết đê');
+CREATE TABLE `blog_liked` (
+  `id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `blog_liked`
+--
+
+INSERT INTO `blog_liked` (`id`, `blog_id`, `username`) VALUES
+(11, 7, 'soncoiz02'),
+(12, 8, 'dungtml'),
+(13, 7, 'dungtml'),
+(14, 8, 'trungcute123'),
+(15, 9, 'trungcute123');
 
 -- --------------------------------------------------------
 
@@ -141,17 +158,9 @@ CREATE TABLE `course_comment` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `lesson_id` varchar(50) NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Đang đổ dữ liệu cho bảng `course_comment`
---
-
-INSERT INTO `course_comment` (`id`, `username`, `lesson_id`, `content`) VALUES
-(14, 'soncoiz02', 'A01', 'Bài học hay'),
-(15, 'soncoiz02', 'A01', 'bài học hay'),
-(16, 'soncoiz02', 'A02', 'Cũng hay đấy');
 
 -- --------------------------------------------------------
 
@@ -171,12 +180,13 @@ CREATE TABLE `course_signed` (
 --
 
 INSERT INTO `course_signed` (`id`, `username`, `course_id`, `date_signed`) VALUES
-(6, 'soncoiz02', 1, '2021-11-03'),
-(8, 'tamnguvcl', 1, '2021-11-18'),
-(9, 'soncoiz02', 2, '2021-11-11'),
-(10, 'trungngunhat', 2, '2021-11-19'),
-(11, 'soncoiz02', 4, '2021-12-01'),
-(13, 'soncoiz02', 3, '2021-12-01');
+(15, 'soncoiz02', 1, '2021-12-07'),
+(16, 'soncoiz02', 2, '2021-12-07'),
+(17, 'dungtml', 4, '2021-12-07'),
+(18, 'dungtml', 1, '2021-12-07'),
+(19, 'dungtml', 2, '2021-12-07'),
+(20, 'trungcute123', 2, '2021-12-07'),
+(21, 'trungcute123', 3, '2021-12-07');
 
 -- --------------------------------------------------------
 
@@ -229,7 +239,6 @@ INSERT INTO `lesson` (`lesson_id`, `course_id`, `title`, `document`, `link_video
 ('B08', 2, 'Fn.bind() method trong Javascript?', NULL, 'https://www.youtube.com/watch?v=6j9b2_E34JM'),
 ('B09', 2, 'Fn.call() method trong Javascript?', NULL, 'https://www.youtube.com/watch?v=QxLTSdTJDXY'),
 ('B10', 2, 'Fn.apply() method trong Javascript?', NULL, 'https://www.youtube.com/watch?v=a4FjX4Z-9Rs'),
-('bai1', 1, 'bai hoc 1', NULL, NULL),
 ('C01', 3, 'Lời khuyên trước khóa học Node Express', NULL, 'https://www.youtube.com/watch?v=z2f7RHgvddc'),
 ('C02', 3, 'Install NodeJS và express', NULL, 'https://www.youtube.com/watch?v=CcSuYLjKW3g'),
 ('C03', 3, 'Template engine (handlebars)', NULL, 'https://www.youtube.com/watch?v=lpbl2qQXbDo'),
@@ -262,15 +271,6 @@ CREATE TABLE `marks` (
   `poin` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
---
--- Đang đổ dữ liệu cho bảng `marks`
---
-
-INSERT INTO `marks` (`marks_id`, `username`, `quiz_id`, `poin`) VALUES
-(1, 'soncoiz02', '8', 10),
-(2, 'soncoiz02', '9', 10),
-(4, 'soncoiz02', '9', 10);
-
 -- --------------------------------------------------------
 
 --
@@ -290,8 +290,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`ques_id`, `username`, `tag`, `content`, `date_ask`) VALUES
-(19, 'soncoiz02', 'Web front end, Cơ bản', 'Mọi người hay bảo vào FPT Polytechnic là được phát ny mà sao em vẫn chưa được phát ?', '2021-12-01'),
-(20, 'soncoiz02', 'Back-end, Java, SQL', 'Bao nhiêu lâu thì bán được 1 tỷ gói mè?', '2021-12-01');
+(23, 'dungtml', 'Web front end', 'Bao nhiêu lâu thì bán được 1 tỷ gói mè ?', '2021-12-07');
 
 -- --------------------------------------------------------
 
@@ -303,17 +302,16 @@ CREATE TABLE `question_comment` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `ques_id` int(11) NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Đang đổ dữ liệu cho bảng `question_comment`
 --
 
-INSERT INTO `question_comment` (`id`, `username`, `ques_id`, `content`) VALUES
-(24, 'soncoiz02', 20, 'Em bán kem đánh răng'),
-(25, 'soncoiz02', 19, 'Tại vì em xấu :((('),
-(26, 'soncoiz02', 19, 'Who know ?');
+INSERT INTO `question_comment` (`id`, `username`, `ques_id`, `content`, `date`) VALUES
+(29, 'trungcute123', 23, 'Em bán kem đánh răng\r\n', '2021-12-07');
 
 -- --------------------------------------------------------
 
@@ -336,7 +334,7 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`quiz_id`, `lesson_id`, `question`, `answer_1`, `answer_2`, `answer_3`, `correct_answer`) VALUES
-('', 'A09', 'Cách nào đúng để khai báo function trong Javascript?', '\r\nfunction: myFunc() {}', 'function my Func = () => {}', 'function = myFunc() {}', 'function myFunc() {}'),
+('0', 'A09', 'Cách nào đúng để khai báo function trong Javascript?', '\r\nfunction: myFunc() {}', 'function my Func = () => {}', 'function = myFunc() {}', 'function myFunc() {}'),
 ('1', 'D01', 'HTML viết tắt của từ gì?', 'Hyper Text Makeup Language', 'Hyper Text Mardup Language', 'Hyper Text Madeup Language', 'Hyper Text Markup Language.'),
 ('10', 'A03', 'Có mấy cách dùng Javascript vào html?', '1', '3', '4', '2'),
 ('11', 'A03', 'Đâu là cách viết đúng Javascript trong Html?', '<script alert(\'test vb\')></script>', '<script> console.log<\\script>', '<link rel=\"stylesheet\" href=\"main.js\">', '<script src=\"main.js\"></script>'),
@@ -382,17 +380,18 @@ CREATE TABLE `user` (
   `fullname` varchar(50) NOT NULL,
   `avatar` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `position` bit(1) NOT NULL DEFAULT b'0'
+  `position` bit(1) NOT NULL DEFAULT b'0',
+  `date_signed` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`username`, `password`, `fullname`, `avatar`, `email`, `position`) VALUES
-('soncoiz02', '1a202ada5531c1550da0640e00862480', 'Trần Sơn', '426e2a60af73642d3d62.jpg', 'soncoiz3107@gmail.com', b'1'),
-('tamnguvcl', 'tamngu123', 'Tâm Minh', 'user.png', 'tamngu@gmail.com', b'0'),
-('trungngunhat', 'trungngu123', 'Kiên Trung', 'user.png', 'trungnguno1@gmail.com', b'0');
+INSERT INTO `user` (`username`, `password`, `fullname`, `avatar`, `email`, `position`, `date_signed`) VALUES
+('dungtml', 'd30ef5569a0a3f315e0b91b0a129ae9f', 'Lê Tiến Dũng', 'user.png', 'dungngu@gmail.com', b'0', '2021-12-07'),
+('soncoiz02', '1a202ada5531c1550da0640e00862480', 'Trần Bảo Sơn', '426e2a60af73642d3d62.jpg', 'soncoiz3107@gmail.com', b'1', '2021-12-07'),
+('trungcute123', '5923f33de279fed8e31358d923a53a29', 'Đỗ Kiên Trung', 'user.png', 'okiun113@gmail.com', b'0', '2021-12-07');
 
 -- --------------------------------------------------------
 
@@ -492,6 +491,14 @@ ALTER TABLE `blog_comment`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `blog_id` (`blog_id`) USING BTREE,
   ADD KEY `username` (`username`) USING BTREE;
+
+--
+-- Chỉ mục cho bảng `blog_liked`
+--
+ALTER TABLE `blog_liked`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blog_id` (`blog_id`),
+  ADD KEY `username` (`username`);
 
 --
 -- Chỉ mục cho bảng `blog_saved`
@@ -594,19 +601,25 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT cho bảng `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `blog_comment`
 --
 ALTER TABLE `blog_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `blog_liked`
+--
+ALTER TABLE `blog_liked`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `blog_saved`
 --
 ALTER TABLE `blog_saved`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `cate`
@@ -624,31 +637,31 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT cho bảng `course_comment`
 --
 ALTER TABLE `course_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `course_signed`
 --
 ALTER TABLE `course_signed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `question`
 --
 ALTER TABLE `question`
-  MODIFY `ques_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ques_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `question_comment`
 --
 ALTER TABLE `question_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -666,6 +679,13 @@ ALTER TABLE `blog`
 ALTER TABLE `blog_comment`
   ADD CONSTRAINT `blog_comment_ibfk_1` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`blog_id`),
   ADD CONSTRAINT `blog_comment_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
+
+--
+-- Các ràng buộc cho bảng `blog_liked`
+--
+ALTER TABLE `blog_liked`
+  ADD CONSTRAINT `blog_liked_ibfk_1` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`blog_id`),
+  ADD CONSTRAINT `blog_liked_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
 
 --
 -- Các ràng buộc cho bảng `blog_saved`
