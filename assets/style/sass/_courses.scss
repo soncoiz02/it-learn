@@ -256,6 +256,7 @@
       .frame {
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         .video {
@@ -265,6 +266,9 @@
             width: 100%;
             height: 100%;
           }
+        }
+        .btn-active {
+          display: none;
         }
       }
       .comment {
@@ -706,6 +710,150 @@
           }
           span {
             font-size: 12px;
+          }
+        }
+      }
+    }
+
+    &__detail {
+      .container {
+        padding: 15px;
+        flex-direction: column;
+        h1 {
+          font-size: 30px;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+      &-left {
+        width: 100%;
+        .dsc {
+          gap: 10px 0;
+          margin-bottom: 30px;
+          span {
+            font-size: 14px;
+          }
+        }
+        .content {
+          .list {
+            .item {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      &-right {
+        gap: 10px 0;
+        .img {
+          width: 100%;
+        }
+        .btn-sign {
+          padding: 10px 15px;
+          font-size: 14px;
+        }
+        .detail {
+          li {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    &__lesson {
+      .container {
+        position: relative;
+        padding: 15px;
+        min-height: 100vh;
+        gap: 30px 0;
+        overflow-x: hidden;
+      }
+      &-left {
+        width: 100%;
+        gap: 30px 0;
+        .frame {
+          .video {
+            height: 200px;
+          }
+          .btn-active {
+            display: block;
+            align-self: flex-start;
+            font-size: 14px;
+            color: $black;
+            margin-top: 10px;
+          }
+        }
+        .comment {
+          padding: 0;
+          h2 {
+            font-size: 22px;
+          }
+          &-form {
+            padding: 15px 0;
+            .user-avt {
+              .avt {
+                width: 40px;
+                height: 40px;
+              }
+            }
+            .form {
+              textarea {
+                width: calc(100% - 50px);
+                height: 40px;
+                padding: 5px 10px;
+                font-size: 12px;
+              }
+              input {
+                padding: 10px 15px;
+                font-size: 14px;
+              }
+            }
+          }
+          &-list {
+            gap: 15px 0;
+            .item {
+              .avt {
+                width: 30px;
+                height: 30px;
+              }
+              .detail {
+                gap: 0;
+                .fullname,
+                .content {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+      &-right {
+        position: absolute;
+        top: 0;
+        right: -100%;
+        transition: 0.5s;
+        width: 60%;
+        &.active {
+          right: 0;
+        }
+        h2 {
+          padding: 10px;
+          font-size: 22px;
+        }
+        .list-lesson {
+          .lesson {
+            .lesson-title {
+              padding: 10px;
+              font-size: 12px;
+            }
+            .quiz {
+              gap: 0 10px;
+              padding: 5px 10px;
+              .num-quiz {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+              }
+            }
           }
         }
       }

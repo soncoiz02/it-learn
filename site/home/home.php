@@ -3,21 +3,21 @@
         <div class="container">
             <div class="swiper swiper-banner">
                 <div class="swiper-wrapper">
-                    <!-- <div class="swiper-slide banner">
+                    <div class="swiper-slide banner">
                         <div class="home__banner-img">
                             <img src="<?=$IMG_URL?>/else/bg1.png" alt="">
                         </div>
-                    </div> -->
+                    </div>
+                    <div class="swiper-slide banner">
+                        <div class="home__banner-img">
+                            <img src="<?=$IMG_URL?>/else/bg2.png" alt="">
+                        </div>
+                    </div>
                     <div class="swiper-slide banner">
                         <div class="home__banner-img">
                             <img src="<?=$IMG_URL?>/else/bg2.jpg" alt="">
                         </div>
                     </div>
-                    <!-- <div class="swiper-slide banner">
-                        <div class="home__banner-img">
-                            <img src="" alt="">
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -182,8 +182,8 @@
                             </div>
                         </div>
                         <div class="case-right">
-                            <p class="case-title">Tự học với những tài liệu được gợi ý</p>
-                            <p class="detail">Hoàn thành các objective cho từng khóa học bằng cách học qua các tài liệu được gợi ý sẵn.</p>
+                            <p class="case-title">Thực hành với các bài tập</p>
+                            <p class="detail">Thực hành bằng cách hoàn thành các bài tập sau mỗi bài giảng giúp củng cố lại kiến thức.</p>
                         </div>
                     </div>
                     <div class="case" style="--i:3s">
@@ -193,8 +193,8 @@
                             </div>
                         </div>
                         <div class="case-right">
-                            <p class="case-title">Tự học với những tài liệu được gợi ý</p>
-                            <p class="detail">Hoàn thành các objective cho từng khóa học bằng cách học qua các tài liệu được gợi ý sẵn.</p>
+                            <p class="case-title">Làm dự án cá nhân</p>
+                            <p class="detail">Sau khi hoàn thành khóa học và các bài tập chúng ta có thể tự làm dự án riêng cho bản thân.</p>
                         </div>
                     </div>
                 </div>

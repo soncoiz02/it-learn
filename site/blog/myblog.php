@@ -49,9 +49,12 @@
                                             <div class="username">@<?=$username?></div>
                                         </div>
                                     </div>
-                                    <a href="index.php?delete-blog&blog_id=<?=$value['blog_id']?>" class="delete-btn" onclick="return confirm('Bạn thực sự muốn xóa bài viết này?')">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
+                                    <div class="btn">
+                                        <a href="index.php?update-blog&blog_id=<?=$value['blog_id']?>" class="update-btn"><i class="fas fa-tools"></i></a>
+                                        <a href="index.php?delete-blog&blog_id=<?=$value['blog_id']?>" class="delete-btn" onclick="return confirm('Bạn thực sự muốn xóa bài viết này?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="main-content">
                                     <div class="blog-content">

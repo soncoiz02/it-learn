@@ -48,7 +48,7 @@
             <div class="pagination">
                 <div class="list-btn">
                     <a href="index.php?quiz-list&page_no=<?=$_SESSION['page_no'] > 0 ? $_SESSION['page_no'] - 1 : $max_page?>" class="btn-prev"><i class="fas fa-backward"></i></a>
-                    <button disabled><?=$page_num + 1?></button>
+                    <button disabled><?=$page_num + 1 .'/'.$max_page?></button>
                     <a href="index.php?quiz-list&page_no=<?=$_SESSION['page_no'] < $max_page ? $_SESSION['page_no'] + 1 : 0?>" class="btn-next"><i class="fas fa-forward"></i></a>
                 </div>
             </div>

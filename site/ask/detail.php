@@ -3,8 +3,8 @@
         <div class="ask__detail">
             <div class="top">
                 <?php
-                    $user = $_SESSION['user'];
-                    extract($user);
+                    $author = user_select_by_id($username);
+                    extract($author);
                 ?>
                 <div class="user">
                     <div class="avt">
@@ -106,16 +106,3 @@
         ?>
     </div>
 </div>
-<script>
-    const activeBtn = document.querySelector('.active-btn')
-    const addForm = document.querySelector('.ask__add')
-    const prevBtn = document.querySelector('.prev-btn')
-    activeBtn.ontouchstart = () => {
-        addForm.classList.add('active')
-        activeBtn.style.display = 'none'
-    }
-    prevBtn.ontouchstart = () => {
-        addForm.classList.remove('active')
-        activeBtn.style.display = 'flex'
-    }
-</script>

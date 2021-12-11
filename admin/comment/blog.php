@@ -21,7 +21,7 @@
                         <tr>
                             <td><?=$value['title']?></td>
                             <td><?=$username?> (<?=$fullname?>)</td>
-                            <td><?=blog_count_comment($value['blog_id'])?></td>
+                            <td><?=$value['num']?></td>
                             <td><?=$value['date']?></td>
                             <td class="detail">
                                 <a href="index.php?detail-blog&blog_id=<?=$value['blog_id']?>">

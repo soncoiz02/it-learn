@@ -9,7 +9,7 @@
     extract($_REQUEST);
     check_login();
     if(exist_param("ask-list")){
-        $list_comment_question = question_select_all();
+        $list_comment_question = question_select_all_count();
         $VIEW_NAME = 'comment/ask.php';
     }
     else if(exist_param("detail-ask")){
@@ -34,7 +34,7 @@
         $VIEW_NAME = 'comment/detail.php';
     }
     else if(exist_param("blog-list")){
-        $list_comment_blog = blog_select_all();
+        $list_comment_blog = blog_select_all_count();
         $VIEW_NAME = 'comment/blog.php';
     }
     else if(exist_param("course-list")){

@@ -77,4 +77,9 @@
         $sql = 'INSERT into course_signed(username, course_id, date_signed) values(?, ?, ?)';
         pdo_execute($sql, $username, $course_id, $date);
     }
+
+    function course_search($key){
+        $sql = "SELECT * from course where course_name like '%$key%'";
+        return pdo_query($sql);
+    }
 ?>

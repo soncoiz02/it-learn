@@ -83,7 +83,7 @@
     function check_login(){
         global $SITE_URL;
         if(isset($_SESSION['user'])){
-            if($_SESSION['user']['vai_tro'] == 1){
+            if($_SESSION['user']['position'] == 1){
                 return;
             }
             if(strpos($_SERVER["REQUEST_URI"], '/admin/') == FALSE){

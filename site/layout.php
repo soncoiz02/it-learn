@@ -29,7 +29,7 @@
             <div class="header__search">
                 <form class="header__search-form">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Tìm kiếm khóa học, bài viết...">
+                    <input type="text" placeholder="Tìm kiếm khóa học, bài viết..." id="search-input">
                 </form>
                 <div class="btn-close">
                     <i class="fas fa-times"></i>
@@ -164,6 +164,19 @@
     </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../../js/site.js"></script>
+    <script>
+        const handleSearchForm = () => {
+        const searchForm = document.querySelector('.header__search-form')
+        const searchInput = document.querySelector('#search-input')
+
+        searchForm.addEventListener('submit',(e) => {
+            e.preventDefault()
+            let searchValue = searchInput.value.trim()
+            window.location.assign(`<?=$SITE_URL?>/search?search_key=${searchValue}`)
+            })
+        }
+        handleSearchForm()
+    </script>
 </body>
 
 </html>

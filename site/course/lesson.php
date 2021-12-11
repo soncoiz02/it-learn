@@ -20,6 +20,9 @@
                     <?php
                         }
                     ?>
+                    <div class="btn-active">
+                        <i class="fas fa-list"></i>
+                    </div>
                 </div>
                 <div class="comment">
                     <h2>Thảo luận</h2>
@@ -169,11 +172,13 @@
                                 ?> 
                                     <a href="index.php?quizz&id=<?=$value['quiz_id']?>&les_id=<?=$value['lesson_id']?>&course_id=<?=$course_id?>" class="num-quiz <?php 
                                             $user_poin = select_user_poin($username, $value['quiz_id']);
-                                            if($user_poin['poin'] == 10){
-                                                echo 'done';
-                                            }
-                                            else{
-                                                echo '';
+                                            if($user_poin){
+                                                if($user_poin['poin'] == 10){
+                                                    echo 'done';
+                                                }
+                                                else{
+                                                    echo '';
+                                                }
                                             }
                                         ?>"><?=$key + 1?></a>
                                 <?php
@@ -190,5 +195,12 @@
                 </div>
             </div>
         </div>
+        <script>
+            const activeBtn = document.querySelector('.btn-active')
+            const listLesson = document.querySelector('.courses__lesson-right')
+            activeBtn.onclick = () => {
+                listLesson.classList.toggle('active')
+            }
+        </script>
     </div>
 </div>

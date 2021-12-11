@@ -1,6 +1,7 @@
 <div class="blogs">
     <div class="blogs__detail">
         <div class="container">
+            <div class="btn-active"></div>
             <div class="blogs__detail-left">
                 <h1><?=$title?></h1>
                 <div class="content">
@@ -113,5 +114,13 @@
                 </div>
             </div>
         </div>
+        <script>
+            const btnActive = document.querySelector('.btn-active')
+            const detailPart = document.querySelector('.blogs__detail-right')
+            btnActive.onclick = () => {
+                btnActive.classList.toggle('active')
+                detailPart.classList.toggle('active')
+            }
+        </script>
     </div>
 </div>

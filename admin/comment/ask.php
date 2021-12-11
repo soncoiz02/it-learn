@@ -21,7 +21,7 @@
                         <tr>
                             <td><?=$value['content']?></td>
                             <td><?=$username?><span> (<?=$fullname?>)</span> </td>
-                            <td><?=question_count_by_comment($value['ques_id'])?></td>
+                            <td><?=$value['num']?></td>
                             <td><?=$value['date_ask']?></td>
                             <td class="detail">
                                 <a href="index.php?detail-ask&ques_id=<?=$value['ques_id']?>">

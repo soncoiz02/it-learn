@@ -85,13 +85,19 @@
                 }
             ?>
         </div>
+        <div class="active-btn">
+            <i class="fas fa-plus"></i>
+        </div>
         <?php
             if(isset($_SESSION['user'])){
         ?>
             <div class="ask__add">
+                <div class="prev-btn">
+                    <i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i>
+                </div>
                 <h2 class="ask__add-title">Đặt câu hỏi</h2>
                 <form action="index.php" class="ask__add-form" method="POST">
-                    <textarea cols="30" rows="10" placeholder="Viết câu hỏi của bạn" name="content"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Viết câu hỏi của bạn"></textarea>
                     <div class="list-tag">
                         <?php
                             $list_tag = cate_select_all();
@@ -105,7 +111,7 @@
                             }
                         ?>
                     </div>
-                    <input type="submit" class="send-btn" value="Gửi" name="btn-insert">
+                    <input type="submit" class="send-btn" value="Gửi">
                 </form>
             </div>
         <?php

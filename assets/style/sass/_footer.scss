@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  align-self: flex-end;
   .container {
     display: flex;
     flex-direction: column;
@@ -76,5 +77,41 @@
     padding: 5px 0;
     color: gray;
     border-top: 1px dotted rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    .container {
+      padding: 0 15px;
+    }
+    &__top {
+      padding: 5px;
+      &-logo {
+        .img {
+          width: 30px;
+          height: 30px;
+        }
+        .text {
+          font-size: 20px;
+        }
+      }
+      &-text {
+        font-size: 12px;
+      }
+      &-media {
+        ul {
+          gap: 0 5px;
+          li {
+            a {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+    &__bottom {
+      font-size: 10px;
+    }
   }
 }

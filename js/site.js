@@ -1,4 +1,5 @@
 const homePage = document.querySelector('.home')
+const questionPage = document.querySelector('.ask')
 
 const activeLink = () => {
     const listLink = document.querySelectorAll('.nav-link')
@@ -112,6 +113,20 @@ const activeMark = () => {
     }
 }
 
+const handleQuestionPage = () => {
+    const activeBtn = document.querySelector('.active-btn')
+    const addForm = document.querySelector('.ask__add')
+    const prevBtn = document.querySelector('.prev-btn')
+    activeBtn.ontouchstart = () => {
+        addForm.classList.add('active')
+        activeBtn.style.display = 'none'
+    }
+    prevBtn.ontouchstart = () => {
+        addForm.classList.remove('active')
+        activeBtn.style.display = 'flex'
+    }
+}
+
 activeLink()
 activeSideBar()
 activeMark()
@@ -119,3 +134,4 @@ if (homePage) {
     handleSwiper()
     showOnScroll()
 }
+if (questionPage) handleQuestionPage()

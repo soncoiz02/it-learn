@@ -99,16 +99,24 @@
         $today = date('Y-m-d');
         $file_name = save_file("blog_img", "$IMAGE_DIR/blog/");
         $img = strlen(strval($file_name)) > 0 ? $file_name : '';
-        $tag_string = implode(', ',$tag);
-        try {
-            blog_insert($title, $username, $blog_content, $img, $tag_string, $today);
-            unset($title, $username, $blog_content, $img, $tag_string);
-            $MESSAGE = "Đăng thành công";
-            $type = 'success';
+        if(isset($tag)){
+            $tag_string = implode(', ',$tag);
         }
-        catch (Exception $exc) {
-            $MESSAGE = "Đăng thất bại";
+        if($title == '' && $blog_content == ''){
+            $MESSAGE = 'Bài viết cần có tiêu đề và nội dung';
             $type = 'fail';
+        }
+        else{
+            try {
+                blog_insert($title, $username, $blog_content, $img, $tag_string, $today);
+                unset($title, $username, $blog_content, $img, $tag_string);
+                $MESSAGE = "Đăng thành công";
+                $type = 'success';
+            }
+            catch (Exception $exc) {
+                $MESSAGE = "Đăng thất bại";
+                $type = 'fail';
+            }
         }
         $list_cate = cate_select_all();
         $VIEW_NAME = 'blog/add.php';
@@ -130,6 +138,40 @@
            $type = 'fail';
         }
         $VIEW_NAME = 'blog/myblog.php';
+    }
+    else if(exist_param("update-blog")){
+        $detail_blog = blog_select_by_id($blog_id);
+        extract($detail_blog);
+        $list_cate = cate_select_all();
+        $VIEW_NAME = 'blog/edit.php';
+    }
+    else if(exist_param("btn-update")){
+        $today = date('Y-m-d');
+        $file_name = save_file("blog_img", "$IMAGE_DIR/blog/");
+        $img = strlen(strval($file_name)) > 0 ? $file_name : $current_img;
+        if(isset($tag)){
+            $tag_string = implode(', ',$tag);
+        }
+        if($title == '' && $blog_content == ''){
+            $MESSAGE = 'Bài viết cần có tiêu đề và nội dung';
+            $type = 'fail';
+        }
+        else{
+            try {
+                blog_update($blog_id, $title, $blog_content, $img, $today, $tag_string);
+                unset($title, $blog_content, $img, $tag_string);
+                $detail_blog = blog_select_by_id($blog_id);
+                extract($detail_blog);
+                $MESSAGE = "Cập nhật thành công";
+                $type = 'success';
+            }
+            catch (Exception $exc) {
+                $MESSAGE = "Cập nhật thất bại";
+                $type = 'fail';
+            }
+        }
+        $list_cate = cate_select_all();
+        $VIEW_NAME = 'blog/edit.php';
     }
     else if(exist_param("blog-saved")){
         $list_blog = blog_saved_select($_SESSION['user']['username']);

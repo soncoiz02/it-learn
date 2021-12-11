@@ -1,13 +1,19 @@
 <?php
     require_once 'pdo.php';
     function comment_lesson_select_by_lesson($lesson_id){
-        $sql = 'SELECT * from course_comment where lesson_id=?';
+        $sql = 'SELECT * from course_comment where lesson_id=? order by date desc';
         return pdo_query($sql, $lesson_id);
     }
     function comment_blog_select_by_id($id){
-        $sql = 'SELECT * from blog_comment where blog_id=?';
+        $sql = 'SELECT * from blog_comment where blog_id=? order by date desc';
         return pdo_query($sql, $id);
     }
+    
+    function comment_question_select_by_id($ques_id){
+        $sql = 'SELECT * from question_comment where ques_id=? order by date desc';
+        return pdo_query($sql, $ques_id);
+    }
+
     function comment_question_select_all(){
         $sql = 'SELECT * from question_comment';
         return pdo_query($sql);
@@ -22,10 +28,6 @@
         pdo_execute($sql, $username, $blog_id, $content, $date);
     }
 
-    function comment_question_select_by_id($ques_id){
-        $sql = 'SELECT * from question_comment where ques_id=?';
-        return pdo_query($sql, $ques_id);
-    }
 
     function comment_lesson_insert($username, $lesson_id, $content, $date){
         $sql = "INSERT into course_comment(username, lesson_id, content, date) values(?, ?, ?, ?)";

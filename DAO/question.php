@@ -51,4 +51,14 @@
         $sql = "SELECT count(*) from question";
         return pdo_query_value($sql);
     }
+
+    function question_search($key){
+        $sql = "SELECT * from question where content like '%$key%'";
+        return pdo_query($sql);
+    }
+
+    function question_select_all_count(){
+        $sql = 'SELECT question.ques_id, question.username, question.date_ask, question.date_ask, question.content, COUNT(question_comment.ques_id) as num FROM `question` JOIN question_comment on question.ques_id = question_comment.ques_id GROUP BY question_comment.ques_id HAVING num > 0';
+        return pdo_query($sql);
+    }
 ?>

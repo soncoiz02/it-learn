@@ -32,6 +32,7 @@
           weight: 500;
         }
         color: red;
+        margin-left: 10px;
       }
       form {
         display: flex;
@@ -329,6 +330,105 @@
       100% {
         transform: translateY(-20px) rotate(45deg);
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .login {
+    .container {
+      padding: 30px;
+    }
+    &__form {
+      width: 100%;
+      &-sign-in {
+        padding: 15px;
+        gap: 20px 0;
+        h2 {
+          font-size: 22px;
+        }
+        .message {
+          font-size: 14px;
+        }
+        form {
+          gap: 10px 0;
+          .username,
+          .password {
+            .input {
+              height: 40px;
+              i {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+              }
+              input {
+                width: calc(100% - 40px);
+                font-size: 14px;
+              }
+            }
+            .err {
+              font-size: 12px;
+            }
+          }
+          .btn-sign {
+            padding: 10px 30px;
+            font-size: 14px;
+          }
+        }
+        .question {
+          .sign-up {
+            font-size: 12px;
+          }
+        }
+      }
+      &-sign-up {
+        padding: 15px;
+        gap: 20px 0;
+        h2 {
+          font-size: 22px;
+        }
+        .message {
+          font-size: 14px;
+        }
+        form {
+          gap: 10px 0;
+          .username,
+          .password,
+          .password2,
+          .fullname,
+          .email {
+            .input {
+              height: 40px;
+              i {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+              }
+              input {
+                width: calc(100% - 40px);
+                font-size: 14px;
+              }
+            }
+            .err {
+              font-size: 12px;
+            }
+          }
+          .upload-avt {
+            label {
+              padding: 10px 15px;
+              font-size: 12px;
+              align-items: center;
+            }
+          }
+          .btn-sign {
+            padding: 10px 30px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    &__img {
+      display: none;
     }
   }
 }

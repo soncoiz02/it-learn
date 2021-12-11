@@ -101,4 +101,19 @@
         $sql = "SELECT count(*) from blog";
         return pdo_query_value($sql);
     }
+
+    function blog_search($key){
+        $sql = "SELECT * from blog where title like '%$key%'";
+        return pdo_query($sql);
+    }
+
+    function blog_update($blog_id, $title, $content, $avt, $date, $tag){
+        $sql = 'UPDATE blog set title=?, content=?, avatar=?, cate_id=?, date=? where blog_id=?';
+        pdo_execute($sql, $title, $content, $avt, $tag, $date, $blog_id);
+    }
+
+    function blog_select_all_count(){
+        $sql = 'SELECT blog.blog_id, blog.title,blog.username, blog.date, count(blog_comment.blog_id) as num from blog join blog_comment on blog.blog_id = blog_comment.blog_id group by blog_comment.blog_id having num > 0';
+        return pdo_query($sql);
+    }
 ?>

@@ -7,6 +7,7 @@
     position: relative;
 
     .container {
+      position: relative;
       flex-direction: column;
       width: 100%;
       padding: 50px;
@@ -110,7 +111,7 @@
       &-item {
         width: 100%;
         padding: 30px;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
@@ -183,8 +184,16 @@
               }
             }
           }
-          .delete-btn {
-            color: red;
+          .btn {
+            display: flex;
+            align-items: center;
+            gap: 0 10px;
+            .delete-btn {
+              color: red;
+            }
+            .update-btn {
+              color: #14da2c;
+            }
           }
         }
         .main-content {
@@ -255,6 +264,7 @@
       height: 45px;
       margin: 0 5px;
       align-self: flex-end;
+      z-index: 99;
       a {
         @include flex-center;
         width: 50px;
@@ -305,6 +315,33 @@
     .container {
       padding: 50px;
       justify-content: space-between;
+      .btn-active {
+        position: absolute;
+        display: none;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        background: whitesmoke;
+        width: 50px;
+        height: 50px;
+        animation: bg 2s linear alternate infinite;
+        clip-path: polygon(
+          100% 0%,
+          80% 49%,
+          100% 100%,
+          90% 100%,
+          50% 50%,
+          90% 0
+        );
+      }
+      @keyframes bg {
+        0% {
+          background: whitesmoke;
+        }
+        100% {
+          background: rgb(196, 196, 196);
+        }
+      }
     }
     &-left {
       display: flex;
@@ -625,6 +662,19 @@
             display: flex;
             flex-direction: column;
             gap: 10px 0;
+            .current-img {
+              width: 300px;
+              height: 200px;
+              border-radius: 10px;
+              overflow: hidden;
+              position: relative;
+              img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
             label {
               width: 300px;
               height: 200px;
@@ -688,6 +738,208 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .blogs {
+    &__list {
+      .container {
+        padding: 30px 15px;
+        .btn-add {
+          bottom: 15px;
+          right: 15px;
+          a {
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+          }
+        }
+      }
+      &-nav {
+        align-items: center;
+        justify-content: space-between;
+        &-link {
+          width: auto;
+          height: auto;
+          a {
+            font-size: 16px;
+          }
+          &.active > a {
+            &::after {
+              width: 80px;
+              height: 3px;
+            }
+          }
+        }
+      }
+      &-all {
+        width: 100%;
+        &-item {
+          padding: 15px;
+          .top {
+            .user {
+              .avt {
+                width: 30px;
+                height: 30px;
+              }
+              .detail {
+                .fullname {
+                  font-size: 12px;
+                }
+                .username {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+          .main-content {
+            margin-bottom: 10px;
+            .blog-content {
+              .blog-title {
+                font-size: 16px;
+              }
+              .blog-resume {
+                font-size: 10px;
+              }
+            }
+            .blog-img {
+              width: 150px;
+              height: 80px;
+            }
+          }
+          .bottom {
+            .day-left {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+      &-error {
+        .img {
+          width: 200px;
+          height: 200px;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+    &__detail {
+      min-height: 100vh;
+      .container {
+        position: relative;
+        padding: 30px 15px;
+        overflow-x: hidden;
+        min-height: 100vh;
+        .btn-active {
+          display: block;
+          transition: 0.3s;
+          z-index: 99;
+          &.active {
+            transform: rotate(180deg);
+            right: -10px;
+          }
+        }
+      }
+      &-left {
+        width: 100%;
+        gap: 20px 0;
+        h1 {
+          font-size: 24px;
+        }
+      }
+      &-right {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        right: -100%;
+        padding: 15px;
+        transition: 0.5s;
+        background: white;
+        &.active {
+          right: 0;
+        }
+        &::after {
+          display: none;
+        }
+        .top {
+          .user {
+            .avt {
+              width: 40px;
+              height: 40px;
+            }
+            .detail {
+              .fullname {
+                font-size: 16px;
+              }
+              .username {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+        .comment {
+          &-form {
+            .avt-user {
+              width: 35px;
+              height: 35px;
+            }
+            .form {
+              input[type="text"] {
+                padding: 10px;
+                font-size: 12px;
+                border-radius: 50px;
+              }
+              input[type="submit"] {
+                padding: 5px 10px;
+                font-size: 12px;
+                align-self: center;
+                border-radius: 50px;
+              }
+            }
+          }
+          h2 {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    &__add {
+      .container {
+        padding: 30px 15px;
+        gap: 10px 0;
+        h2 {
+          font-size: 22px;
+        }
+        .form {
+          flex-direction: column;
+          &-left {
+            width: 100%;
+            padding-right: 0;
+            gap: 10px 0;
+            input {
+              padding: 10px 0;
+              font-size: 16px;
+            }
+            p {
+              font-size: 16px;
+            }
+          }
+          &-right {
+            .avt-upload {
+              margin-top: 20px;
+              label {
+                width: 100%;
+              }
+              .current-img {
+                width: 100%;
+              }
+            }
           }
         }
       }
