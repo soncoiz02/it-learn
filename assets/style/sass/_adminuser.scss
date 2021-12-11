@@ -24,6 +24,31 @@
       }
     }
   }
+  .message {
+    position: fixed;
+    top: 90px;
+    right: 0;
+    width: 250px;
+    height: 80px;
+    background: white;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+    @include flex-center;
+    &.success {
+      border-left: 2px solid #3acc20;
+      p {
+        color: #3acc20;
+      }
+    }
+    &.fail {
+      border-left: 2px solid red;
+      p {
+        color: red;
+      }
+    }
+    p {
+      font-size: 20px;
+    }
+  }
 
   &-list {
     display: flex;
@@ -199,6 +224,8 @@
             font-size: 16px;
             color: $black;
             border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background: whitesmoke;
           }
 
           .list {

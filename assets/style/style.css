@@ -3930,6 +3930,7 @@ textarea {
   width: 250px;
   height: 80px;
   background: white;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4659,6 +4660,7 @@ textarea {
   width: 250px;
   height: 80px;
   background: white;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4990,6 +4992,39 @@ textarea {
   background: linear-gradient(to right, #3a78e0, #8628dc);
 }
 
+.admin__user .message {
+  position: fixed;
+  top: 90px;
+  right: 0;
+  width: 250px;
+  height: 80px;
+  background: white;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin__user .message.success {
+  border-left: 2px solid #3acc20;
+}
+
+.admin__user .message.success p {
+  color: #3acc20;
+}
+
+.admin__user .message.fail {
+  border-left: 2px solid red;
+}
+
+.admin__user .message.fail p {
+  color: red;
+}
+
+.admin__user .message p {
+  font-size: 20px;
+}
+
 .admin__user-list {
   display: flex;
   width: 100%;
@@ -5181,6 +5216,8 @@ textarea {
   font-size: 16px;
   color: #4d4d4d;
   border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: whitesmoke;
 }
 
 .admin__user-update .form .right .label .list {

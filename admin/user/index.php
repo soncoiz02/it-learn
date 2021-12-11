@@ -31,6 +31,23 @@
         extract($user);
         $VIEW_NAME = 'user/detail.php';
     }
+    else if(exist_param("btn-update")){
+        $file_name = save_file("avt", "$IMAGE_DIR/user/");
+        $img = strlen(strval($file_name)) > 0 ? $file_name : $current_avt;
+        try{
+            user_update($username, $fullname,$img, $email,$position);
+            unset($fullname,$img, $email,$position);
+            $user =  user_select_by_id($username);
+            extract($user);
+            $MESSAGE = 'Cập nhật thành công';
+            $type = 'success';
+        }
+        catch(PDOException $e){
+            $MESSAGE = 'Cập nhật thất bại';
+            $type = 'fail';
+        }
+        $VIEW_NAME = 'user/update.php';
+    }
     else{
         $VIEW_NAME = 'user/list.php';
     }

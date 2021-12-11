@@ -41,4 +41,23 @@
             </form>
         </div>
     </div>
+    <?php
+        if(strlen($MESSAGE)){
+    ?>
+        <div class="message <?=$type?>">
+            <p>
+                <?=$MESSAGE?>
+            </p>
+        </div>
+    <?php
+        }
+    ?>
+    <script>
+        const mess = document.querySelector('.message')
+        if(mess){
+            setTimeout(() => {
+                mess.remove()
+            }, 3000)
+        }
+    </script>
 </div>
